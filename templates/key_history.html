@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}키 변경 내역{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2>암호키 변경 내역: {{ key.name }}</h2>
+        <a href="{{ url_for('key_detail', key_id=key.id) }}" class="btn btn-secondary">뒤로 가기</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">변경 내역</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>버전</th>
+                                <th>작업</th>
+                                <th>암호화된 키</th>
+                                <th>Salt</th>
+                                <th>변경자</th>
+                                <th>변경일시</th>
+                                <th>상세</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for history, username in histories %}
+                            <tr>
+                                <td>v{{ history.version }}</td>
+                                <td>
+                                    {% if history.action == 'create' %}
+                                    <span class="badge bg-primary">생성</span>
+                                    {% elif history.action == 'rotate' %}
+                                    <span class="badge bg-warning">변경</span>
+                                    {% elif history.action == 'deactivate' %}
+                                    <span class="badge bg-secondary">비활성화</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ history.key_material[:10] }}****************</td>
+                                <td>{{ history.salt[:10] }}****************</td>
+                                <td>{{ username }}</td>
+                                <td>{{ history.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                <td>
+                                    <button type="button" 
+                                            class="btn btn-sm btn-info" 
+                                            onclick="showHistoryDetail({{ history.id }})">
+                                        상세보기
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 상세정보 모달 -->
+<div class="modal fade" id="historyDetailModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">변경 내역 상세정보</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">키 ID</label>
+                    <p id="modalKeyId" class="form-control-static"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">버전</label>
+                    <p id="modalVersion" class="form-control-static"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">작업</label>
+                    <p id="modalAction" class="form-control-static"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">암호화된 키</label>
+                    <p id="modalKeyMaterial" class="form-control-static"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Salt</label>
+                    <p id="modalSalt" class="form-control-static"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">변경자</label>
+                    <p id="modalRotatedBy" class="form-control-static"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">변경일시</label>
+                    <p id="modalCreatedAt" class="form-control-static"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showHistoryDetail(historyId) {
+    fetch(`/api/key_history/${historyId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const detail = data.history_detail;
+                document.getElementById('modalKeyId').textContent = detail.key_id;
+                document.getElementById('modalVersion').textContent = 'v' + detail.version;
+                document.getElementById('modalAction').textContent = 
+                    detail.action === 'create' ? '생성' :
+                    detail.action === 'rotate' ? '변경' : '비활성화';
+                document.getElementById('modalKeyMaterial').textContent = detail.key_material;
+                document.getElementById('modalSalt').textContent = detail.salt;
+                document.getElementById('modalRotatedBy').textContent = detail.rotated_by;
+                document.getElementById('modalCreatedAt').textContent = detail.created_at;
+                
+                const modal = new bootstrap.Modal(document.getElementById('historyDetailModal'));
+                modal.show();
+            } else {
+                alert('상세정보를 불러오는데 실패했습니다.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('상세정보를 불러오는데 실패했습니다.');
+        });
+}
+</script>
+{% endblock %} 

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}키 상세 정보{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2>암호키 상세 정보: {{ key.name }}</h2>
+        <a href="{{ url_for('keys') }}" class="btn btn-secondary">뒤로 가기</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">기본 정보</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>ID:</strong> {{ key.id }}</p>
+                        <p><strong>이름:</strong> {{ key.name }}</p>
+                        <p><strong>버전:</strong> v{{ key.version }}</p>
+                        <p><strong>암호화된 키:</strong> {{ key.key_material[:10] }}****************</p>
+                        <p><strong>Salt:</strong> {{ salt[:10] }}****************</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>생성자:</strong> {{ creator }}</p>
+                        <p><strong>생성일:</strong> {{ key.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                        <p><strong>상태:</strong> 
+                            {% if key.active %}
+                            <span class="badge bg-success">활성</span>
+                            {% else %}
+                            <span class="badge bg-secondary">비활성</span>
+                            {% endif %}
+                        </p>
+                        {% if not key.active and deactivated_at %}
+                        <p><strong>폐기일:</strong> {{ deactivated_at }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <p><strong>설명:</strong></p>
+                        <div class="border rounded p-3 bg-light">
+                            {% if key.description %}
+                            {{ key.description|nl2br }}
+                            {% else %}
+                            <em class="text-muted">설명이 없습니다.</em>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

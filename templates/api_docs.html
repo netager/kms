@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block title %}API 설명서{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>API 설명서</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3>개요</h3>
+            <p>KMS API는 안전한 암호화/복호화 서비스를 RESTful API 형태로 제공합니다. 모든 API는 HTTPS를 통해 통신하며, 
+            API 토큰 기반의 인증을 사용합니다.</p>
+            
+            <div class="alert alert-info">
+                <i class="bx bx-info-circle me-2"></i>
+                <strong>중요:</strong> API 요청 시 반드시 프로그램명(<code>program_name</code>)을 지정해야 하며, 
+                이는 감사 로그에 기록되어 추적이 가능합니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3>인증</h3>
+            <p>모든 API 요청에는 다음 헤더가 필요합니다:</p>
+            <pre class="bg-light p-3 rounded"><code>{
+    "X-API-Token": "your-api-token-here",
+    "Content-Type": "application/json"
+}</code></pre>
+            <div class="alert alert-warning mt-3">
+                <i class="bx bx-shield-quarter me-2"></i>
+                <strong>보안 주의사항:</strong>
+                <ul class="mb-0">
+                    <li>API 토큰은 안전하게 보관하고 주기적으로 갱신하세요.</li>
+                    <li>토큰이 노출된 경우 즉시 관리자에게 연락하여 폐기하세요.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3>API 엔드포인트</h3>
+            
+            <h4 class="mt-4">1. 텍스트 암호화</h4>
+            <p><code>POST /api/v1/encrypt</code></p>
+            <p><strong>요청 본문:</strong></p>
+            <pre class="bg-light p-3 rounded"><code>{
+    "text": "암호화할 텍스트",
+    "key_id": 1,
+    "program_name": "프로그램명"
+}</code></pre>
+            <p><strong>응답:</strong></p>
+            <pre class="bg-light p-3 rounded"><code>{
+    "encrypted_text": "gAAAAAB...",
+    "key_version": 1,
+    "request_info": {
+        "key_id": 1,
+        "program_name": "프로그램명",
+        "token": "토큰값"
+    }
+}</code></pre>
+
+            <h4 class="mt-4">2. 텍스트 복호화</h4>
+            <p><code>POST /api/v1/decrypt</code></p>
+            <p><strong>요청 본문:</strong></p>
+            <pre class="bg-light p-3 rounded"><code>{
+    "encrypted_text": "gAAAAAB...",
+    "key_id": 1,
+    "program_name": "프로그램명"
+}</code></pre>
+            <p><strong>응답:</strong></p>
+            <pre class="bg-light p-3 rounded"><code>{
+    "decrypted_text": "원본 텍스트",
+    "key_version": 1,
+    "request_info": {
+        "key_id": 1,
+        "program_name": "프로그램명",
+        "token": "토큰값"
+    }
+}</code></pre>
+
+            <h4 class="mt-4">3. 암호화 키 조회</h4>
+            <p><code>POST /api/v1/key</code></p>
+            <p><strong>요청 본문:</strong></p>
+            <pre class="bg-light p-3 rounded"><code>{
+    "key_id": 1,
+    "program_name": "프로그램명"
+}</code></pre>
+            <p><strong>응답:</strong></p>
+            <pre class="bg-light p-3 rounded"><code>{
+    "key_material": "키 자료",
+    "salt": "salt 값",
+    "key_version": 1,
+    "request_info": {
+        "key_id": 1,
+        "program_name": "프로그램명",
+        "token": "토큰값"
+    }
+}</code></pre>
+            
+            <h4 class="mt-3">주요 오류 코드</h4>
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>HTTP 상태 코드</th>
+                        <th>에러 코드</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>400</td>
+                        <td>INVALID_REQUEST</td>
+                        <td>잘못된 요청 (필수 파라미터 누락 등)</td>
+                    </tr>
+                    <tr>
+                        <td>401</td>
+                        <td>INVALID_TOKEN</td>
+                        <td>잘못된 API 토큰</td>
+                    </tr>
+                    <tr>
+                        <td>403</td>
+                        <td>PERMISSION_DENIED</td>
+                        <td>권한 없음</td>
+                    </tr>
+                    <tr>
+                        <td>404</td>
+                        <td>KEY_NOT_FOUND</td>
+                        <td>존재하지 않는 키 ID</td>
+                    </tr>
+                    <tr>
+                        <td>500</td>
+                        <td>INTERNAL_ERROR</td>
+                        <td>서버 내부 오류</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3>Python 예제 코드</h3>
+            <div class="alert alert-success mb-3">
+                <i class="bx bx-code-block me-2"></i>
+                <strong>참고:</strong> 아래 예제는 Python 3.8 이상에서 동작합니다.
+            </div>
+            
+            <h4>1. 텍스트 암호화/복호화 예제</h4>
+            <pre class="bg-light p-3 rounded"><code>import requests
+import json
+
+class KMSClient:
+    def __init__(self, base_url, api_token, program_name):
+        self.base_url = base_url
+        self.headers = {
+            "X-API-Token": api_token,
+            "Content-Type": "application/json"
+        }
+        self.program_name = program_name
+
+    def encrypt(self, text, key_id):
+        response = requests.post(
+            f"{self.base_url}/api/v1/encrypt",
+            headers=self.headers,
+            json={
+                "text": text,
+                "key_id": key_id,
+                "program_name": self.program_name
+            }
+        )
+        return response.json()
+
+    def decrypt(self, encrypted_text, key_id):
+        response = requests.post(
+            f"{self.base_url}/api/v1/decrypt",
+            headers=self.headers,
+            json={
+                "encrypted_text": encrypted_text,
+                "key_id": key_id,
+                "program_name": self.program_name
+            }
+        )
+        return response.json()
+
+    def get_key(self, key_id):
+        response = requests.post(
+            f"{self.base_url}/api/v1/key",
+            headers=self.headers,
+            json={
+                "key_id": key_id,
+                "program_name": self.program_name
+            }
+        )
+        return response.json()
+
+# 사용 예시
+if __name__ == "__main__":
+    client = KMSClient(
+        base_url="https://kms.example.com",
+        api_token="your-api-token",
+        program_name="TestApp"
+    )
+
+    # 암호화
+    encrypt_result = client.encrypt("민감한 정보", key_id=1)
+    print(f"암호화된 텍스트: {encrypt_result['encrypted_text']}")
+
+    # 복호화
+    decrypt_result = client.decrypt(encrypt_result["encrypted_text"], key_id=1)
+    print(f"복호화된 텍스트: {decrypt_result['decrypted_text']}")
+
+    # 키 조회
+    key_result = client.get_key(key_id=1)
+    print(f"키 버전: {key_result['key_version']}")
+
+            <h4 class="mt-4">2. YAML 파일 복호화 예제</h4>
+            <pre class="bg-light p-3 rounded"><code>import yaml
+import requests
+
+def decrypt_yaml_file(file_path, kms_client):
+    # YAML 파일 읽기
+    with open(file_path, 'r') as f:
+        yaml_content = f.read()
+    
+    # KMS API를 통한 복호화
+    response = requests.post(
+        f"{kms_client.base_url}/api/v1/decrypt-yaml",
+        headers=kms_client.headers,
+        json={
+            "yaml_content": yaml_content,
+            "key_id": 1,
+            "program_name": kms_client.program_name
+        }
+    )
+    
+    if response.status_code == 200:
+        result = response.json()
+        return yaml.safe_load(result["decrypted_yaml"])
+    else:
+        raise Exception(f"복호화 실패: {response.json()['error']}")
+
+# 사용 예시
+yaml_config = decrypt_yaml_file("config.yaml", client)
+print("복호화된 설정:", yaml_config)</code></pre>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3>보안 권장사항</h3>
+            <ul>
+                <li>모든 API 통신은 반드시 HTTPS를 사용하세요.</li>
+                <li>API 토큰은 안전한 방법으로 저장하고 관리하세요.</li>
+                <li>프로그램명은 추적 가능한 의미 있는 이름을 사용하세요.</li>
+                <li>암호화된 데이터는 안전한 방법으로 저장하세요.</li>
+                <li>오류 발생 시 즉시 관리자에게 문의하세요.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %} 

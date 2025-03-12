@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}시스템 소개{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- 헤더 섹션 -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary mb-3">KMS 시스템 소개</h1>
+        <p class="lead text-muted">안전하고 효율적인 암호화 키 관리 시스템</p>
+        <hr class="my-4">
+    </div>
+
+    <!-- 주요 기능 섹션 -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-key fa-3x text-primary"></i>
+                    </div>
+                    <h3 class="h4 text-center mb-3">암호화 키 관리</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>안전한 키 생성 및 저장</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>자동화된 키 교체(rotation)</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>키 버전 관리</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>상세한 접근 이력 관리</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                    </div>
+                    <h3 class="h4 text-center mb-3">보안 기능</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>PBKDF2 기반 키 유도</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>역할 기반 접근 제어</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>API 토큰 인증</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>CSRF 보호</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-cogs fa-3x text-primary"></i>
+                    </div>
+                    <h3 class="h4 text-center mb-3">시스템 기능</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>RESTful API 제공</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>실시간 모니터링</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>상세 로그 기록</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>테스트 도구 제공</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 시스템 아키텍처 섹션 -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h4 mb-4 text-center">시스템 아키텍처</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="h5 mb-3">백엔드 구성</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fab fa-python me-2 text-primary"></i>Flask 웹 프레임워크</li>
+                                <li class="list-group-item"><i class="fas fa-database me-2 text-primary"></i>SQLAlchemy ORM</li>
+                                <li class="list-group-item"><i class="fas fa-lock me-2 text-primary"></i>Fernet 대칭 암호화</li>
+                                <li class="list-group-item"><i class="fas fa-user-shield me-2 text-primary"></i>Flask-Login 인증</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="h5 mb-3">프론트엔드 구성</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fab fa-bootstrap me-2 text-primary"></i>Bootstrap 5 UI 프레임워크</li>
+                                <li class="list-group-item"><i class="fab fa-js me-2 text-primary"></i>JavaScript/jQuery</li>
+                                <li class="list-group-item"><i class="fas fa-palette me-2 text-primary"></i>반응형 디자인</li>
+                                <li class="list-group-item"><i class="fas fa-universal-access me-2 text-primary"></i>접근성 고려</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 보안 정책 섹션 -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h4 mb-4 text-center">보안 정책</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h4 class="h5 mb-3">키 관리 정책</h4>
+                            <div class="alert alert-info">
+                                <ul class="mb-0">
+                                    <li>정기적인 키 교체(rotation) 수행</li>
+                                    <li>키 버전 관리를 통한 이전 버전 호환성 유지</li>
+                                    <li>비활성화된 키에 대한 이력 관리</li>
+                                    <li>키 접근에 대한 상세 로깅</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <h4 class="h5 mb-3">접근 제어 정책</h4>
+                            <div class="alert alert-info">
+                                <ul class="mb-0">
+                                    <li>역할 기반 접근 제어(RBAC) 구현</li>
+                                    <li>API 토큰 기반 인증</li>
+                                    <li>모든 작업에 대한 감사 로그 기록</li>
+                                    <li>IP 기반 접근 제어</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 시작하기 섹션 -->
+    <div class="text-center">
+        <h3 class="h4 mb-4">시작하기</h3>
+        <p class="lead mb-4">KMS 시스템을 지금 바로 시작해보세요!</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('keys') }}" class="btn btn-primary btn-lg px-4 gap-3">
+                    <i class="fas fa-key me-2"></i>키 관리
+                </a>
+                <a href="{{ url_for('api_docs') }}" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="fas fa-book me-2"></i>API 문서
+                </a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 gap-3">
+                    <i class="fas fa-sign-in-alt me-2"></i>로그인
+                </a>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="fas fa-user-plus me-2"></i>회원가입
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

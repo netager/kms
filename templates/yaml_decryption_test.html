@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}YAML 복호화 테스트{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>YAML 복호화 테스트</h2>
+    
+    <form method="POST" class="mt-4" enctype="multipart/form-data" id="decryptForm">
+        {{ form.csrf_token }}
+        
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ form.server_url.label(class="form-label") }}
+                    {{ form.server_url(class="form-control") }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    {{ form.key_id.label(class="form-label") }}
+                    {{ form.key_id(class="form-select") }}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    {{ form.api_token.label(class="form-label") }}
+                    {{ form.api_token(class="form-select") }}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    {{ form.program_name.label(class="form-label") }}
+                    {{ form.program_name(class="form-control") }}
+                    <div class="form-text">프로그램명은 필수 항목이며, 'Unknown'일 수 없습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ form.yaml_file.label(class="form-label") }}
+                    {{ form.yaml_file(class="form-control", onchange="handleFileSelect(this)") }}
+                    <div class="form-text">복호화할 YAML 파일을 선택하세요.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    {% if result %}
+        {% if result.message %}
+            <div class="alert alert-{{ 'success' if result.success else 'danger' }} mt-3">
+                {{ result.message }}
+                {% if result.key_version %}
+                    <br><small>키 버전: {{ result.key_version }}</small>
+                {% endif %}
+            </div>
+        {% endif %}
+        
+        {% if result.yaml_result %}
+            <div class="card mt-3">
+                <div class="card-header">복호화 결과</div>
+                <div class="card-body">
+                    <pre>{{ result.yaml_result }}</pre>
+                </div>
+            </div>
+        {% endif %}
+        
+        {% if result.original_yaml %}
+            <div class="card mt-3">
+                <div class="card-header">원본 YAML</div>
+                <div class="card-body">
+                    <pre>{{ result.original_yaml }}</pre>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4>파이썬 예제 코드</h4>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-end mb-2">
+                        <button class="btn btn-sm btn-outline-primary" onclick="copyCode()">
+                            <i class="bi bi-clipboard"></i> 코드 복사
+                        </button>
+                    </div>
+                    <pre class="bg-light p-3 font-monospace" id="pythonExample"><code>import yaml
+import requests
+
+def decrypt_yaml_password(yaml_file_path, server_url, api_token, key_id, program_name):
+    # YAML 파일 읽기
+    with open(yaml_file_path, 'r', encoding='utf-8') as file:
+        yaml_content = yaml.safe_load(file)
+    
+    # 데이터베이스 섹션과 비밀번호 필드 확인
+    if 'database' not in yaml_content:
+        raise ValueError('database 섹션이 없습니다.')
+    if 'password' not in yaml_content['database']:
+        raise ValueError('database 섹션에 password 필드가 없습니다.')
+    
+    # 암호화된 비밀번호 가져오기
+    encrypted_password = str(yaml_content['database']['password']).strip()
+    
+    # 암호화된 텍스트 형식 확인
+    if not encrypted_password or not encrypted_password.startswith('gAAAAAB'):
+        raise ValueError('유효하지 않은 암호화 텍스트입니다.')
+    
+    # 복호화 API 호출
+    response = requests.post(
+        f"{server_url}/api/v1/decrypt",
+        headers={
+            'X-API-Token': api_token,
+            'Content-Type': 'application/json'
+        },
+        json={
+            'encrypted_text': encrypted_password,
+            'key_id': key_id,
+            'program_name': program_name
+        }
+    )
+    
+    # 응답 확인
+    if response.status_code == 200:
+        result = response.json()
+        if 'decrypted_text' not in result:
+            raise ValueError('복호화 API 응답에 decrypted_text가 없습니다.')
+        return {
+            'encrypted_password': encrypted_password,
+            'decrypted_password': result['decrypted_text']
+        }
+    else:
+        error = response.json().get('error', '알 수 없는 오류')
+        raise Exception(f'복호화 중 오류가 발생했습니다: {error}')
+
+# 사용 예시
+if __name__ == '__main__':
+    yaml_file_path = 'config.yaml'  # YAML 파일 경로
+    server_url = 'http://localhost:8000'  # 서버 URL
+    api_token = 'your_api_token'  # API 토큰
+    key_id = 1  # 키 ID
+    program_name = 'yaml_decrypt_test'  # 프로그램명
+    
+    try:
+        result = decrypt_yaml_password(
+            yaml_file_path, server_url, api_token, key_id, program_name
+        )
+        print('암호화된 비밀번호:', result['encrypted_password'])
+        print('복호화된 비밀번호:', result['decrypted_password'])
+    except Exception as e:
+        print('오류:', str(e))</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 복사 완료 토스트 메시지 -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="copyToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="bi bi-check-circle me-2"></i>클립보드에 복사되었습니다.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function handleFileSelect(input) {
+    const file = input.files[0];
+    if (file) {
+        // 파일 이름 표시 유지
+        input.setAttribute('data-selected-file', file.name);
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const content = e.target.result;
+            document.getElementById('originalYaml').value = content;
+            document.getElementById('originalYamlSection').style.display = 'block';
+        };
+        reader.readAsText(file);
+    }
+}
+
+// 폼 제출 시 파일 선택 상태 유지
+document.getElementById('decryptForm').addEventListener('submit', function() {
+    const fileInput = document.querySelector('input[type="file"]');
+    const selectedFile = fileInput.getAttribute('data-selected-file');
+    if (selectedFile) {
+        // 파일 선택 상태를 유지하기 위한 처리
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(fileInput.files[0]);
+        fileInput.files = dataTransfer.files;
+    }
+});
+
+// 코드 복사 함수
+function copyCode() {
+    const codeElement = document.getElementById('pythonExample');
+    const code = codeElement.textContent;
+    
+    navigator.clipboard.writeText(code).then(() => {
+        const toast = new bootstrap.Toast(document.getElementById('copyToast'));
+        toast.show();
+    });
+}
+</script>
+{% endblock %} 

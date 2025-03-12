@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}운영 이관 절차{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>운영 이관 절차</h2>
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">1. 사전 준비 사항</h4>
+            <div class="ps-3">
+                <h5>1.1. 필수 패키지 설치</h5>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>pip install -r requirements.txt</code></pre>
+                
+                <h5>1.2. 환경 설정</h5>
+                <ul>
+                    <li>Python 3.8 이상</li>
+                    <li>PostgreSQL 12 이상</li>
+                    <li>Nginx</li>
+                    <li>Gunicorn</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">2. 배포 패키지 생성</h4>
+            <div class="ps-3">
+                <h5>2.1. 배포 스크립트 실행</h5>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>./create_release.sh</code></pre>
+                <p>생성된 <code>jbkms_[버전].tar.gz</code> 파일을 운영 서버로 전송</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">3. 운영 서버 설정</h4>
+            <div class="ps-3">
+                <h5>3.1. 배포 패키지 압축 해제</h5>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>tar xzf jbkms_[버전].tar.gz</code></pre>
+
+                <h5>3.2. 데이터베이스 초기화</h5>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>python init_db.py</code></pre>
+
+                <h5>3.3. 환경 변수 설정</h5>
+                <p>아래 내용으로 <code>.env</code> 파일 생성:</p>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>FLASK_APP=app.py
+FLASK_ENV=production
+DATABASE_URL=postgresql://username:password@localhost/dbname
+SECRET_KEY=your-secret-key</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">4. 서비스 설정 및 실행</h4>
+            <div class="ps-3">
+                <h5>4.1. Nginx 설정</h5>
+                <p><code>nginx/jbkms.conf</code> 파일을 Nginx 설정 디렉토리에 복사</p>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>sudo cp nginx/jbkms.conf /etc/nginx/conf.d/
+sudo nginx -t
+sudo systemctl restart nginx</code></pre>
+
+                <h5>4.2. 서비스 등록 및 시작</h5>
+                <pre class="bg-light p-3 mt-2 mb-3"><code># systemd 서비스 파일 복사
+sudo cp systemd/jbkms.service /etc/systemd/system/
+
+# 서비스 등록 및 시작
+sudo systemctl daemon-reload
+sudo systemctl enable jbkms
+sudo systemctl start jbkms</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">5. 운영 검증</h4>
+            <div class="ps-3">
+                <h5>5.1. 서비스 상태 확인</h5>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>sudo systemctl status jbkms
+sudo journalctl -u jbkms</code></pre>
+
+                <h5>5.2. 로그 확인</h5>
+                <pre class="bg-light p-3 mt-2 mb-3"><code>tail -f /var/log/jbkms/app.log
+tail -f /var/log/nginx/access.log
+tail -f /var/log/nginx/error.log</code></pre>
+
+                <h5>5.3. 웹 서비스 접속 테스트</h5>
+                <ul>
+                    <li>웹 브라우저에서 서비스 URL 접속 확인</li>
+                    <li>관리자 계정으로 로그인 테스트</li>
+                    <li>주요 기능 동작 확인</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

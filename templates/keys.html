@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block title %}암호키 관리 및 조회{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2>암호키 관리 및 조회</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createKeyModal">
+            암호키 생성
+        </button>
+    </div>
+</div>
+
+<!-- 검색 폼 추가 -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="GET" action="{{ url_for('keys') }}" class="row g-3">
+                    <div class="col-md-3">
+                        {{ search_form.search_name.label(class="form-label") }}
+                        {{ search_form.search_name(class="form-control", value=search_name) }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ search_form.search_creator.label(class="form-label") }}
+                        {{ search_form.search_creator(class="form-control", value=search_creator) }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ search_form.search_status.label(class="form-label") }}
+                        {{ search_form.search_status(class="form-control", value=search_status) }}
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        {{ search_form.submit(class="btn btn-primary me-2") }}
+                        <a href="{{ url_for('keys') }}" class="btn btn-secondary">초기화</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>이름</th>
+                                <th>버전</th>
+                                <th>생성일</th>
+                                <th>생성자</th>
+                                <th>상태</th>
+                                <th>작업</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, username in keys %}
+                            <tr>
+                                <td>{{ key.id }}</td>
+                                <td>{{ key.name }}</td>
+                                <td>v{{ key.version }}</td>
+                                <td>{{ key.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                <td>{{ username }}</td>
+                                <td>
+                                    {% if key.active %}
+                                    <span class="badge bg-success">활성</span>
+                                    {% else %}
+                                    <span class="badge bg-secondary">비활성</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('key_history', key_id=key.id) }}" class="btn btn-info btn-sm">변경 내역</a>
+                                    <a href="{{ url_for('key_detail', key_id=key.id) }}" class="btn btn-primary btn-sm">상세정보</a>
+                                    <form id="rotateForm{{ key.id }}" action="{{ url_for('rotate_key', key_id=key.id) }}" method="POST" style="display: inline;" onsubmit="return confirmRotation({{ key.id }}, '{{ key.name }}');">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                        <button type="submit" class="btn btn-warning btn-sm rotate-key-btn" data-key-id="{{ key.id }}">암호키 변경</button>
+                                    </form>
+                                    {% if key.active %}
+                                    <form id="deactivateForm{{ key.id }}" action="{{ url_for('deactivate_key', key_id=key.id) }}" method="POST" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeactivate({{ key.id }}, '{{ key.name }}')">
+                                            폐기
+                                        </button>
+                                    </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 키 생성 모달 -->
+<div class="modal fade" id="createKeyModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">암호키 생성</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="keyForm" method="POST" action="{{ url_for('create_key') }}">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                        {% for error in form.name.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.description.label(class="form-label") }}
+                        {{ form.description(class="form-control") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 로테이션 확인 모달 -->
+<div class="modal fade" id="rotationConfirmModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">암호키 변경 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>정말로 이 키를 변경하시겠습니까?</p>
+                <p class="text-danger">
+                    <strong>주의:</strong> 암호키를 변경하면 이전 키로 암호화된 데이터는 더 이상 복호화할 수 없게 됩니다.
+                </p>
+                <p>키 이름: <strong id="rotationKeyName"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-warning" id="confirmRotationBtn">변경 실행</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 폐기 확인 모달 -->
+<div class="modal fade" id="deactivateConfirmModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">암호키 폐기 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>경고:</strong> 암호키를 폐기하면 더 이상 해당 키로 암호화/복호화를 할 수 없습니다.
+                </div>
+                <p>다음 암호키를 폐기하시겠습니까?</p>
+                <p>키 이름: <strong id="deactivateKeyName"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-danger" id="confirmDeactivateBtn">
+                    <i class="bi bi-trash me-1"></i>폐기 실행
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 결과 모달 추가 -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resultModalLabel">암호키 생성 결과</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resultModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 키 변경 결과 모달 추가 -->
+<div class="modal fade" id="rotateResultModal" tabindex="-1" aria-labelledby="rotateResultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rotateResultModalLabel">암호키 변경 결과</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="rotateResultModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 알림 메시지를 표시할 컨테이너 추가 -->
+<div id="alertContainer" class="mt-3"></div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+let currentRotationForm = null;
+let currentDeactivateForm = null;
+const rotationModal = new bootstrap.Modal(document.getElementById('rotationConfirmModal'));
+const deactivateModal = new bootstrap.Modal(document.getElementById('deactivateConfirmModal'));
+
+function confirmRotation(keyId, keyName) {
+    currentRotationForm = document.getElementById('rotateForm' + keyId);
+    document.getElementById('rotationKeyName').textContent = keyName;
+    rotationModal.show();
+    return false;
+}
+
+function confirmDeactivate(keyId, keyName) {
+    currentDeactivateForm = document.getElementById('deactivateForm' + keyId);
+    document.getElementById('deactivateKeyName').textContent = keyName;
+    deactivateModal.show();
+}
+
+document.getElementById('confirmRotationBtn').addEventListener('click', function() {
+    if (currentRotationForm) {
+        currentRotationForm.submit();
+    }
+    rotationModal.hide();
+});
+
+document.getElementById('confirmDeactivateBtn').addEventListener('click', function() {
+    if (currentDeactivateForm) {
+        currentDeactivateForm.submit();
+    }
+    deactivateModal.hide();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 키 생성 폼 제출 처리
+    const keyForm = document.getElementById('keyForm');
+    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+    
+    if (keyForm) {
+        keyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(keyForm);
+            fetch('/key/create', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 모달 내용 설정
+                const modalBody = document.getElementById('resultModalBody');
+                const iconClass = data.success ? 'text-success' : 'text-danger';
+                const icon = data.success ? '✓' : '✗';
+                
+                let modalContent = `
+                    <div class="text-center mb-3">
+                        <span class="${iconClass}" style="font-size: 2rem;">${icon}</span>
+                    </div>
+                    <p class="text-center">${data.message}</p>
+                `;
+                
+                if (data.success && data.key_info) {
+                    modalContent += `
+                        <div class="text-center">
+                            <small class="text-muted">
+                                키 ID: ${data.key_info.id}<br>
+                                키 이름: ${data.key_info.name}<br>
+                                생성 시간: ${data.key_info.created_at}
+                            </small>
+                        </div>
+                    `;
+                }
+                
+                modalBody.innerHTML = modalContent;
+                
+                // 모달 표시
+                resultModal.show();
+
+                // 성공 시 폼 초기화 및 페이지 새로고침
+                if (data.success) {
+                    keyForm.reset();
+                    // 모달이 닫힐 때 페이지 새로고침
+                    document.getElementById('resultModal').addEventListener('hidden.bs.modal', function () {
+                        window.location.reload();
+                    }, { once: true });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const modalBody = document.getElementById('resultModalBody');
+                modalBody.innerHTML = `
+                    <div class="text-center mb-3">
+                        <span class="text-danger" style="font-size: 2rem;">✗</span>
+                    </div>
+                    <p class="text-center">키 생성 중 오류가 발생했습니다.</p>
+                `;
+                resultModal.show();
+            });
+        });
+    }
+
+    // 키 변경 처리
+    const rotateResultModal = new bootstrap.Modal(document.getElementById('rotateResultModal'));
+    
+    // 키 변경 버튼들에 대한 이벤트 리스너 추가
+    document.querySelectorAll('.rotate-key-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (!confirm('정말로 이 키를 변경하시겠습니까?')) {
+                return;
+            }
+
+            const keyId = this.getAttribute('data-key-id');
+            
+            fetch(`/key/${keyId}/rotate`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 모달 내용 설정
+                const modalBody = document.getElementById('rotateResultModalBody');
+                const iconClass = data.success ? 'text-success' : 'text-danger';
+                const icon = data.success ? '✓' : '✗';
+                
+                let modalContent = `
+                    <div class="text-center mb-3">
+                        <span class="${iconClass}" style="font-size: 2rem;">${icon}</span>
+                    </div>
+                    <p class="text-center">${data.message}</p>
+                `;
+                
+                if (data.success && data.key_info) {
+                    modalContent += `
+                        <div class="text-center">
+                            <small class="text-muted">
+                                키 ID: ${data.key_info.id}<br>
+                                키 이름: ${data.key_info.name}<br>
+                                이전 버전: ${data.key_info.old_version}<br>
+                                새 버전: ${data.key_info.new_version}<br>
+                                변경 시간: ${data.key_info.updated_at}
+                            </small>
+                        </div>
+                    `;
+                }
+                
+                modalBody.innerHTML = modalContent;
+                
+                // 모달 표시
+                rotateResultModal.show();
+
+                // 성공 시 페이지 새로고침
+                if (data.success) {
+                    // 모달이 닫힐 때 페이지 새로고침
+                    document.getElementById('rotateResultModal').addEventListener('hidden.bs.modal', function () {
+                        window.location.reload();
+                    }, { once: true });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const modalBody = document.getElementById('rotateResultModalBody');
+                modalBody.innerHTML = `
+                    <div class="text-center mb-3">
+                        <span class="text-danger" style="font-size: 2rem;">✗</span>
+                    </div>
+                    <p class="text-center">키 변경 중 오류가 발생했습니다.</p>
+                `;
+                rotateResultModal.show();
+            });
+        });
+    });
+});
+</script>
+{% endblock %} 

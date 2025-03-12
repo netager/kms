@@ -1,0 +1,1423 @@
+[2025-03-06 09:56:44 +0900] [4254] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 09:56:44 +0900] [4254] [INFO] Listening at: http://0.0.0.0:8001 (4254)
+[2025-03-06 09:56:44 +0900] [4254] [INFO] Using worker: gthread
+[2025-03-06 09:56:44 +0900] [4255] [INFO] Booting worker with pid: 4255
+[2025-03-06 09:56:45 +0900] [4256] [INFO] Booting worker with pid: 4256
+[2025-03-06 09:56:45 +0900] [4257] [INFO] Booting worker with pid: 4257
+[2025-03-06 10:09:14 +0900] [4254] [INFO] Handling signal: int
+[2025-03-06 10:09:14 +0900] [4257] [INFO] Worker exiting (pid: 4257)
+[2025-03-06 10:09:14 +0900] [4256] [INFO] Worker exiting (pid: 4256)
+[2025-03-06 10:09:14 +0900] [4255] [INFO] Worker exiting (pid: 4255)
+[2025-03-06 10:09:14 +0900] [4254] [INFO] Shutting down: Master
+[2025-03-06 10:23:59 +0900] [14413] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:23:59 +0900] [14413] [INFO] Listening at: http://0.0.0.0:8001 (14413)
+[2025-03-06 10:23:59 +0900] [14413] [INFO] Using worker: gthread
+[2025-03-06 10:23:59 +0900] [14414] [INFO] Booting worker with pid: 14414
+[2025-03-06 10:23:59 +0900] [14415] [INFO] Booting worker with pid: 14415
+[2025-03-06 10:23:59 +0900] [14416] [INFO] Booting worker with pid: 14416
+[2025-03-06 10:25:40,051] ERROR in app: 복호화 중 오류: 
+[2025-03-06 10:26:44,341] ERROR in app: 복호화 중 오류: 
+[2025-03-06 10:29:01 +0900] [14415] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:29:01 +0900] [14414] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:29:01 +0900] [14416] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:29:01 +0900] [14416] [INFO] Worker exiting (pid: 14416)
+[2025-03-06 10:29:01 +0900] [14414] [INFO] Worker exiting (pid: 14414)
+[2025-03-06 10:29:01 +0900] [14415] [INFO] Worker exiting (pid: 14415)
+[2025-03-06 10:29:01 +0900] [15251] [INFO] Booting worker with pid: 15251
+[2025-03-06 10:29:01 +0900] [15252] [INFO] Booting worker with pid: 15252
+[2025-03-06 10:29:01 +0900] [15253] [INFO] Booting worker with pid: 15253
+[2025-03-06 10:30:12 +0900] [15253] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:30:12 +0900] [15253] [INFO] Worker exiting (pid: 15253)
+[2025-03-06 10:30:13 +0900] [15447] [INFO] Booting worker with pid: 15447
+[2025-03-06 10:30:13 +0900] [15252] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:30:13 +0900] [15251] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:30:13 +0900] [15251] [INFO] Worker exiting (pid: 15251)
+[2025-03-06 10:30:13 +0900] [15252] [INFO] Worker exiting (pid: 15252)
+[2025-03-06 10:30:13 +0900] [15453] [INFO] Booting worker with pid: 15453
+[2025-03-06 10:30:13 +0900] [15454] [INFO] Booting worker with pid: 15454
+[2025-03-06 10:30:15 +0900] [14413] [INFO] Handling signal: int
+[2025-03-06 10:30:15 +0900] [15453] [INFO] Worker exiting (pid: 15453)
+[2025-03-06 10:30:15 +0900] [15447] [INFO] Worker exiting (pid: 15447)
+[2025-03-06 10:30:15 +0900] [15454] [INFO] Worker exiting (pid: 15454)
+[2025-03-06 10:30:15 +0900] [14413] [INFO] Shutting down: Master
+[2025-03-06 10:30:18 +0900] [15510] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:30:18 +0900] [15510] [INFO] Listening at: http://0.0.0.0:8001 (15510)
+[2025-03-06 10:30:18 +0900] [15510] [INFO] Using worker: gthread
+[2025-03-06 10:30:18 +0900] [15511] [INFO] Booting worker with pid: 15511
+[2025-03-06 10:30:18 +0900] [15512] [INFO] Booting worker with pid: 15512
+[2025-03-06 10:30:18 +0900] [15513] [INFO] Booting worker with pid: 15513
+[2025-03-06 10:31:43 +0900] [15511] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:31:43 +0900] [15512] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:31:43 +0900] [15513] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:31:44 +0900] [15511] [INFO] Worker exiting (pid: 15511)
+[2025-03-06 10:31:44 +0900] [15512] [INFO] Worker exiting (pid: 15512)
+[2025-03-06 10:31:44 +0900] [15513] [INFO] Worker exiting (pid: 15513)
+[2025-03-06 10:31:44 +0900] [15751] [INFO] Booting worker with pid: 15751
+[2025-03-06 10:31:44 +0900] [15752] [INFO] Booting worker with pid: 15752
+[2025-03-06 10:31:44 +0900] [15753] [INFO] Booting worker with pid: 15753
+[2025-03-06 10:31:45 +0900] [15751] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:31:45 +0900] [15752] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:31:45 +0900] [15753] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:31:46 +0900] [15751] [INFO] Worker exiting (pid: 15751)
+[2025-03-06 10:31:46 +0900] [15510] [INFO] Handling signal: int
+[2025-03-06 10:31:46 +0900] [15510] [ERROR] Worker (pid:15751) was sent SIGINT!
+[2025-03-06 10:31:46 +0900] [15753] [INFO] Worker exiting (pid: 15753)
+[2025-03-06 10:31:46 +0900] [15510] [INFO] Shutting down: Master
+[2025-03-06 10:31:48 +0900] [15811] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:31:48 +0900] [15811] [INFO] Listening at: http://0.0.0.0:8001 (15811)
+[2025-03-06 10:31:48 +0900] [15811] [INFO] Using worker: gthread
+[2025-03-06 10:31:48 +0900] [15812] [INFO] Booting worker with pid: 15812
+[2025-03-06 10:31:48 +0900] [15813] [INFO] Booting worker with pid: 15813
+[2025-03-06 10:31:48 +0900] [15814] [INFO] Booting worker with pid: 15814
+[2025-03-06 10:35:08 +0900] [15813] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:35:08 +0900] [15814] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:35:08 +0900] [15812] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/config.py modified
+[2025-03-06 10:35:09 +0900] [15813] [INFO] Worker exiting (pid: 15813)
+[2025-03-06 10:35:09 +0900] [15812] [INFO] Worker exiting (pid: 15812)
+[2025-03-06 10:35:09 +0900] [15814] [INFO] Worker exiting (pid: 15814)
+[2025-03-06 10:35:09 +0900] [16359] [INFO] Booting worker with pid: 16359
+[2025-03-06 10:35:09 +0900] [16360] [INFO] Booting worker with pid: 16360
+[2025-03-06 10:35:09 +0900] [16361] [INFO] Booting worker with pid: 16361
+[2025-03-06 10:35:12 +0900] [15811] [INFO] Handling signal: int
+[2025-03-06 10:35:12 +0900] [16360] [INFO] Worker exiting (pid: 16360)
+[2025-03-06 10:35:12 +0900] [16359] [INFO] Worker exiting (pid: 16359)
+[2025-03-06 10:35:12 +0900] [16361] [INFO] Worker exiting (pid: 16361)
+[2025-03-06 10:35:13 +0900] [15811] [INFO] Shutting down: Master
+[2025-03-06 10:35:14 +0900] [16419] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:35:14 +0900] [16419] [INFO] Listening at: http://0.0.0.0:8001 (16419)
+[2025-03-06 10:35:14 +0900] [16419] [INFO] Using worker: gthread
+[2025-03-06 10:35:14 +0900] [16420] [INFO] Booting worker with pid: 16420
+[2025-03-06 10:35:14 +0900] [16421] [INFO] Booting worker with pid: 16421
+[2025-03-06 10:35:14 +0900] [16422] [INFO] Booting worker with pid: 16422
+[2025-03-06 10:37:37 +0900] [16419] [INFO] Handling signal: int
+[2025-03-06 10:37:37 +0900] [16421] [INFO] Worker exiting (pid: 16421)
+[2025-03-06 10:37:37 +0900] [16422] [INFO] Worker exiting (pid: 16422)
+[2025-03-06 10:37:37 +0900] [16420] [INFO] Worker exiting (pid: 16420)
+[2025-03-06 10:37:37 +0900] [16419] [INFO] Shutting down: Master
+[2025-03-06 10:37:38 +0900] [16856] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:37:38 +0900] [16856] [INFO] Listening at: http://0.0.0.0:8001 (16856)
+[2025-03-06 10:37:38 +0900] [16856] [INFO] Using worker: gthread
+[2025-03-06 10:37:38 +0900] [16857] [INFO] Booting worker with pid: 16857
+[2025-03-06 10:37:38 +0900] [16858] [INFO] Booting worker with pid: 16858
+[2025-03-06 10:37:39 +0900] [16859] [INFO] Booting worker with pid: 16859
+[2025-03-06 10:39:55 +0900] [16858] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:39:55 +0900] [16857] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:39:55 +0900] [16859] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:39:56 +0900] [16859] [INFO] Worker exiting (pid: 16859)
+[2025-03-06 10:39:56 +0900] [16858] [INFO] Worker exiting (pid: 16858)
+[2025-03-06 10:39:56 +0900] [16857] [INFO] Worker exiting (pid: 16857)
+[2025-03-06 10:39:56 +0900] [17225] [INFO] Booting worker with pid: 17225
+[2025-03-06 10:39:56 +0900] [17226] [INFO] Booting worker with pid: 17226
+[2025-03-06 10:39:56 +0900] [17228] [INFO] Booting worker with pid: 17228
+[2025-03-06 10:41:08 +0900] [17228] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:41:08 +0900] [17226] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:41:08 +0900] [17225] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:41:09 +0900] [17228] [INFO] Worker exiting (pid: 17228)
+[2025-03-06 10:41:09 +0900] [17225] [INFO] Worker exiting (pid: 17225)
+[2025-03-06 10:41:09 +0900] [17226] [INFO] Worker exiting (pid: 17226)
+[2025-03-06 10:41:09 +0900] [17419] [INFO] Booting worker with pid: 17419
+[2025-03-06 10:41:09 +0900] [17420] [INFO] Booting worker with pid: 17420
+[2025-03-06 10:41:09 +0900] [17421] [INFO] Booting worker with pid: 17421
+[2025-03-06 10:41:12 +0900] [17419] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:41:12 +0900] [17420] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:41:12 +0900] [17421] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:41:13 +0900] [17419] [INFO] Worker exiting (pid: 17419)
+[2025-03-06 10:41:13 +0900] [17420] [INFO] Worker exiting (pid: 17420)
+[2025-03-06 10:41:13 +0900] [17433] [INFO] Booting worker with pid: 17433
+[2025-03-06 10:41:13 +0900] [17421] [INFO] Worker exiting (pid: 17421)
+[2025-03-06 10:41:13 +0900] [17434] [INFO] Booting worker with pid: 17434
+[2025-03-06 10:41:13 +0900] [17435] [INFO] Booting worker with pid: 17435
+[2025-03-06 10:41:51 +0900] [16856] [INFO] Handling signal: int
+[2025-03-06 10:41:51 +0900] [17434] [INFO] Worker exiting (pid: 17434)
+[2025-03-06 10:41:51 +0900] [17435] [INFO] Worker exiting (pid: 17435)
+[2025-03-06 10:41:51 +0900] [17433] [INFO] Worker exiting (pid: 17433)
+[2025-03-06 10:41:51 +0900] [16856] [INFO] Shutting down: Master
+[2025-03-06 10:41:52 +0900] [17581] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:41:52 +0900] [17581] [INFO] Listening at: http://0.0.0.0:8001 (17581)
+[2025-03-06 10:41:52 +0900] [17581] [INFO] Using worker: gthread
+[2025-03-06 10:41:52 +0900] [17582] [INFO] Booting worker with pid: 17582
+[2025-03-06 10:41:52 +0900] [17583] [INFO] Booting worker with pid: 17583
+[2025-03-06 10:41:52 +0900] [17584] [INFO] Booting worker with pid: 17584
+[2025-03-06 10:42:59,210] ERROR in app: 복호화 중 오류: 
+[2025-03-06 10:48:39 +0900] [17584] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:48:39 +0900] [17583] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:48:39 +0900] [17582] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:48:40 +0900] [17582] [INFO] Worker exiting (pid: 17582)
+[2025-03-06 10:48:40 +0900] [17584] [INFO] Worker exiting (pid: 17584)
+[2025-03-06 10:48:40 +0900] [17583] [INFO] Worker exiting (pid: 17583)
+[2025-03-06 10:48:40 +0900] [18674] [INFO] Booting worker with pid: 18674
+[2025-03-06 10:48:40 +0900] [18675] [INFO] Booting worker with pid: 18675
+[2025-03-06 10:48:40 +0900] [18676] [INFO] Booting worker with pid: 18676
+[2025-03-06 10:49:05 +0900] [17581] [INFO] Handling signal: int
+[2025-03-06 10:49:05 +0900] [18674] [INFO] Worker exiting (pid: 18674)
+[2025-03-06 10:49:05 +0900] [18675] [INFO] Worker exiting (pid: 18675)
+[2025-03-06 10:49:05 +0900] [18676] [INFO] Worker exiting (pid: 18676)
+[2025-03-06 10:49:05 +0900] [17581] [INFO] Shutting down: Master
+[2025-03-06 10:49:06 +0900] [18787] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:49:06 +0900] [18787] [INFO] Listening at: http://0.0.0.0:8001 (18787)
+[2025-03-06 10:49:06 +0900] [18787] [INFO] Using worker: gthread
+[2025-03-06 10:49:06 +0900] [18788] [INFO] Booting worker with pid: 18788
+[2025-03-06 10:49:06 +0900] [18789] [INFO] Booting worker with pid: 18789
+[2025-03-06 10:49:06 +0900] [18790] [INFO] Booting worker with pid: 18790
+[2025-03-06 10:50:14 +0900] [18788] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:50:14 +0900] [18790] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:50:14 +0900] [18789] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:50:14 +0900] [18789] [INFO] Worker exiting (pid: 18789)
+[2025-03-06 10:50:14 +0900] [18790] [INFO] Worker exiting (pid: 18790)
+[2025-03-06 10:50:14 +0900] [18788] [INFO] Worker exiting (pid: 18788)
+[2025-03-06 10:50:14 +0900] [18985] [INFO] Booting worker with pid: 18985
+[2025-03-06 10:50:14 +0900] [18986] [INFO] Booting worker with pid: 18986
+[2025-03-06 10:50:14 +0900] [18987] [INFO] Booting worker with pid: 18987
+[2025-03-06 10:50:14 +0900] [18787] [INFO] Handling signal: int
+[2025-03-06 10:50:14 +0900] [18985] [INFO] Worker exiting (pid: 18985)
+[2025-03-06 10:50:14 +0900] [18986] [INFO] Worker exiting (pid: 18986)
+[2025-03-06 10:50:14 +0900] [18987] [INFO] Worker exiting (pid: 18987)
+[2025-03-06 10:50:15 +0900] [18787] [INFO] Shutting down: Master
+[2025-03-06 10:50:15 +0900] [19034] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:50:15 +0900] [19034] [INFO] Listening at: http://0.0.0.0:8001 (19034)
+[2025-03-06 10:50:15 +0900] [19034] [INFO] Using worker: gthread
+[2025-03-06 10:50:15 +0900] [19035] [INFO] Booting worker with pid: 19035
+[2025-03-06 10:50:15 +0900] [19036] [INFO] Booting worker with pid: 19036
+[2025-03-06 10:50:16 +0900] [19037] [INFO] Booting worker with pid: 19037
+[2025-03-06 10:53:28 +0900] [19035] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:53:28 +0900] [19036] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:53:28 +0900] [19037] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:53:28 +0900] [19036] [INFO] Worker exiting (pid: 19036)
+[2025-03-06 10:53:28 +0900] [19037] [INFO] Worker exiting (pid: 19037)
+[2025-03-06 10:53:28 +0900] [19035] [INFO] Worker exiting (pid: 19035)
+[2025-03-06 10:53:28 +0900] [19561] [INFO] Booting worker with pid: 19561
+[2025-03-06 10:53:28 +0900] [19562] [INFO] Booting worker with pid: 19562
+[2025-03-06 10:53:28 +0900] [19563] [INFO] Booting worker with pid: 19563
+[2025-03-06 10:53:29 +0900] [19561] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:53:29 +0900] [19562] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:53:29 +0900] [19563] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:53:30 +0900] [19561] [INFO] Worker exiting (pid: 19561)
+[2025-03-06 10:53:30 +0900] [19562] [INFO] Worker exiting (pid: 19562)
+[2025-03-06 10:53:30 +0900] [19569] [INFO] Booting worker with pid: 19569
+[2025-03-06 10:53:30 +0900] [19563] [INFO] Worker exiting (pid: 19563)
+[2025-03-06 10:53:30 +0900] [19570] [INFO] Booting worker with pid: 19570
+[2025-03-06 10:53:30 +0900] [19571] [INFO] Booting worker with pid: 19571
+[2025-03-06 10:53:55 +0900] [19034] [INFO] Handling signal: int
+[2025-03-06 10:53:55 +0900] [19569] [INFO] Worker exiting (pid: 19569)
+[2025-03-06 10:53:55 +0900] [19570] [INFO] Worker exiting (pid: 19570)
+[2025-03-06 10:53:55 +0900] [19571] [INFO] Worker exiting (pid: 19571)
+[2025-03-06 10:53:55 +0900] [19034] [INFO] Shutting down: Master
+[2025-03-06 10:53:56 +0900] [19681] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:53:56 +0900] [19681] [INFO] Listening at: http://0.0.0.0:8001 (19681)
+[2025-03-06 10:53:56 +0900] [19681] [INFO] Using worker: gthread
+[2025-03-06 10:53:56 +0900] [19682] [INFO] Booting worker with pid: 19682
+[2025-03-06 10:53:56 +0900] [19683] [INFO] Booting worker with pid: 19683
+[2025-03-06 10:53:56 +0900] [19684] [INFO] Booting worker with pid: 19684
+[2025-03-06 10:54:17,965] ERROR in app: 복호화 중 오류: 
+[2025-03-06 10:56:44 +0900] [19684] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:56:44 +0900] [19682] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:56:44 +0900] [19683] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:56:45 +0900] [19684] [INFO] Worker exiting (pid: 19684)
+[2025-03-06 10:56:45 +0900] [19682] [INFO] Worker exiting (pid: 19682)
+[2025-03-06 10:56:45 +0900] [19683] [INFO] Worker exiting (pid: 19683)
+[2025-03-06 10:56:45 +0900] [20134] [INFO] Booting worker with pid: 20134
+[2025-03-06 10:56:45 +0900] [20135] [INFO] Booting worker with pid: 20135
+[2025-03-06 10:56:45 +0900] [20136] [INFO] Booting worker with pid: 20136
+[2025-03-06 10:57:35 +0900] [20135] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:57:35 +0900] [20134] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:57:35 +0900] [20136] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 10:57:36 +0900] [20134] [INFO] Worker exiting (pid: 20134)
+[2025-03-06 10:57:36 +0900] [20135] [INFO] Worker exiting (pid: 20135)
+[2025-03-06 10:57:36 +0900] [20278] [INFO] Booting worker with pid: 20278
+[2025-03-06 10:57:36 +0900] [20136] [INFO] Worker exiting (pid: 20136)
+[2025-03-06 10:57:36 +0900] [20279] [INFO] Booting worker with pid: 20279
+[2025-03-06 10:57:36 +0900] [20280] [INFO] Booting worker with pid: 20280
+[2025-03-06 10:57:54 +0900] [19681] [INFO] Handling signal: int
+[2025-03-06 10:57:54 +0900] [20279] [INFO] Worker exiting (pid: 20279)
+[2025-03-06 10:57:54 +0900] [20278] [INFO] Worker exiting (pid: 20278)
+[2025-03-06 10:57:54 +0900] [20280] [INFO] Worker exiting (pid: 20280)
+[2025-03-06 10:57:54 +0900] [19681] [INFO] Shutting down: Master
+[2025-03-06 10:57:55 +0900] [20369] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 10:57:55 +0900] [20369] [INFO] Listening at: http://0.0.0.0:8001 (20369)
+[2025-03-06 10:57:55 +0900] [20369] [INFO] Using worker: gthread
+[2025-03-06 10:57:55 +0900] [20370] [INFO] Booting worker with pid: 20370
+[2025-03-06 10:57:55 +0900] [20371] [INFO] Booting worker with pid: 20371
+[2025-03-06 10:57:55 +0900] [20372] [INFO] Booting worker with pid: 20372
+[2025-03-06 10:58:26,152] ERROR in app: 복호화 중 오류: 
+[2025-03-06 10:59:01 +0900] [20369] [INFO] Handling signal: int
+[2025-03-06 10:59:01 +0900] [20370] [INFO] Worker exiting (pid: 20370)
+[2025-03-06 10:59:01 +0900] [20371] [INFO] Worker exiting (pid: 20371)
+[2025-03-06 10:59:01 +0900] [20372] [INFO] Worker exiting (pid: 20372)
+[2025-03-06 10:59:01 +0900] [20369] [INFO] Shutting down: Master
+[2025-03-06 11:01:15 +0900] [22795] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:01:15 +0900] [22795] [INFO] Listening at: http://0.0.0.0:8001 (22795)
+[2025-03-06 11:01:15 +0900] [22795] [INFO] Using worker: gthread
+[2025-03-06 11:01:15 +0900] [22796] [INFO] Booting worker with pid: 22796
+[2025-03-06 11:01:15 +0900] [22797] [INFO] Booting worker with pid: 22797
+[2025-03-06 11:01:15 +0900] [22798] [INFO] Booting worker with pid: 22798
+[2025-03-06 11:01:32,320] ERROR in app: 복호화 중 오류: 
+[2025-03-06 11:01:32,323] ERROR in app: 복호화 중 오류가 발생했습니다: 복호화 중 오류가 발생했습니다:  (상세: {'action': 'decrypt', 'key_id': 1, 'program_name': 'adf', 'timestamp': '2025-03-06T11:01:32.322346+09:00'})
+[2025-03-06 11:03:25 +0900] [22797] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:03:25 +0900] [22798] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:03:25 +0900] [22796] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:03:26 +0900] [22798] [INFO] Worker exiting (pid: 22798)
+[2025-03-06 11:03:26 +0900] [22797] [INFO] Worker exiting (pid: 22797)
+[2025-03-06 11:03:26 +0900] [23463] [INFO] Booting worker with pid: 23463
+[2025-03-06 11:03:26 +0900] [22796] [INFO] Worker exiting (pid: 22796)
+[2025-03-06 11:03:26 +0900] [23464] [INFO] Booting worker with pid: 23464
+[2025-03-06 11:03:26 +0900] [23465] [INFO] Booting worker with pid: 23465
+[2025-03-06 11:03:27 +0900] [22795] [INFO] Handling signal: int
+[2025-03-06 11:03:27 +0900] [23465] [INFO] Worker exiting (pid: 23465)
+[2025-03-06 11:03:27 +0900] [23464] [INFO] Worker exiting (pid: 23464)
+[2025-03-06 11:03:27 +0900] [23463] [INFO] Worker exiting (pid: 23463)
+[2025-03-06 11:03:27 +0900] [22795] [INFO] Shutting down: Master
+[2025-03-06 11:03:48 +0900] [23737] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:03:48 +0900] [23737] [INFO] Listening at: http://0.0.0.0:8001 (23737)
+[2025-03-06 11:03:48 +0900] [23737] [INFO] Using worker: gthread
+[2025-03-06 11:03:48 +0900] [23738] [INFO] Booting worker with pid: 23738
+[2025-03-06 11:03:48 +0900] [23739] [INFO] Booting worker with pid: 23739
+[2025-03-06 11:03:48 +0900] [23740] [INFO] Booting worker with pid: 23740
+[2025-03-06 11:04:05,048] ERROR in app: 복호화 중 오류: 
+[2025-03-06 11:04:05,053] ERROR in app: 복호화 중 오류가 발생했습니다: 복호화 중 오류가 발생했습니다:  (상세: {'action': 'decrypt', 'key_id': 1, 'program_name': 'ㅁㅇㄹㅇ', 'timestamp': '2025-03-06T11:04:05.050568+09:00'}) (암호화된 텍스트: gAAAAABnx9u6GLstwMeYJfAUqlBYcjeoAm8pasFF5YxY99Jbc1o7pfHO-wiDhReTz-CaUOS7uH_keJNiJXgQbCp5_-5fdt_CbA==)
+[2025-03-06 11:06:19 +0900] [23740] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:19 +0900] [23739] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:19 +0900] [23738] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:20 +0900] [23738] [INFO] Worker exiting (pid: 23738)
+[2025-03-06 11:06:20 +0900] [23740] [INFO] Worker exiting (pid: 23740)
+[2025-03-06 11:06:20 +0900] [24248] [INFO] Booting worker with pid: 24248
+[2025-03-06 11:06:20 +0900] [23739] [INFO] Worker exiting (pid: 23739)
+[2025-03-06 11:06:20 +0900] [24249] [INFO] Booting worker with pid: 24249
+[2025-03-06 11:06:20 +0900] [24250] [INFO] Booting worker with pid: 24250
+[2025-03-06 11:06:21 +0900] [24248] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:21 +0900] [24249] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:22 +0900] [24248] [INFO] Worker exiting (pid: 24248)
+[2025-03-06 11:06:22 +0900] [24249] [INFO] Worker exiting (pid: 24249)
+[2025-03-06 11:06:22 +0900] [24260] [INFO] Booting worker with pid: 24260
+[2025-03-06 11:06:22 +0900] [24261] [INFO] Booting worker with pid: 24261
+[2025-03-06 11:06:39 +0900] [24250] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:39 +0900] [24260] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:40 +0900] [24261] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:06:40 +0900] [24261] [INFO] Worker exiting (pid: 24261)
+[2025-03-06 11:06:40 +0900] [24250] [INFO] Worker exiting (pid: 24250)
+[2025-03-06 11:06:40 +0900] [24260] [INFO] Worker exiting (pid: 24260)
+[2025-03-06 11:06:40 +0900] [24311] [INFO] Booting worker with pid: 24311
+[2025-03-06 11:06:40 +0900] [24312] [INFO] Booting worker with pid: 24312
+[2025-03-06 11:06:40 +0900] [24313] [INFO] Booting worker with pid: 24313
+[2025-03-06 11:06:54 +0900] [23737] [INFO] Handling signal: int
+[2025-03-06 11:06:54 +0900] [24311] [INFO] Worker exiting (pid: 24311)
+[2025-03-06 11:06:54 +0900] [24313] [INFO] Worker exiting (pid: 24313)
+[2025-03-06 11:06:54 +0900] [24312] [INFO] Worker exiting (pid: 24312)
+[2025-03-06 11:06:54 +0900] [23737] [INFO] Shutting down: Master
+[2025-03-06 11:06:55 +0900] [24392] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:06:55 +0900] [24392] [INFO] Listening at: http://0.0.0.0:8001 (24392)
+[2025-03-06 11:06:55 +0900] [24392] [INFO] Using worker: gthread
+[2025-03-06 11:06:55 +0900] [24393] [INFO] Booting worker with pid: 24393
+[2025-03-06 11:06:55 +0900] [24394] [INFO] Booting worker with pid: 24394
+[2025-03-06 11:06:55 +0900] [24395] [INFO] Booting worker with pid: 24395
+[2025-03-06 11:07:14,038] ERROR in app: 예상치 못한 오류: name 'key' is not defined (암호화된 텍스트: gAAAAABnx9u6GLstwMeYJfAUqlBYcjeoAm8pasFF5YxY99Jbc1o7pfHO-wiDhReTz-CaUOS7uH_keJNiJXgQbCp5_-5fdt_CbA==)
+Traceback (most recent call last):
+  File "/Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py", line 591, in yaml_decryption_test
+    app.logger.info(f"- 키 ID: {key.id}")
+                                ^^^
+NameError: name 'key' is not defined
+[2025-03-06 11:08:30 +0900] [24393] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:08:30 +0900] [24395] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:08:30 +0900] [24394] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:08:30 +0900] [24394] [INFO] Worker exiting (pid: 24394)
+[2025-03-06 11:08:30 +0900] [24395] [INFO] Worker exiting (pid: 24395)
+[2025-03-06 11:08:30 +0900] [24393] [INFO] Worker exiting (pid: 24393)
+[2025-03-06 11:08:30 +0900] [24651] [INFO] Booting worker with pid: 24651
+[2025-03-06 11:08:30 +0900] [24652] [INFO] Booting worker with pid: 24652
+[2025-03-06 11:08:30 +0900] [24653] [INFO] Booting worker with pid: 24653
+[2025-03-06 11:08:31 +0900] [24651] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:08:31 +0900] [24652] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:08:31 +0900] [24653] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:08:32 +0900] [24651] [INFO] Worker exiting (pid: 24651)
+[2025-03-06 11:08:32 +0900] [24652] [INFO] Worker exiting (pid: 24652)
+[2025-03-06 11:08:32 +0900] [24653] [INFO] Worker exiting (pid: 24653)
+[2025-03-06 11:08:32 +0900] [24661] [INFO] Booting worker with pid: 24661
+[2025-03-06 11:08:32 +0900] [24662] [INFO] Booting worker with pid: 24662
+[2025-03-06 11:08:32 +0900] [24663] [INFO] Booting worker with pid: 24663
+[2025-03-06 11:08:46 +0900] [24392] [INFO] Handling signal: int
+[2025-03-06 11:08:46 +0900] [24663] [INFO] Worker exiting (pid: 24663)
+[2025-03-06 11:08:46 +0900] [24661] [INFO] Worker exiting (pid: 24661)
+[2025-03-06 11:08:46 +0900] [24662] [INFO] Worker exiting (pid: 24662)
+[2025-03-06 11:08:46 +0900] [24392] [INFO] Shutting down: Master
+[2025-03-06 11:08:47 +0900] [24746] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:08:47 +0900] [24746] [INFO] Listening at: http://0.0.0.0:8001 (24746)
+[2025-03-06 11:08:47 +0900] [24746] [INFO] Using worker: gthread
+[2025-03-06 11:08:47 +0900] [24747] [INFO] Booting worker with pid: 24747
+[2025-03-06 11:08:47 +0900] [24748] [INFO] Booting worker with pid: 24748
+[2025-03-06 11:08:47 +0900] [24749] [INFO] Booting worker with pid: 24749
+[2025-03-06 11:08:56,145] ERROR in app: API 요청 중 오류: Expecting value: line 1 column 1 (char 0) (암호화된 텍스트: gAAAAABnx9u6GLstwMeYJfAUqlBYcjeoAm8pasFF5YxY99Jbc1o7pfHO-wiDhReTz-CaUOS7uH_keJNiJXgQbCp5_-5fdt_CbA==)
+[2025-03-06 11:09:09,320] ERROR in app: 복호화 중 오류: 
+[2025-03-06 11:09:09,323] ERROR in app: 복호화 중 오류가 발생했습니다: 복호화 중 오류가 발생했습니다:  (상세: {'action': 'decrypt', 'key_id': 1, 'program_name': 'ㅁㅇㄹ', 'timestamp': '2025-03-06T11:09:09.322549+09:00'}) (암호화된 텍스트: gAAAAABnx9u6GLstwMeYJfAUqlBYcjeoAm8pasFF5YxY99Jbc1o7pfHO-wiDhReTz-CaUOS7uH_keJNiJXgQbCp5_-5fdt_CbA==)
+[2025-03-06 11:10:55 +0900] [24747] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:10:55 +0900] [24749] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:10:55 +0900] [24748] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:10:55 +0900] [24748] [INFO] Worker exiting (pid: 24748)
+[2025-03-06 11:10:55 +0900] [24747] [INFO] Worker exiting (pid: 24747)
+[2025-03-06 11:10:55 +0900] [25128] [INFO] Booting worker with pid: 25128
+[2025-03-06 11:10:55 +0900] [24749] [INFO] Worker exiting (pid: 24749)
+[2025-03-06 11:10:55 +0900] [25129] [INFO] Booting worker with pid: 25129
+[2025-03-06 11:10:55 +0900] [25130] [INFO] Booting worker with pid: 25130
+[2025-03-06 11:10:56 +0900] [25128] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:10:57 +0900] [25128] [INFO] Worker exiting (pid: 25128)
+[2025-03-06 11:10:57 +0900] [25136] [INFO] Booting worker with pid: 25136
+[2025-03-06 11:11:38 +0900] [24746] [INFO] Handling signal: int
+[2025-03-06 11:11:38 +0900] [25136] [INFO] Worker exiting (pid: 25136)
+[2025-03-06 11:11:38 +0900] [25130] [INFO] Worker exiting (pid: 25130)
+[2025-03-06 11:11:38 +0900] [25129] [INFO] Worker exiting (pid: 25129)
+[2025-03-06 11:11:38 +0900] [24746] [INFO] Shutting down: Master
+[2025-03-06 11:11:39 +0900] [25284] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:11:39 +0900] [25284] [INFO] Listening at: http://0.0.0.0:8001 (25284)
+[2025-03-06 11:11:39 +0900] [25284] [INFO] Using worker: gthread
+[2025-03-06 11:11:39 +0900] [25285] [INFO] Booting worker with pid: 25285
+[2025-03-06 11:11:39 +0900] [25286] [INFO] Booting worker with pid: 25286
+[2025-03-06 11:11:39 +0900] [25287] [INFO] Booting worker with pid: 25287
+[2025-03-06 11:12:00,028] ERROR in app: 복호화 중 오류: 
+[2025-03-06 11:12:00,031] ERROR in app: 복호화 중 오류가 발생했습니다: 복호화 중 오류가 발생했습니다:  (상세: {'action': 'decrypt', 'key_id': 1, 'program_name': 'ㅇㄹㅇㄹ', 'timestamp': '2025-03-06T11:12:00.030785+09:00'}) (암호화된 텍스트: gAAAAABnx9u6GLstwMeYJfAUqlBYcjeoAm8pasFF5YxY99Jbc1o7pfHO-wiDhReTz-CaUOS7uH_keJNiJXgQbCp5_-5fdt_CbA==)
+[2025-03-06 11:14:10 +0900] [25284] [INFO] Handling signal: int
+[2025-03-06 11:14:10 +0900] [25285] [INFO] Worker exiting (pid: 25285)
+[2025-03-06 11:14:10 +0900] [25286] [INFO] Worker exiting (pid: 25286)
+[2025-03-06 11:14:10 +0900] [25287] [INFO] Worker exiting (pid: 25287)
+[2025-03-06 11:14:10 +0900] [25284] [INFO] Shutting down: Master
+[2025-03-06 11:14:12 +0900] [25749] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:14:12 +0900] [25749] [INFO] Listening at: http://0.0.0.0:8001 (25749)
+[2025-03-06 11:14:12 +0900] [25749] [INFO] Using worker: gthread
+[2025-03-06 11:14:12 +0900] [25750] [INFO] Booting worker with pid: 25750
+[2025-03-06 11:14:12 +0900] [25751] [INFO] Booting worker with pid: 25751
+[2025-03-06 11:14:12 +0900] [25754] [INFO] Booting worker with pid: 25754
+[2025-03-06 11:19:03 +0900] [25749] [INFO] Handling signal: int
+[2025-03-06 11:19:03 +0900] [25754] [INFO] Worker exiting (pid: 25754)
+[2025-03-06 11:19:03 +0900] [25750] [INFO] Worker exiting (pid: 25750)
+[2025-03-06 11:19:03 +0900] [25751] [INFO] Worker exiting (pid: 25751)
+[2025-03-06 11:19:03 +0900] [25749] [INFO] Shutting down: Master
+[2025-03-06 11:19:04 +0900] [27851] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:19:04 +0900] [27851] [INFO] Listening at: http://0.0.0.0:8001 (27851)
+[2025-03-06 11:19:04 +0900] [27851] [INFO] Using worker: gthread
+[2025-03-06 11:19:04 +0900] [27852] [INFO] Booting worker with pid: 27852
+[2025-03-06 11:19:04 +0900] [27853] [INFO] Booting worker with pid: 27853
+[2025-03-06 11:19:04 +0900] [27854] [INFO] Booting worker with pid: 27854
+[2025-03-06 11:20:27,546] ERROR in app: API 요청 중 오류: Expecting value: line 1 column 1 (char 0) (암호화된 텍스트: gAAAAABnyPlg_KYLvZpxnaC9MA0wFLjvD6UUo0SxvRMm4pGayDrlu0zM6O6ygRR2ftNTmVv8kruqsBh3C_IDECsJt7ssXTj_Jg==)
+[2025-03-06 11:21:18 +0900] [27851] [INFO] Handling signal: int
+[2025-03-06 11:21:18 +0900] [27854] [INFO] Worker exiting (pid: 27854)
+[2025-03-06 11:21:18 +0900] [27853] [INFO] Worker exiting (pid: 27853)
+[2025-03-06 11:21:18 +0900] [27852] [INFO] Worker exiting (pid: 27852)
+[2025-03-06 11:21:18 +0900] [27851] [INFO] Shutting down: Master
+[2025-03-06 11:21:19 +0900] [28602] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:21:19 +0900] [28602] [INFO] Listening at: http://0.0.0.0:8001 (28602)
+[2025-03-06 11:21:19 +0900] [28602] [INFO] Using worker: gthread
+[2025-03-06 11:21:19 +0900] [28603] [INFO] Booting worker with pid: 28603
+[2025-03-06 11:21:19 +0900] [28604] [INFO] Booting worker with pid: 28604
+[2025-03-06 11:21:19 +0900] [28605] [INFO] Booting worker with pid: 28605
+[2025-03-06 11:23:36 +0900] [28602] [INFO] Handling signal: int
+[2025-03-06 11:23:36 +0900] [28605] [INFO] Worker exiting (pid: 28605)
+[2025-03-06 11:23:36 +0900] [28603] [INFO] Worker exiting (pid: 28603)
+[2025-03-06 11:23:36 +0900] [28604] [INFO] Worker exiting (pid: 28604)
+[2025-03-06 11:23:36 +0900] [28602] [INFO] Shutting down: Master
+[2025-03-06 11:23:37 +0900] [29394] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:23:37 +0900] [29394] [INFO] Listening at: http://0.0.0.0:8001 (29394)
+[2025-03-06 11:23:37 +0900] [29394] [INFO] Using worker: gthread
+[2025-03-06 11:23:37 +0900] [29395] [INFO] Booting worker with pid: 29395
+[2025-03-06 11:23:37 +0900] [29396] [INFO] Booting worker with pid: 29396
+[2025-03-06 11:23:37 +0900] [29397] [INFO] Booting worker with pid: 29397
+[2025-03-06 11:26:00 +0900] [29394] [INFO] Handling signal: int
+[2025-03-06 11:26:00 +0900] [29396] [INFO] Worker exiting (pid: 29396)
+[2025-03-06 11:26:00 +0900] [29397] [INFO] Worker exiting (pid: 29397)
+[2025-03-06 11:26:00 +0900] [29395] [INFO] Worker exiting (pid: 29395)
+[2025-03-06 11:26:00 +0900] [29394] [INFO] Shutting down: Master
+[2025-03-06 11:26:01 +0900] [30224] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:26:01 +0900] [30224] [INFO] Listening at: http://0.0.0.0:8001 (30224)
+[2025-03-06 11:26:01 +0900] [30224] [INFO] Using worker: gthread
+[2025-03-06 11:26:01 +0900] [30225] [INFO] Booting worker with pid: 30225
+[2025-03-06 11:26:01 +0900] [30226] [INFO] Booting worker with pid: 30226
+[2025-03-06 11:26:01 +0900] [30227] [INFO] Booting worker with pid: 30227
+[2025-03-06 11:27:27 +0900] [30225] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:27:27 +0900] [30227] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:27:27 +0900] [30226] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:27:28 +0900] [30225] [INFO] Worker exiting (pid: 30225)
+[2025-03-06 11:27:28 +0900] [30226] [INFO] Worker exiting (pid: 30226)
+[2025-03-06 11:27:28 +0900] [30227] [INFO] Worker exiting (pid: 30227)
+[2025-03-06 11:27:28 +0900] [30706] [INFO] Booting worker with pid: 30706
+[2025-03-06 11:27:28 +0900] [30707] [INFO] Booting worker with pid: 30707
+[2025-03-06 11:27:28 +0900] [30708] [INFO] Booting worker with pid: 30708
+[2025-03-06 11:27:29 +0900] [30224] [INFO] Handling signal: int
+[2025-03-06 11:27:29 +0900] [30706] [INFO] Worker exiting (pid: 30706)
+[2025-03-06 11:27:29 +0900] [30708] [INFO] Worker exiting (pid: 30708)
+[2025-03-06 11:27:29 +0900] [30707] [INFO] Worker exiting (pid: 30707)
+[2025-03-06 11:27:29 +0900] [30224] [INFO] Shutting down: Master
+[2025-03-06 11:28:20 +0900] [31040] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:28:20 +0900] [31040] [INFO] Listening at: http://0.0.0.0:8001 (31040)
+[2025-03-06 11:28:20 +0900] [31040] [INFO] Using worker: gthread
+[2025-03-06 11:28:20 +0900] [31041] [INFO] Booting worker with pid: 31041
+[2025-03-06 11:28:21 +0900] [31042] [INFO] Booting worker with pid: 31042
+[2025-03-06 11:28:21 +0900] [31043] [INFO] Booting worker with pid: 31043
+[2025-03-06 11:28:34 +0900] [31040] [INFO] Handling signal: int
+[2025-03-06 11:28:34 +0900] [31041] [INFO] Worker exiting (pid: 31041)
+[2025-03-06 11:28:34 +0900] [31043] [INFO] Worker exiting (pid: 31043)
+[2025-03-06 11:28:34 +0900] [31042] [INFO] Worker exiting (pid: 31042)
+[2025-03-06 11:28:34 +0900] [31040] [INFO] Shutting down: Master
+[2025-03-06 11:28:35 +0900] [31165] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:28:35 +0900] [31165] [INFO] Listening at: http://0.0.0.0:8001 (31165)
+[2025-03-06 11:28:35 +0900] [31165] [INFO] Using worker: gthread
+[2025-03-06 11:28:35 +0900] [31166] [INFO] Booting worker with pid: 31166
+[2025-03-06 11:28:35 +0900] [31167] [INFO] Booting worker with pid: 31167
+[2025-03-06 11:28:35 +0900] [31168] [INFO] Booting worker with pid: 31168
+[2025-03-06 11:30:06 +0900] [31165] [INFO] Handling signal: int
+[2025-03-06 11:30:06 +0900] [31168] [INFO] Worker exiting (pid: 31168)
+[2025-03-06 11:30:06 +0900] [31166] [INFO] Worker exiting (pid: 31166)
+[2025-03-06 11:30:06 +0900] [31167] [INFO] Worker exiting (pid: 31167)
+[2025-03-06 11:30:06 +0900] [31165] [INFO] Shutting down: Master
+[2025-03-06 11:30:22 +0900] [31807] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:30:22 +0900] [31807] [INFO] Listening at: http://0.0.0.0:8001 (31807)
+[2025-03-06 11:30:22 +0900] [31807] [INFO] Using worker: gthread
+[2025-03-06 11:30:22 +0900] [31808] [INFO] Booting worker with pid: 31808
+[2025-03-06 11:30:22 +0900] [31809] [INFO] Booting worker with pid: 31809
+[2025-03-06 11:30:22 +0900] [31810] [INFO] Booting worker with pid: 31810
+[2025-03-06 11:33:22 +0900] [31807] [INFO] Handling signal: int
+[2025-03-06 11:33:22 +0900] [31809] [INFO] Worker exiting (pid: 31809)
+[2025-03-06 11:33:22 +0900] [31810] [INFO] Worker exiting (pid: 31810)
+[2025-03-06 11:33:22 +0900] [31808] [INFO] Worker exiting (pid: 31808)
+[2025-03-06 11:33:22 +0900] [31807] [INFO] Shutting down: Master
+[2025-03-06 11:33:23 +0900] [32850] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:33:23 +0900] [32850] [INFO] Listening at: http://0.0.0.0:8001 (32850)
+[2025-03-06 11:33:23 +0900] [32850] [INFO] Using worker: gthread
+[2025-03-06 11:33:23 +0900] [32851] [INFO] Booting worker with pid: 32851
+[2025-03-06 11:33:23 +0900] [32852] [INFO] Booting worker with pid: 32852
+[2025-03-06 11:33:23 +0900] [32853] [INFO] Booting worker with pid: 32853
+[2025-03-06 11:34:51 +0900] [32850] [INFO] Handling signal: int
+[2025-03-06 11:34:51 +0900] [32853] [INFO] Worker exiting (pid: 32853)
+[2025-03-06 11:34:51 +0900] [32852] [INFO] Worker exiting (pid: 32852)
+[2025-03-06 11:34:51 +0900] [32851] [INFO] Worker exiting (pid: 32851)
+[2025-03-06 11:34:51 +0900] [32850] [INFO] Shutting down: Master
+[2025-03-06 11:35:17 +0900] [33497] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:35:17 +0900] [33497] [INFO] Listening at: http://0.0.0.0:8001 (33497)
+[2025-03-06 11:35:17 +0900] [33497] [INFO] Using worker: gthread
+[2025-03-06 11:35:17 +0900] [33498] [INFO] Booting worker with pid: 33498
+[2025-03-06 11:35:17 +0900] [33499] [INFO] Booting worker with pid: 33499
+[2025-03-06 11:35:17 +0900] [33500] [INFO] Booting worker with pid: 33500
+[2025-03-06 11:35:23 +0900] [33497] [INFO] Handling signal: int
+[2025-03-06 11:35:23 +0900] [33500] [INFO] Worker exiting (pid: 33500)
+[2025-03-06 11:35:23 +0900] [33499] [INFO] Worker exiting (pid: 33499)
+[2025-03-06 11:35:23 +0900] [33498] [INFO] Worker exiting (pid: 33498)
+[2025-03-06 11:35:23 +0900] [33497] [INFO] Shutting down: Master
+[2025-03-06 11:35:24 +0900] [33602] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:35:24 +0900] [33602] [INFO] Listening at: http://0.0.0.0:8001 (33602)
+[2025-03-06 11:35:24 +0900] [33602] [INFO] Using worker: gthread
+[2025-03-06 11:35:24 +0900] [33603] [INFO] Booting worker with pid: 33603
+[2025-03-06 11:35:25 +0900] [33604] [INFO] Booting worker with pid: 33604
+[2025-03-06 11:35:25 +0900] [33605] [INFO] Booting worker with pid: 33605
+[2025-03-06 11:37:01 +0900] [33603] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:37:01 +0900] [33604] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:37:01 +0900] [33605] [INFO] Worker reloading: /Users/netager/Quick_Ref/LLM/cursor/jb_kms25/app.py modified
+[2025-03-06 11:37:01 +0900] [33605] [INFO] Worker exiting (pid: 33605)
+[2025-03-06 11:37:01 +0900] [33604] [INFO] Worker exiting (pid: 33604)
+[2025-03-06 11:37:01 +0900] [33603] [INFO] Worker exiting (pid: 33603)
+[2025-03-06 11:37:01 +0900] [34114] [INFO] Booting worker with pid: 34114
+[2025-03-06 11:37:01 +0900] [34115] [INFO] Booting worker with pid: 34115
+[2025-03-06 11:37:01 +0900] [34116] [INFO] Booting worker with pid: 34116
+[2025-03-06 11:37:30 +0900] [33602] [INFO] Handling signal: int
+[2025-03-06 11:37:30 +0900] [34116] [INFO] Worker exiting (pid: 34116)
+[2025-03-06 11:37:30 +0900] [34114] [INFO] Worker exiting (pid: 34114)
+[2025-03-06 11:37:30 +0900] [34115] [INFO] Worker exiting (pid: 34115)
+[2025-03-06 11:37:30 +0900] [33602] [INFO] Shutting down: Master
+[2025-03-06 11:37:32 +0900] [34311] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 11:37:32 +0900] [34311] [INFO] Listening at: http://0.0.0.0:8001 (34311)
+[2025-03-06 11:37:32 +0900] [34311] [INFO] Using worker: gthread
+[2025-03-06 11:37:32 +0900] [34312] [INFO] Booting worker with pid: 34312
+[2025-03-06 11:37:32 +0900] [34313] [INFO] Booting worker with pid: 34313
+[2025-03-06 11:37:32 +0900] [34314] [INFO] Booting worker with pid: 34314
+[2025-03-06 13:11:57 +0900] [34311] [INFO] Handling signal: winch
+[2025-03-06 13:12:00 +0900] [34311] [INFO] Handling signal: winch
+[2025-03-06 13:13:53 +0900] [34311] [INFO] Handling signal: winch
+[2025-03-06 13:13:57 +0900] [34311] [INFO] Handling signal: winch
+[2025-03-06 13:14:01 +0900] [34311] [INFO] Handling signal: winch
+[2025-03-06 13:14:43 +0900] [34311] [INFO] Handling signal: winch
+[2025-03-06 13:14:44 +0900] [34311] [INFO] Handling signal: winch
+[2025-03-06 14:09:17 +0900] [34311] [INFO] Handling signal: int
+[2025-03-06 14:09:18 +0900] [34312] [INFO] Worker exiting (pid: 34312)
+[2025-03-06 14:09:18 +0900] [34313] [INFO] Worker exiting (pid: 34313)
+[2025-03-06 14:09:18 +0900] [34314] [INFO] Worker exiting (pid: 34314)
+[2025-03-06 14:09:18 +0900] [34311] [INFO] Shutting down: Master
+[2025-03-06 20:28:42 +0900] [83470] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 20:28:42 +0900] [83470] [INFO] Listening at: http://0.0.0.0:8001 (83470)
+[2025-03-06 20:28:42 +0900] [83470] [INFO] Using worker: gthread
+[2025-03-06 20:28:42 +0900] [83471] [INFO] Booting worker with pid: 83471
+[2025-03-06 20:28:43 +0900] [83472] [INFO] Booting worker with pid: 83472
+[2025-03-06 20:28:43 +0900] [83473] [INFO] Booting worker with pid: 83473
+[2025-03-06 20:47:32 +0900] [83470] [INFO] Handling signal: int
+[2025-03-06 20:47:32 +0900] [83471] [INFO] Worker exiting (pid: 83471)
+[2025-03-06 20:47:32 +0900] [83472] [INFO] Worker exiting (pid: 83472)
+[2025-03-06 20:47:32 +0900] [83473] [INFO] Worker exiting (pid: 83473)
+[2025-03-06 20:47:32 +0900] [83470] [INFO] Shutting down: Master
+[2025-03-06 20:47:36 +0900] [88577] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 20:47:36 +0900] [88577] [INFO] Listening at: http://0.0.0.0:8001 (88577)
+[2025-03-06 20:47:36 +0900] [88577] [INFO] Using worker: gthread
+[2025-03-06 20:47:36 +0900] [88578] [INFO] Booting worker with pid: 88578
+[2025-03-06 20:47:36 +0900] [88579] [INFO] Booting worker with pid: 88579
+[2025-03-06 20:47:36 +0900] [88580] [INFO] Booting worker with pid: 88580
+[2025-03-06 20:49:28 +0900] [88577] [INFO] Handling signal: int
+[2025-03-06 20:49:28 +0900] [88580] [INFO] Worker exiting (pid: 88580)
+[2025-03-06 20:49:28 +0900] [88578] [INFO] Worker exiting (pid: 88578)
+[2025-03-06 20:49:28 +0900] [88579] [INFO] Worker exiting (pid: 88579)
+[2025-03-06 20:49:28 +0900] [88577] [INFO] Shutting down: Master
+[2025-03-06 20:49:31 +0900] [88935] [INFO] Starting gunicorn 23.0.0
+[2025-03-06 20:49:31 +0900] [88935] [INFO] Listening at: http://0.0.0.0:8001 (88935)
+[2025-03-06 20:49:31 +0900] [88935] [INFO] Using worker: gthread
+[2025-03-06 20:49:31 +0900] [88936] [INFO] Booting worker with pid: 88936
+[2025-03-06 20:49:31 +0900] [88937] [INFO] Booting worker with pid: 88937
+[2025-03-06 20:49:31 +0900] [88938] [INFO] Booting worker with pid: 88938
+[2025-03-07 20:01:06 +0900] [88935] [INFO] Handling signal: hup
+[2025-03-07 20:01:06 +0900] [88935] [INFO] Hang up: Master
+[2025-03-07 20:01:06 +0900] [88935] [ERROR] Worker (pid:88938) was sent SIGHUP!
+[2025-03-07 20:01:06 +0900] [88935] [ERROR] Worker (pid:88936) was sent SIGHUP!
+[2025-03-07 20:01:06 +0900] [88935] [ERROR] Worker (pid:88937) was sent SIGHUP!
+[2025-03-07 20:01:06 +0900] [6575] [INFO] Booting worker with pid: 6575
+[2025-03-07 20:01:06 +0900] [6576] [INFO] Booting worker with pid: 6576
+[2025-03-07 20:01:06 +0900] [6577] [INFO] Booting worker with pid: 6577
+[2025-03-07 20:01:22 +0900] [88935] [INFO] Handling signal: term
+[2025-03-07 20:01:22 +0900] [6575] [INFO] Worker exiting (pid: 6575)
+[2025-03-07 20:01:22 +0900] [6576] [INFO] Worker exiting (pid: 6576)
+[2025-03-07 20:01:22 +0900] [6577] [INFO] Worker exiting (pid: 6577)
+[2025-03-07 20:01:23 +0900] [88935] [INFO] Shutting down: Master
+[2025-03-10 16:26:36 +0900] [37687] [INFO] Starting gunicorn 23.0.0
+[2025-03-10 16:26:36 +0900] [37687] [INFO] Listening at: http://0.0.0.0:8001 (37687)
+[2025-03-10 16:26:36 +0900] [37687] [INFO] Using worker: gthread
+[2025-03-10 16:26:36 +0900] [37693] [INFO] Booting worker with pid: 37693
+[2025-03-10 16:26:37 +0900] [37694] [INFO] Booting worker with pid: 37694
+[2025-03-10 16:26:37 +0900] [37695] [INFO] Booting worker with pid: 37695
+[2025-03-10 16:33:21,652] ERROR in app: 복호화 중 오류: 
+[2025-03-10 16:33:54,755] ERROR in app: 복호화 중 오류: 
+[2025-03-10 16:34:15,989] ERROR in app: 복호화 중 오류: 
+[2025-03-10 16:36:45,656] ERROR in app: 복호화 중 오류: 
+[2025-03-10 17:20:49,654] ERROR in app: 복호화 중 오류: 
+[2025-03-10 17:24:04 +0900] [37695] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:24:04 +0900] [37693] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:24:04 +0900] [37694] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:24:04 +0900] [37695] [INFO] Worker exiting (pid: 37695)
+[2025-03-10 17:24:04 +0900] [37693] [INFO] Worker exiting (pid: 37693)
+[2025-03-10 17:24:04 +0900] [37694] [INFO] Worker exiting (pid: 37694)
+[2025-03-10 17:24:04 +0900] [49738] [INFO] Booting worker with pid: 49738
+[2025-03-10 17:24:05 +0900] [49739] [INFO] Booting worker with pid: 49739
+[2025-03-10 17:24:05 +0900] [49740] [INFO] Booting worker with pid: 49740
+[2025-03-10 17:24:05 +0900] [37687] [INFO] Handling signal: int
+[2025-03-10 17:24:06 +0900] [49739] [INFO] Worker exiting (pid: 49739)
+[2025-03-10 17:24:06 +0900] [49738] [INFO] Worker exiting (pid: 49738)
+[2025-03-10 17:24:06 +0900] [49740] [INFO] Worker exiting (pid: 49740)
+[2025-03-10 17:24:06 +0900] [37687] [INFO] Shutting down: Master
+[2025-03-10 17:24:07 +0900] [49766] [INFO] Starting gunicorn 23.0.0
+[2025-03-10 17:24:07 +0900] [49766] [INFO] Listening at: http://0.0.0.0:8001 (49766)
+[2025-03-10 17:24:07 +0900] [49766] [INFO] Using worker: gthread
+[2025-03-10 17:24:07 +0900] [49767] [INFO] Booting worker with pid: 49767
+[2025-03-10 17:24:07 +0900] [49768] [INFO] Booting worker with pid: 49768
+[2025-03-10 17:24:07 +0900] [49769] [INFO] Booting worker with pid: 49769
+[2025-03-10 17:27:43 +0900] [49768] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:27:43 +0900] [49767] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:27:43 +0900] [49769] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:27:43 +0900] [49769] [INFO] Worker exiting (pid: 49769)
+[2025-03-10 17:27:43 +0900] [49767] [INFO] Worker exiting (pid: 49767)
+[2025-03-10 17:27:43 +0900] [49768] [INFO] Worker exiting (pid: 49768)
+[2025-03-10 17:27:43 +0900] [50352] [INFO] Booting worker with pid: 50352
+[2025-03-10 17:27:43 +0900] [50353] [INFO] Booting worker with pid: 50353
+[2025-03-10 17:27:43 +0900] [50354] [INFO] Booting worker with pid: 50354
+[2025-03-10 17:28:32 +0900] [49766] [INFO] Handling signal: int
+[2025-03-10 17:28:33 +0900] [50353] [INFO] Worker exiting (pid: 50353)
+[2025-03-10 17:28:33 +0900] [50352] [INFO] Worker exiting (pid: 50352)
+[2025-03-10 17:28:33 +0900] [50354] [INFO] Worker exiting (pid: 50354)
+[2025-03-10 17:28:33 +0900] [49766] [INFO] Shutting down: Master
+[2025-03-10 17:28:34 +0900] [50512] [INFO] Starting gunicorn 23.0.0
+[2025-03-10 17:28:34 +0900] [50512] [INFO] Listening at: http://0.0.0.0:8001 (50512)
+[2025-03-10 17:28:34 +0900] [50512] [INFO] Using worker: gthread
+[2025-03-10 17:28:34 +0900] [50513] [INFO] Booting worker with pid: 50513
+[2025-03-10 17:28:34 +0900] [50514] [INFO] Booting worker with pid: 50514
+[2025-03-10 17:28:34 +0900] [50515] [INFO] Booting worker with pid: 50515
+[2025-03-10 17:28:48,139] ERROR in app: 복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/decrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10419c730>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-10 17:30:07 +0900] [50514] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:30:07 +0900] [50513] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:30:07 +0900] [50515] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:30:07 +0900] [50514] [INFO] Worker exiting (pid: 50514)
+[2025-03-10 17:30:07 +0900] [50515] [INFO] Worker exiting (pid: 50515)
+[2025-03-10 17:30:07 +0900] [50513] [INFO] Worker exiting (pid: 50513)
+[2025-03-10 17:30:07 +0900] [50770] [INFO] Booting worker with pid: 50770
+[2025-03-10 17:30:07 +0900] [50771] [INFO] Booting worker with pid: 50771
+[2025-03-10 17:30:07 +0900] [50772] [INFO] Booting worker with pid: 50772
+[2025-03-10 17:30:09 +0900] [50512] [INFO] Handling signal: int
+[2025-03-10 17:30:09 +0900] [50771] [INFO] Worker exiting (pid: 50771)
+[2025-03-10 17:30:09 +0900] [50770] [INFO] Worker exiting (pid: 50770)
+[2025-03-10 17:30:09 +0900] [50772] [INFO] Worker exiting (pid: 50772)
+[2025-03-10 17:30:09 +0900] [50512] [INFO] Shutting down: Master
+[2025-03-10 17:30:28 +0900] [50854] [INFO] Starting gunicorn 23.0.0
+[2025-03-10 17:30:28 +0900] [50854] [INFO] Listening at: http://0.0.0.0:8001 (50854)
+[2025-03-10 17:30:28 +0900] [50854] [INFO] Using worker: gthread
+[2025-03-10 17:30:28 +0900] [50855] [INFO] Booting worker with pid: 50855
+[2025-03-10 17:30:29 +0900] [50856] [INFO] Booting worker with pid: 50856
+[2025-03-10 17:30:29 +0900] [50857] [INFO] Booting worker with pid: 50857
+[2025-03-10 17:31:41 +0900] [50856] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:31:41 +0900] [50857] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:31:41 +0900] [50855] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:31:41 +0900] [50855] [INFO] Worker exiting (pid: 50855)
+[2025-03-10 17:31:41 +0900] [50856] [INFO] Worker exiting (pid: 50856)
+[2025-03-10 17:31:41 +0900] [50857] [INFO] Worker exiting (pid: 50857)
+[2025-03-10 17:31:41 +0900] [51057] [INFO] Booting worker with pid: 51057
+[2025-03-10 17:31:41 +0900] [51058] [INFO] Booting worker with pid: 51058
+[2025-03-10 17:31:41 +0900] [51059] [INFO] Booting worker with pid: 51059
+[2025-03-10 17:31:49 +0900] [51058] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:31:49 +0900] [51057] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:31:49 +0900] [51059] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-10 17:31:50 +0900] [51057] [INFO] Worker exiting (pid: 51057)
+[2025-03-10 17:31:50 +0900] [51058] [INFO] Worker exiting (pid: 51058)
+[2025-03-10 17:31:50 +0900] [51059] [INFO] Worker exiting (pid: 51059)
+[2025-03-10 17:31:50 +0900] [51081] [INFO] Booting worker with pid: 51081
+[2025-03-10 17:31:50 +0900] [51082] [INFO] Booting worker with pid: 51082
+[2025-03-10 17:31:50 +0900] [51083] [INFO] Booting worker with pid: 51083
+[2025-03-10 17:33:49 +0900] [50854] [INFO] Handling signal: winch
+[2025-03-10 17:56:13 +0900] [50854] [INFO] Handling signal: int
+[2025-03-10 17:56:13 +0900] [51082] [INFO] Worker exiting (pid: 51082)
+[2025-03-10 17:56:13 +0900] [51083] [INFO] Worker exiting (pid: 51083)
+[2025-03-10 17:56:13 +0900] [51081] [INFO] Worker exiting (pid: 51081)
+[2025-03-10 17:56:13 +0900] [50854] [INFO] Shutting down: Master
+[2025-03-10 18:43:38 +0900] [77834] [INFO] Starting gunicorn 23.0.0
+[2025-03-10 18:43:38 +0900] [77834] [INFO] Listening at: http://0.0.0.0:8001 (77834)
+[2025-03-10 18:43:38 +0900] [77834] [INFO] Using worker: gthread
+[2025-03-10 18:43:38 +0900] [77835] [INFO] Booting worker with pid: 77835
+[2025-03-10 18:43:38 +0900] [77836] [INFO] Booting worker with pid: 77836
+[2025-03-10 18:43:39 +0900] [77837] [INFO] Booting worker with pid: 77837
+[2025-03-10 18:58:44 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 18:58:44 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 18:58:44 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:25 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:29 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:30 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:18:30 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:20:28 +0900] [77834] [INFO] Handling signal: winch
+[2025-03-10 19:22:11 +0900] [3366] [INFO] Starting gunicorn 23.0.0
+[2025-03-10 19:22:11 +0900] [3366] [INFO] Listening at: http://0.0.0.0:8001 (3366)
+[2025-03-10 19:22:11 +0900] [3366] [INFO] Using worker: gthread
+[2025-03-10 19:22:11 +0900] [3367] [INFO] Booting worker with pid: 3367
+[2025-03-10 19:22:11 +0900] [3368] [INFO] Booting worker with pid: 3368
+[2025-03-10 19:22:11 +0900] [3369] [INFO] Booting worker with pid: 3369
+[2025-03-10 19:28:34 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-10 19:28:34 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-10 19:28:36 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-10 19:41:26 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-10 22:23:29 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-10 22:23:29 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:32:52 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:04 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:05 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:06 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:33:06 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:37:48 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:37:55 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:38:21 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:38:29 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:38:50 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 10:43:22 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 11:05:55 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 11:06:34 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 11:06:35 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 11:06:37 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 11:13:27 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 11:15:05 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 13:35:44 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 13:35:44 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 13:36:52 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 13:38:39 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 13:39:23 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 13:59:59 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 15:08:57 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 15:19:33 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 15:19:34 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 15:25:49 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 16:27:06 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 16:27:07 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 16:27:09 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 16:29:12 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 16:33:39 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 16:33:42 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 16:33:45 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 17:39:08 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 17:39:10 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 17:39:11 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 18:40:59 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 19:36:02 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 19:57:47 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 19:58:36 +0900] [3366] [INFO] Handling signal: winch
+[2025-03-11 20:11:39 +0900] [3366] [INFO] Handling signal: hup
+[2025-03-11 20:11:39 +0900] [3366] [INFO] Hang up: Master
+[2025-03-11 20:11:39 +0900] [3366] [ERROR] Worker (pid:3368) was sent SIGHUP!
+[2025-03-11 20:11:39 +0900] [3366] [ERROR] Worker (pid:3367) was sent SIGHUP!
+[2025-03-11 20:11:39 +0900] [3366] [ERROR] Worker (pid:3369) was sent SIGHUP!
+[2025-03-11 20:11:39 +0900] [11836] [INFO] Booting worker with pid: 11836
+[2025-03-11 20:11:39 +0900] [11837] [INFO] Booting worker with pid: 11837
+[2025-03-11 20:11:39 +0900] [11838] [INFO] Booting worker with pid: 11838
+[2025-03-12 09:32:43 +0900] [42710] [INFO] Starting gunicorn 23.0.0
+[2025-03-12 09:32:43 +0900] [42710] [INFO] Listening at: http://0.0.0.0:8001 (42710)
+[2025-03-12 09:32:43 +0900] [42710] [INFO] Using worker: gthread
+[2025-03-12 09:32:43 +0900] [42719] [INFO] Booting worker with pid: 42719
+[2025-03-12 09:32:43 +0900] [42720] [INFO] Booting worker with pid: 42720
+[2025-03-12 09:32:43 +0900] [42721] [INFO] Booting worker with pid: 42721
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:46:12 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 09:51:42,143] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 09:51:42,153] ERROR in app: 복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/decrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1077ae3d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:08:24 +0900] [42719] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:08:24 +0900] [42720] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:08:24 +0900] [42721] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:08:24 +0900] [42721] [INFO] Worker exiting (pid: 42721)
+[2025-03-12 10:08:24 +0900] [42719] [INFO] Worker exiting (pid: 42719)
+[2025-03-12 10:08:24 +0900] [42720] [INFO] Worker exiting (pid: 42720)
+[2025-03-12 10:08:25 +0900] [65723] [INFO] Booting worker with pid: 65723
+[2025-03-12 10:08:25 +0900] [65724] [INFO] Booting worker with pid: 65724
+[2025-03-12 10:08:25 +0900] [65725] [INFO] Booting worker with pid: 65725
+[2025-03-12 10:08:28 +0900] [65723] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:08:28 +0900] [65724] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:08:28 +0900] [65725] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:08:29 +0900] [65723] [INFO] Worker exiting (pid: 65723)
+[2025-03-12 10:08:29 +0900] [65724] [INFO] Worker exiting (pid: 65724)
+[2025-03-12 10:08:29 +0900] [65771] [INFO] Booting worker with pid: 65771
+[2025-03-12 10:08:29 +0900] [65772] [INFO] Booting worker with pid: 65772
+[2025-03-12 10:08:29 +0900] [65725] [INFO] Worker exiting (pid: 65725)
+[2025-03-12 10:08:29 +0900] [65773] [INFO] Booting worker with pid: 65773
+[2025-03-12 10:08:39,611] ERROR in app: 암호화/복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/encrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106acd5b0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:08:42,341] ERROR in app: 암호화/복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/encrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107017160>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:11:07 +0900] [65773] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:11:07 +0900] [65772] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:11:07 +0900] [65771] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:11:07 +0900] [65773] [INFO] Worker exiting (pid: 65773)
+[2025-03-12 10:11:07 +0900] [65771] [INFO] Worker exiting (pid: 65771)
+[2025-03-12 10:11:07 +0900] [65772] [INFO] Worker exiting (pid: 65772)
+[2025-03-12 10:11:07 +0900] [67469] [INFO] Booting worker with pid: 67469
+[2025-03-12 10:11:07 +0900] [67470] [INFO] Booting worker with pid: 67470
+[2025-03-12 10:11:07 +0900] [67471] [INFO] Booting worker with pid: 67471
+[2025-03-12 10:11:31 +0900] [67469] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:11:31 +0900] [67470] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:11:31 +0900] [67471] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:11:31 +0900] [67469] [INFO] Worker exiting (pid: 67469)
+[2025-03-12 10:11:31 +0900] [67734] [INFO] Booting worker with pid: 67734
+[2025-03-12 10:11:31 +0900] [67470] [INFO] Worker exiting (pid: 67470)
+[2025-03-12 10:11:32 +0900] [67735] [INFO] Booting worker with pid: 67735
+[2025-03-12 10:11:32 +0900] [67471] [INFO] Worker exiting (pid: 67471)
+[2025-03-12 10:11:32 +0900] [67736] [INFO] Booting worker with pid: 67736
+[2025-03-12 10:11:55,815] ERROR in app: 암호화/복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/encrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1069c5880>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:12:40,825] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:12:40,825] ERROR in app: 복호화 중 오류: name 'headers' is not defined
+[2025-03-12 10:14:16 +0900] [67735] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:16 +0900] [67736] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:16 +0900] [67734] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:16 +0900] [67735] [INFO] Worker exiting (pid: 67735)
+[2025-03-12 10:14:16 +0900] [67734] [INFO] Worker exiting (pid: 67734)
+[2025-03-12 10:14:16 +0900] [67736] [INFO] Worker exiting (pid: 67736)
+[2025-03-12 10:14:17 +0900] [69494] [INFO] Booting worker with pid: 69494
+[2025-03-12 10:14:17 +0900] [69495] [INFO] Booting worker with pid: 69495
+[2025-03-12 10:14:17 +0900] [69496] [INFO] Booting worker with pid: 69496
+[2025-03-12 10:14:19 +0900] [69494] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:19 +0900] [69495] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:19 +0900] [69496] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:20 +0900] [69494] [INFO] Worker exiting (pid: 69494)
+[2025-03-12 10:14:20 +0900] [69541] [INFO] Booting worker with pid: 69541
+[2025-03-12 10:14:20 +0900] [69495] [INFO] Worker exiting (pid: 69495)
+[2025-03-12 10:14:20 +0900] [69496] [INFO] Worker exiting (pid: 69496)
+[2025-03-12 10:14:20 +0900] [69542] [INFO] Booting worker with pid: 69542
+[2025-03-12 10:14:20 +0900] [69543] [INFO] Booting worker with pid: 69543
+[2025-03-12 10:14:54 +0900] [69541] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:54 +0900] [69542] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:54 +0900] [69543] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:14:54 +0900] [69543] [INFO] Worker exiting (pid: 69543)
+[2025-03-12 10:14:54 +0900] [69541] [INFO] Worker exiting (pid: 69541)
+[2025-03-12 10:14:54 +0900] [69542] [INFO] Worker exiting (pid: 69542)
+[2025-03-12 10:14:54 +0900] [69913] [INFO] Booting worker with pid: 69913
+[2025-03-12 10:14:54 +0900] [69914] [INFO] Booting worker with pid: 69914
+[2025-03-12 10:14:54 +0900] [69915] [INFO] Booting worker with pid: 69915
+[2025-03-12 10:16:08 +0900] [69913] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:16:08 +0900] [69914] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:16:08 +0900] [69915] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:16:09 +0900] [69914] [INFO] Worker exiting (pid: 69914)
+[2025-03-12 10:16:09 +0900] [69913] [INFO] Worker exiting (pid: 69913)
+[2025-03-12 10:16:09 +0900] [69915] [INFO] Worker exiting (pid: 69915)
+[2025-03-12 10:16:09 +0900] [70694] [INFO] Booting worker with pid: 70694
+[2025-03-12 10:16:09 +0900] [70695] [INFO] Booting worker with pid: 70695
+[2025-03-12 10:16:09 +0900] [70696] [INFO] Booting worker with pid: 70696
+[2025-03-12 10:16:10 +0900] [70695] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:16:10 +0900] [70694] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:16:10 +0900] [70696] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:16:11 +0900] [70695] [INFO] Worker exiting (pid: 70695)
+[2025-03-12 10:16:11 +0900] [70694] [INFO] Worker exiting (pid: 70694)
+[2025-03-12 10:16:11 +0900] [70696] [INFO] Worker exiting (pid: 70696)
+[2025-03-12 10:16:11 +0900] [70722] [INFO] Booting worker with pid: 70722
+[2025-03-12 10:16:11 +0900] [70723] [INFO] Booting worker with pid: 70723
+[2025-03-12 10:16:11 +0900] [70732] [INFO] Booting worker with pid: 70732
+[2025-03-12 10:16:23,457] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:16:23,466] ERROR in app: 복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/decrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106ad7040>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:16:35,111] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:23 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:35 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:35 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:35 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:35 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:35 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:36 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:19:38 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 10:21:43,225] ERROR in app: 암호화/복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/encrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x109a2f0a0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:24:06 +0900] [70723] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:24:06 +0900] [70732] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:24:06 +0900] [70722] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:24:06 +0900] [70732] [INFO] Worker exiting (pid: 70732)
+[2025-03-12 10:24:06 +0900] [70722] [INFO] Worker exiting (pid: 70722)
+[2025-03-12 10:24:06 +0900] [70723] [INFO] Worker exiting (pid: 70723)
+[2025-03-12 10:24:06 +0900] [75831] [INFO] Booting worker with pid: 75831
+[2025-03-12 10:24:06 +0900] [75832] [INFO] Booting worker with pid: 75832
+[2025-03-12 10:24:06 +0900] [75834] [INFO] Booting worker with pid: 75834
+[2025-03-12 10:24:15,912] ERROR in app: 암호화/복호화 중 오류 발생: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/encrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107cbf940>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:25:53 +0900] [75834] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:25:53 +0900] [75834] [INFO] Worker exiting (pid: 75834)
+[2025-03-12 10:25:53 +0900] [76968] [INFO] Booting worker with pid: 76968
+[2025-03-12 10:25:53 +0900] [75832] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:25:53 +0900] [75831] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:25:54 +0900] [75832] [INFO] Worker exiting (pid: 75832)
+[2025-03-12 10:25:54 +0900] [75831] [INFO] Worker exiting (pid: 75831)
+[2025-03-12 10:25:54 +0900] [76991] [INFO] Booting worker with pid: 76991
+[2025-03-12 10:25:54 +0900] [76992] [INFO] Booting worker with pid: 76992
+[2025-03-12 10:25:54 +0900] [76968] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:25:55 +0900] [76968] [INFO] Worker exiting (pid: 76968)
+[2025-03-12 10:25:55 +0900] [77014] [INFO] Booting worker with pid: 77014
+[2025-03-12 10:26:02,909] DEBUG in app: Encryption payload: {'text': 'ㅇㄹㅇㄹ', 'key_id': 1, 'program_name': 'ㅇㄹㅇㄹ'}
+[2025-03-12 10:26:02,917] ERROR in app: 암호화/복호화 중 오류 발생: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/encrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x109e50a00>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:26:05,606] DEBUG in app: Encryption payload: {'text': 'ㅇㄹㅇㄹ', 'key_id': 1, 'program_name': 'ㅇㄹㅇㄹ'}
+[2025-03-12 10:29:07 +0900] [77014] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:29:07 +0900] [76991] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:29:07 +0900] [76992] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:29:07 +0900] [76992] [INFO] Worker exiting (pid: 76992)
+[2025-03-12 10:29:07 +0900] [77014] [INFO] Worker exiting (pid: 77014)
+[2025-03-12 10:29:07 +0900] [76991] [INFO] Worker exiting (pid: 76991)
+[2025-03-12 10:29:07 +0900] [79058] [INFO] Booting worker with pid: 79058
+[2025-03-12 10:29:07 +0900] [79059] [INFO] Booting worker with pid: 79059
+[2025-03-12 10:29:07 +0900] [79061] [INFO] Booting worker with pid: 79061
+[2025-03-12 10:29:21,100] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:29:21,108] ERROR in app: 복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/decrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107a41e80>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:29:42,675] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:30:04 +0900] [79058] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:30:04 +0900] [79059] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:30:04 +0900] [79061] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:30:04 +0900] [79059] [INFO] Worker exiting (pid: 79059)
+[2025-03-12 10:30:04 +0900] [79061] [INFO] Worker exiting (pid: 79061)
+[2025-03-12 10:30:04 +0900] [79058] [INFO] Worker exiting (pid: 79058)
+[2025-03-12 10:30:04 +0900] [79673] [INFO] Booting worker with pid: 79673
+[2025-03-12 10:30:04 +0900] [79674] [INFO] Booting worker with pid: 79674
+[2025-03-12 10:30:05 +0900] [79675] [INFO] Booting worker with pid: 79675
+[2025-03-12 10:31:52 +0900] [79673] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:31:52 +0900] [79675] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:31:52 +0900] [79674] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:31:52 +0900] [79675] [INFO] Worker exiting (pid: 79675)
+[2025-03-12 10:31:52 +0900] [79673] [INFO] Worker exiting (pid: 79673)
+[2025-03-12 10:31:52 +0900] [79674] [INFO] Worker exiting (pid: 79674)
+[2025-03-12 10:31:52 +0900] [80824] [INFO] Booting worker with pid: 80824
+[2025-03-12 10:31:52 +0900] [80846] [INFO] Booting worker with pid: 80846
+[2025-03-12 10:31:52 +0900] [80847] [INFO] Booting worker with pid: 80847
+[2025-03-12 10:32:06,025] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:32:06,035] ERROR in app: 복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/decrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107ae9e50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:32:16,176] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:33:00 +0900] [80846] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:33:00 +0900] [80824] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:33:00 +0900] [80847] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:33:01 +0900] [80824] [INFO] Worker exiting (pid: 80824)
+[2025-03-12 10:33:01 +0900] [80846] [INFO] Worker exiting (pid: 80846)
+[2025-03-12 10:33:01 +0900] [80847] [INFO] Worker exiting (pid: 80847)
+[2025-03-12 10:33:01 +0900] [81564] [INFO] Booting worker with pid: 81564
+[2025-03-12 10:33:01 +0900] [81566] [INFO] Booting worker with pid: 81566
+[2025-03-12 10:33:01 +0900] [81567] [INFO] Booting worker with pid: 81567
+[2025-03-12 10:34:50 +0900] [81564] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:34:50 +0900] [81566] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:34:50 +0900] [81567] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:34:50 +0900] [81566] [INFO] Worker exiting (pid: 81566)
+[2025-03-12 10:34:50 +0900] [81567] [INFO] Worker exiting (pid: 81567)
+[2025-03-12 10:34:50 +0900] [82733] [INFO] Booting worker with pid: 82733
+[2025-03-12 10:34:50 +0900] [82734] [INFO] Booting worker with pid: 82734
+[2025-03-12 10:34:51 +0900] [81564] [INFO] Worker exiting (pid: 81564)
+[2025-03-12 10:34:51 +0900] [82756] [INFO] Booting worker with pid: 82756
+[2025-03-12 10:34:56 +0900] [82756] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:34:56 +0900] [82733] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:34:56 +0900] [82734] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:34:57 +0900] [82756] [INFO] Worker exiting (pid: 82756)
+[2025-03-12 10:34:57 +0900] [82822] [INFO] Booting worker with pid: 82822
+[2025-03-12 10:34:57 +0900] [82733] [INFO] Worker exiting (pid: 82733)
+[2025-03-12 10:34:57 +0900] [82734] [INFO] Worker exiting (pid: 82734)
+[2025-03-12 10:34:57 +0900] [82823] [INFO] Booting worker with pid: 82823
+[2025-03-12 10:34:57 +0900] [82824] [INFO] Booting worker with pid: 82824
+[2025-03-12 10:35:14,283] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:35:14,291] ERROR in app: 복호화 중 오류: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/v1/decrypt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1077211c0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+[2025-03-12 10:35:44 +0900] [82822] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:35:44 +0900] [82823] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:35:45 +0900] [82824] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:35:45 +0900] [82822] [INFO] Worker exiting (pid: 82822)
+[2025-03-12 10:35:45 +0900] [82824] [INFO] Worker exiting (pid: 82824)
+[2025-03-12 10:35:45 +0900] [82823] [INFO] Worker exiting (pid: 82823)
+[2025-03-12 10:35:45 +0900] [83325] [INFO] Booting worker with pid: 83325
+[2025-03-12 10:35:45 +0900] [83326] [INFO] Booting worker with pid: 83326
+[2025-03-12 10:35:45 +0900] [83327] [INFO] Booting worker with pid: 83327
+[2025-03-12 10:36:06,513] INFO in app: 파일에서 읽은 password 값: gAAAAABnzpWSWF9urP6pdRbxUEIhxthFiBfWFbmjZzYPhHEEEvIcd2hm7b3eubkgWyERhZ8j4BlXTU5oDN0RmLEMJi3gNw2JUg==
+[2025-03-12 10:38:30 +0900] [83327] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:38:30 +0900] [83325] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:38:30 +0900] [83326] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:38:31 +0900] [83325] [INFO] Worker exiting (pid: 83325)
+[2025-03-12 10:38:31 +0900] [83326] [INFO] Worker exiting (pid: 83326)
+[2025-03-12 10:38:31 +0900] [83327] [INFO] Worker exiting (pid: 83327)
+[2025-03-12 10:38:31 +0900] [85113] [INFO] Booting worker with pid: 85113
+[2025-03-12 10:38:31 +0900] [85114] [INFO] Booting worker with pid: 85114
+[2025-03-12 10:38:31 +0900] [85115] [INFO] Booting worker with pid: 85115
+[2025-03-12 10:50:26 +0900] [85113] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:50:26 +0900] [85114] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:50:26 +0900] [85115] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:50:26 +0900] [85114] [INFO] Worker exiting (pid: 85114)
+[2025-03-12 10:50:26 +0900] [85113] [INFO] Worker exiting (pid: 85113)
+[2025-03-12 10:50:26 +0900] [85115] [INFO] Worker exiting (pid: 85115)
+[2025-03-12 10:50:26 +0900] [92837] [INFO] Booting worker with pid: 92837
+[2025-03-12 10:50:26 +0900] [92838] [INFO] Booting worker with pid: 92838
+[2025-03-12 10:50:27 +0900] [92840] [INFO] Booting worker with pid: 92840
+[2025-03-12 10:50:30 +0900] [92837] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:50:30 +0900] [92838] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:50:30 +0900] [92840] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:50:31 +0900] [92837] [INFO] Worker exiting (pid: 92837)
+[2025-03-12 10:50:31 +0900] [92838] [INFO] Worker exiting (pid: 92838)
+[2025-03-12 10:50:31 +0900] [92840] [INFO] Worker exiting (pid: 92840)
+[2025-03-12 10:50:31 +0900] [92888] [INFO] Booting worker with pid: 92888
+[2025-03-12 10:50:31 +0900] [92889] [INFO] Booting worker with pid: 92889
+[2025-03-12 10:50:31 +0900] [92890] [INFO] Booting worker with pid: 92890
+[2025-03-12 10:54:37 +0900] [92889] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:54:37 +0900] [92888] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:54:37 +0900] [92890] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 10:54:38 +0900] [92888] [INFO] Worker exiting (pid: 92888)
+[2025-03-12 10:54:38 +0900] [92889] [INFO] Worker exiting (pid: 92889)
+[2025-03-12 10:54:38 +0900] [92890] [INFO] Worker exiting (pid: 92890)
+[2025-03-12 10:54:38 +0900] [95571] [INFO] Booting worker with pid: 95571
+[2025-03-12 10:54:38 +0900] [95572] [INFO] Booting worker with pid: 95572
+[2025-03-12 10:54:38 +0900] [95573] [INFO] Booting worker with pid: 95573
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:01:05 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 11:04:53 +0900] [95572] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:04:53 +0900] [95571] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:04:53 +0900] [95573] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:04:53 +0900] [95572] [INFO] Worker exiting (pid: 95572)
+[2025-03-12 11:04:53 +0900] [95573] [INFO] Worker exiting (pid: 95573)
+[2025-03-12 11:04:53 +0900] [95571] [INFO] Worker exiting (pid: 95571)
+[2025-03-12 11:04:53 +0900] [2683] [INFO] Booting worker with pid: 2683
+[2025-03-12 11:04:53 +0900] [2684] [INFO] Booting worker with pid: 2684
+[2025-03-12 11:04:53 +0900] [2685] [INFO] Booting worker with pid: 2685
+[2025-03-12 11:04:55 +0900] [2683] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:04:55 +0900] [2684] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:04:55 +0900] [2685] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:04:56 +0900] [2683] [INFO] Worker exiting (pid: 2683)
+[2025-03-12 11:04:56 +0900] [2711] [INFO] Booting worker with pid: 2711
+[2025-03-12 11:04:56 +0900] [2684] [INFO] Worker exiting (pid: 2684)
+[2025-03-12 11:04:56 +0900] [2712] [INFO] Booting worker with pid: 2712
+[2025-03-12 11:04:56 +0900] [2685] [INFO] Worker exiting (pid: 2685)
+[2025-03-12 11:04:56 +0900] [2714] [INFO] Booting worker with pid: 2714
+[2025-03-12 11:10:01 +0900] [2711] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:10:01 +0900] [2714] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:10:01 +0900] [2712] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:10:01 +0900] [2714] [INFO] Worker exiting (pid: 2714)
+[2025-03-12 11:10:01 +0900] [2711] [INFO] Worker exiting (pid: 2711)
+[2025-03-12 11:10:01 +0900] [2712] [INFO] Worker exiting (pid: 2712)
+[2025-03-12 11:10:01 +0900] [6005] [INFO] Booting worker with pid: 6005
+[2025-03-12 11:10:01 +0900] [6006] [INFO] Booting worker with pid: 6006
+[2025-03-12 11:10:01 +0900] [6007] [INFO] Booting worker with pid: 6007
+[2025-03-12 11:10:02 +0900] [6005] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:10:02 +0900] [6006] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:10:02 +0900] [6007] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:10:03 +0900] [6005] [INFO] Worker exiting (pid: 6005)
+[2025-03-12 11:10:03 +0900] [6006] [INFO] Worker exiting (pid: 6006)
+[2025-03-12 11:10:03 +0900] [6007] [INFO] Worker exiting (pid: 6007)
+[2025-03-12 11:10:03 +0900] [6030] [INFO] Booting worker with pid: 6030
+[2025-03-12 11:10:03 +0900] [6031] [INFO] Booting worker with pid: 6031
+[2025-03-12 11:10:03 +0900] [6032] [INFO] Booting worker with pid: 6032
+[2025-03-12 11:11:13 +0900] [6032] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:11:13 +0900] [6030] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:11:13 +0900] [6031] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:11:14 +0900] [6032] [INFO] Worker exiting (pid: 6032)
+[2025-03-12 11:11:14 +0900] [6031] [INFO] Worker exiting (pid: 6031)
+[2025-03-12 11:11:14 +0900] [6030] [INFO] Worker exiting (pid: 6030)
+[2025-03-12 11:11:14 +0900] [6801] [INFO] Booting worker with pid: 6801
+[2025-03-12 11:11:14 +0900] [6802] [INFO] Booting worker with pid: 6802
+[2025-03-12 11:11:14 +0900] [6803] [INFO] Booting worker with pid: 6803
+[2025-03-12 11:11:15 +0900] [6801] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:11:15 +0900] [6802] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:11:16 +0900] [6803] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:11:16 +0900] [6801] [INFO] Worker exiting (pid: 6801)
+[2025-03-12 11:11:16 +0900] [6826] [INFO] Booting worker with pid: 6826
+[2025-03-12 11:11:16 +0900] [6802] [INFO] Worker exiting (pid: 6802)
+[2025-03-12 11:11:16 +0900] [6827] [INFO] Booting worker with pid: 6827
+[2025-03-12 11:11:17 +0900] [6803] [INFO] Worker exiting (pid: 6803)
+[2025-03-12 11:11:17 +0900] [6828] [INFO] Booting worker with pid: 6828
+[2025-03-12 11:14:26 +0900] [6826] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:14:26 +0900] [6827] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:14:26 +0900] [6828] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:14:27 +0900] [6826] [INFO] Worker exiting (pid: 6826)
+[2025-03-12 11:14:27 +0900] [6828] [INFO] Worker exiting (pid: 6828)
+[2025-03-12 11:14:27 +0900] [6827] [INFO] Worker exiting (pid: 6827)
+[2025-03-12 11:14:27 +0900] [8873] [INFO] Booting worker with pid: 8873
+[2025-03-12 11:14:27 +0900] [8874] [INFO] Booting worker with pid: 8874
+[2025-03-12 11:14:27 +0900] [8875] [INFO] Booting worker with pid: 8875
+[2025-03-12 11:15:57 +0900] [8875] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:15:57 +0900] [8874] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:15:57 +0900] [8873] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:15:57 +0900] [8874] [INFO] Worker exiting (pid: 8874)
+[2025-03-12 11:15:57 +0900] [8873] [INFO] Worker exiting (pid: 8873)
+[2025-03-12 11:15:57 +0900] [8875] [INFO] Worker exiting (pid: 8875)
+[2025-03-12 11:15:57 +0900] [9827] [INFO] Booting worker with pid: 9827
+[2025-03-12 11:15:57 +0900] [9828] [INFO] Booting worker with pid: 9828
+[2025-03-12 11:15:57 +0900] [9829] [INFO] Booting worker with pid: 9829
+[2025-03-12 11:18:43 +0900] [9828] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:18:43 +0900] [9829] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:18:43 +0900] [9827] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:18:43 +0900] [9828] [INFO] Worker exiting (pid: 9828)
+[2025-03-12 11:18:43 +0900] [9827] [INFO] Worker exiting (pid: 9827)
+[2025-03-12 11:18:43 +0900] [9829] [INFO] Worker exiting (pid: 9829)
+[2025-03-12 11:18:43 +0900] [11607] [INFO] Booting worker with pid: 11607
+[2025-03-12 11:18:43 +0900] [11609] [INFO] Booting worker with pid: 11609
+[2025-03-12 11:18:43 +0900] [11610] [INFO] Booting worker with pid: 11610
+[2025-03-12 11:19:16 +0900] [11607] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:19:17 +0900] [11610] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:19:17 +0900] [11609] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 11:19:17 +0900] [11610] [INFO] Worker exiting (pid: 11610)
+[2025-03-12 11:19:17 +0900] [11607] [INFO] Worker exiting (pid: 11607)
+[2025-03-12 11:19:17 +0900] [11609] [INFO] Worker exiting (pid: 11609)
+[2025-03-12 11:19:17 +0900] [11981] [INFO] Booting worker with pid: 11981
+[2025-03-12 11:19:17 +0900] [11982] [INFO] Booting worker with pid: 11982
+[2025-03-12 11:19:17 +0900] [11983] [INFO] Booting worker with pid: 11983
+[2025-03-12 12:56:42 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 12:56:43 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 12:59:05 +0900] [11981] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 12:59:05 +0900] [11982] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 12:59:05 +0900] [11983] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 12:59:06 +0900] [11982] [INFO] Worker exiting (pid: 11982)
+[2025-03-12 12:59:06 +0900] [11983] [INFO] Worker exiting (pid: 11983)
+[2025-03-12 12:59:06 +0900] [11981] [INFO] Worker exiting (pid: 11981)
+[2025-03-12 12:59:06 +0900] [43391] [INFO] Booting worker with pid: 43391
+[2025-03-12 12:59:06 +0900] [43392] [INFO] Booting worker with pid: 43392
+[2025-03-12 12:59:06 +0900] [43393] [INFO] Booting worker with pid: 43393
+[2025-03-12 12:59:07 +0900] [43391] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 12:59:08 +0900] [43391] [INFO] Worker exiting (pid: 43391)
+[2025-03-12 12:59:08 +0900] [43415] [INFO] Booting worker with pid: 43415
+[2025-03-12 13:17:07 +0900] [43415] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:17:07 +0900] [43392] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:17:07 +0900] [43393] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:17:08 +0900] [43393] [INFO] Worker exiting (pid: 43393)
+[2025-03-12 13:17:08 +0900] [43415] [INFO] Worker exiting (pid: 43415)
+[2025-03-12 13:17:08 +0900] [43392] [INFO] Worker exiting (pid: 43392)
+[2025-03-12 13:17:08 +0900] [55000] [INFO] Booting worker with pid: 55000
+[2025-03-12 13:17:08 +0900] [55001] [INFO] Booting worker with pid: 55001
+[2025-03-12 13:17:08 +0900] [55002] [INFO] Booting worker with pid: 55002
+[2025-03-12 13:17:30 +0900] [55000] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:17:30 +0900] [55001] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:17:30 +0900] [55002] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:17:31 +0900] [55000] [INFO] Worker exiting (pid: 55000)
+[2025-03-12 13:17:31 +0900] [55001] [INFO] Worker exiting (pid: 55001)
+[2025-03-12 13:17:31 +0900] [55242] [INFO] Booting worker with pid: 55242
+[2025-03-12 13:17:31 +0900] [55002] [INFO] Worker exiting (pid: 55002)
+[2025-03-12 13:17:31 +0900] [55243] [INFO] Booting worker with pid: 55243
+[2025-03-12 13:17:31 +0900] [55244] [INFO] Booting worker with pid: 55244
+[2025-03-12 13:17:41 +0900] [55244] [ERROR] Error handling request /key/1/history
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/gthread.py", line 281, in handle
+    keepalive = self.handle_request(req, conn)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/gthread.py", line 333, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/netager/git_program/jb_kms26/app.py", line 511, in key_history
+    return render_template('key_history.html',
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/netager/git_program/jb_kms26/templates/key_history.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/netager/git_program/jb_kms26/templates/base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/netager/git_program/jb_kms26/templates/key_history.html", line 114, in block 'content'
+    - {{ min(pagination.page * pagination.per_page, pagination.total) }}개 표시
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/jinja2/utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'min' is undefined
+[2025-03-12 13:18:11 +0900] [55242] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:18:11 +0900] [55243] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:18:11 +0900] [55242] [INFO] Worker exiting (pid: 55242)
+[2025-03-12 13:18:12 +0900] [55683] [INFO] Booting worker with pid: 55683
+[2025-03-12 13:18:12 +0900] [55244] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:18:12 +0900] [55244] [INFO] Worker exiting (pid: 55244)
+[2025-03-12 13:18:12 +0900] [55243] [INFO] Worker exiting (pid: 55243)
+[2025-03-12 13:18:12 +0900] [55707] [INFO] Booting worker with pid: 55707
+[2025-03-12 13:18:13 +0900] [55708] [INFO] Booting worker with pid: 55708
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:26 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:27 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:28 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:28 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:28 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:28 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:23:28 +0900] [42710] [INFO] Handling signal: winch
+[2025-03-12 13:30:15 +0900] [55707] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:30:15 +0900] [55683] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:30:15 +0900] [55708] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:30:16 +0900] [55683] [INFO] Worker exiting (pid: 55683)
+[2025-03-12 13:30:16 +0900] [55708] [INFO] Worker exiting (pid: 55708)
+[2025-03-12 13:30:16 +0900] [55707] [INFO] Worker exiting (pid: 55707)
+[2025-03-12 13:30:16 +0900] [63570] [INFO] Booting worker with pid: 63570
+[2025-03-12 13:30:16 +0900] [63571] [INFO] Booting worker with pid: 63571
+[2025-03-12 13:30:16 +0900] [63572] [INFO] Booting worker with pid: 63572
+[2025-03-12 13:30:18 +0900] [63570] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:30:18 +0900] [63571] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:30:18 +0900] [63572] [INFO] Worker reloading: /Users/netager/git_program/jb_kms26/app.py modified
+[2025-03-12 13:30:19 +0900] [63570] [INFO] Worker exiting (pid: 63570)
+[2025-03-12 13:30:19 +0900] [63619] [INFO] Booting worker with pid: 63619
+[2025-03-12 13:30:19 +0900] [63571] [INFO] Worker exiting (pid: 63571)
+[2025-03-12 13:30:19 +0900] [63572] [INFO] Worker exiting (pid: 63572)
+[2025-03-12 13:30:19 +0900] [63620] [INFO] Booting worker with pid: 63620
+[2025-03-12 13:30:19 +0900] [63621] [INFO] Booting worker with pid: 63621
+[2025-03-12 13:30:19 +0900] [63619] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+    super().init_process()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/netager/git_program/jb_kms26/app.py", line 134, in <module>
+    class LogSearchForm(FlaskForm):
+  File "/Users/netager/git_program/jb_kms26/app.py", line 139, in LogSearchForm
+    ('decrypt', '복호화')
+TypeError: 'tuple' object is not callable
+[2025-03-12 13:30:19 +0900] [63619] [INFO] Worker exiting (pid: 63619)
+[2025-03-12 13:30:19 +0900] [42710] [ERROR] Worker (pid:63619) exited with code 3
+[2025-03-12 13:30:19 +0900] [63620] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+    super().init_process()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/netager/git_program/jb_kms26/app.py", line 134, in <module>
+    class LogSearchForm(FlaskForm):
+  File "/Users/netager/git_program/jb_kms26/app.py", line 139, in LogSearchForm
+    ('decrypt', '복호화')
+TypeError: 'tuple' object is not callable
+[2025-03-12 13:30:20 +0900] [63620] [INFO] Worker exiting (pid: 63620)
+[2025-03-12 13:30:20 +0900] [63621] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+    super().init_process()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/netager/git_program/jb_kms26/app.py", line 134, in <module>
+    class LogSearchForm(FlaskForm):
+  File "/Users/netager/git_program/jb_kms26/app.py", line 139, in LogSearchForm
+    ('decrypt', '복호화')
+TypeError: 'tuple' object is not callable
+[2025-03-12 13:30:20 +0900] [63621] [INFO] Worker exiting (pid: 63621)
+[2025-03-12 13:30:20 +0900] [42710] [ERROR] Worker (pid:63620) exited with code 3
+[2025-03-12 13:32:22 +0900] [65591] [INFO] Starting gunicorn 23.0.0
+[2025-03-12 13:32:22 +0900] [65591] [INFO] Listening at: http://0.0.0.0:8001 (65591)
+[2025-03-12 13:32:22 +0900] [65591] [INFO] Using worker: gthread
+[2025-03-12 13:32:22 +0900] [65592] [INFO] Booting worker with pid: 65592
+[2025-03-12 13:32:22 +0900] [65593] [INFO] Booting worker with pid: 65593
+[2025-03-12 13:32:22 +0900] [65594] [INFO] Booting worker with pid: 65594
+[2025-03-12 13:38:51 +0900] [65591] [INFO] Handling signal: int
+[2025-03-12 13:38:51 +0900] [65594] [INFO] Worker exiting (pid: 65594)
+[2025-03-12 13:38:51 +0900] [65593] [INFO] Worker exiting (pid: 65593)
+[2025-03-12 13:38:51 +0900] [65592] [INFO] Worker exiting (pid: 65592)
+[2025-03-12 13:38:51 +0900] [65591] [INFO] Shutting down: Master

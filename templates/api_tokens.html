@@ -1,0 +1,399 @@
+{% extends "base.html" %}
+
+{% block title %}API 토큰 관리{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- 헤더 섹션 -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="border-bottom pb-2">API 토큰 관리</h2>
+            <p class="lead text-muted">API 토큰을 생성하고 관리하는 페이지입니다.</p>
+        </div>
+    </div>
+
+    <!-- 토큰 목록 섹션 -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">토큰 목록</h5>
+                    <div class="d-flex align-items-center">
+                        <span class="badge bg-primary">총 {{ tokens|length }}개</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- 필터 섹션 추가 -->
+                    <div class="row mb-3">
+                        <div class="col-md-4 mb-2 mb-md-0">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control" id="descriptionFilter" 
+                                       placeholder="토큰명으로 검색" onkeyup="filterTokens()">
+                            </div>
+                        </div>
+                        {% if is_admin_view %}
+                        <div class="col-md-4 mb-2 mb-md-0">
+                            <select id="userFilter" class="form-select" onchange="filterTokens()">
+                                <option value="all">모든 사용자</option>
+                                {% for user in users %}
+                                <option value="{{ user.id }}">{{ user.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% endif %}
+                        <div class="col-md-4">
+                            <select id="statusFilter" class="form-select" onchange="filterTokens()">
+                                <option value="all">모든 상태</option>
+                                <option value="active">활성</option>
+                                <option value="inactive">비활성</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 20%">토큰 설명</th>
+                                    {% if is_admin_view %}
+                                    <th style="width: 15%">사용자</th>
+                                    {% endif %}
+                                    <th style="width: 15%">생성일</th>
+                                    <th style="width: 8%">상태</th>
+                                    <th style="width: 7%">작업</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for token in tokens %}
+                                <tr>
+                                    <td>
+                                        <div class="text-wrap" style="max-width: 200px;">
+                                            {{ token.description }}
+                                        </div>
+                                    </td>
+                                    {% if is_admin_view %}
+                                    <td>
+                                        {% for user in users %}
+                                            {% if user.id == token.user_id %}
+                                                <span class="badge bg-info">{{ user.username }}</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    {% endif %}
+                                    <td>
+                                        <div class="text-muted small" data-bs-toggle="tooltip" 
+                                             title="{{ token.created_at.strftime('%Y-%m-%d %H:%M:%S') }}">
+                                            {{ token.created_at.strftime('%Y-%m-%d') }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {% if token.is_active %}
+                                        <span class="badge bg-success">활성</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary">비활성</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            {% if token.is_active %}
+                                            <button type="button" class="btn btn-outline-secondary btn-sm" 
+                                                    onclick="showToken('{{ token.token }}')"
+                                                    data-bs-toggle="tooltip" 
+                                                    title="토큰 보기">
+                                                <i class="bi bi-eye me-1"></i>보기
+                                            </button>
+                                            <form method="POST" action="{{ url_for('deactivate_token', token_id=token.id) }}" style="display: inline;">
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                                <button type="button" class="btn btn-danger btn-sm" 
+                                                        onclick="confirmRevoke({{ token.id }}, '{{ token.description }}')"
+                                                        data-bs-toggle="tooltip"
+                                                        title="토큰 폐기">
+                                                    <i class="bi bi-trash me-1"></i>폐기
+                                                </button>
+                                            </form>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted py-4">
+                                        <i class="bi bi-info-circle me-2"></i>생성된 토큰이 없습니다.
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 새 토큰 생성 섹션 -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">새 토큰 생성</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="mb-3 mb-md-0">
+                                    {{ form.description.label(class="form-label") }}
+                                    {{ form.description(class="form-control", placeholder="API 토큰에 대한 설명을 입력하세요") }}
+                                    {% for error in form.description.errors %}
+                                    <div class="alert alert-danger mt-2">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                {{ form.submit(class="btn btn-primary w-100") }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API 토큰 폐기 확인 모달 -->
+    <div class="modal fade" id="revokeConfirmModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">API 토큰 폐기 확인</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>주의:</strong> 토큰을 폐기하면 해당 토큰을 사용하는 모든 API 호출이 실패하게 됩니다.
+                    </div>
+                    <p>다음 토큰을 폐기하시겠습니까?</p>
+                    <p class="mb-0">토큰 설명: <strong id="revokeTokenDesc"></strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-danger" id="confirmRevokeBtn">
+                        <i class="bi bi-trash me-1"></i>폐기 실행
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 새 토큰 생성 결과 모달 -->
+    <div class="modal fade" id="newTokenModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">새 API 토큰 생성 완료</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>주의:</strong> 이 토큰 값은 한 번만 표시되므로 안전한 곳에 보관하세요.
+                    </div>
+                    <div class="bg-light p-3 rounded position-relative">
+                        <code id="newTokenValue" class="user-select-all d-block"></code>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" onclick="copyNewToken()">
+                        <i class="bi bi-clipboard me-1"></i>토큰 복사
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API 토큰 보기 모달 -->
+    <div class="modal fade" id="showTokenModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">API 토큰 정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>주의:</strong> 이 토큰을 안전하게 보관하세요. 토큰이 노출되면 보안에 위험할 수 있습니다.
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">토큰 값:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="tokenValue" readonly>
+                            <button class="btn btn-outline-secondary" type="button" onclick="copyTokenFromModal()">
+                                <i class="bi bi-clipboard"></i> 복사
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 토스트 메시지 -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="copyToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check-circle me-2"></i>클립보드에 복사되었습니다.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const revokeModal = new bootstrap.Modal(document.getElementById('revokeConfirmModal'));
+    const newTokenModal = new bootstrap.Modal(document.getElementById('newTokenModal'));
+    const copyToast = new bootstrap.Toast(document.getElementById('copyToast'));
+    let currentRevokeForm = null;
+
+    // 툴크 초기화
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // URL에서 새 토큰 값 확인
+    const urlParams = new URLSearchParams(window.location.search);
+    const newToken = urlParams.get('new_token');
+    if (newToken) {
+        document.getElementById('newTokenValue').textContent = newToken;
+        newTokenModal.show();
+        // 토큰 값이 포함된 URL 제거
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    window.confirmRevoke = function(tokenId, tokenDesc) {
+        currentRevokeForm = document.getElementById('revokeForm' + tokenId);
+        document.getElementById('revokeTokenDesc').textContent = tokenDesc;
+        revokeModal.show();
+    }
+
+    document.getElementById('confirmRevokeBtn').addEventListener('click', function() {
+        if (currentRevokeForm) {
+            currentRevokeForm.submit();
+        }
+        revokeModal.hide();
+    });
+});
+
+function showCopyToast() {
+    const toast = new bootstrap.Toast(document.getElementById('copyToast'));
+    toast.show();
+}
+
+function copyToken(token, button) {
+    const tempInput = document.createElement('input');
+    tempInput.value = token;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    
+    // 복사 성공 알림
+    const originalText = button.innerHTML;
+    button.innerHTML = '<i class="bi bi-check"></i> 복사됨';
+    setTimeout(() => {
+        button.innerHTML = originalText;
+    }, 2000);
+}
+
+function copyNewToken() {
+    const tokenValue = document.getElementById('newTokenValue').textContent;
+    navigator.clipboard.writeText(tokenValue);
+    const button = document.querySelector('[onclick="copyNewToken()"]');
+    const originalHTML = button.innerHTML;
+    button.innerHTML = '<i class="bi bi-check-lg me-1"></i>복사됨';
+    setTimeout(() => {
+        button.innerHTML = originalHTML;
+    }, 2000);
+}
+
+function copyExample() {
+    const exampleCode = document.querySelector('pre code').textContent;
+    navigator.clipboard.writeText(exampleCode);
+    const button = document.querySelector('[onclick="copyExample()"]');
+    const originalHTML = button.innerHTML;
+    button.innerHTML = '<i class="bi bi-check-lg"></i>';
+    setTimeout(() => {
+        button.innerHTML = originalHTML;
+    }, 2000);
+}
+
+function showToken(token) {
+    document.getElementById('tokenValue').value = token;
+    new bootstrap.Modal(document.getElementById('showTokenModal')).show();
+}
+
+function copyTokenFromModal() {
+    const tokenInput = document.getElementById('tokenValue');
+    tokenInput.select();
+    document.execCommand('copy');
+    
+    // 복사 성공 알림
+    const button = event.target.closest('button');
+    const originalText = button.innerHTML;
+    button.innerHTML = '<i class="bi bi-check"></i> 복사됨';
+    setTimeout(() => {
+        button.innerHTML = originalText;
+    }, 2000);
+}
+
+function filterTokens() {
+    const description = document.getElementById('descriptionFilter').value.toLowerCase();
+    const status = document.getElementById('statusFilter').value;
+    const userId = {% if is_admin_view %}document.getElementById('userFilter').value{% else %}'all'{% endif %};
+    
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        if (row.cells.length === 1) return; // 데이터가 없는 경우 건너뛰기
+        
+        const descriptionCell = row.querySelector('td:first-child .text-wrap');
+        const descriptionMatch = descriptionCell.textContent.toLowerCase().includes(description);
+        
+        let userMatch = true;
+        {% if is_admin_view %}
+        if (userId !== 'all') {
+            const userBadge = row.querySelector('td:nth-child(2) .badge');
+            if (userBadge) {
+                const username = userBadge.textContent.trim();
+                const user = Array.from(document.querySelectorAll('#userFilter option')).find(
+                    option => option.value === userId && option.textContent === username
+                );
+                userMatch = !!user;
+            } else {
+                userMatch = false;
+            }
+        }
+        {% endif %}
+        
+        const statusBadge = row.querySelector('td:nth-child({{ "4" if is_admin_view else "3" }}) .badge');
+        let statusMatch = true;
+        if (status !== 'all') {
+            const isActive = statusBadge.classList.contains('bg-success');
+            statusMatch = (status === 'active' && isActive) || (status === 'inactive' && !isActive);
+        }
+        
+        row.style.display = descriptionMatch && userMatch && statusMatch ? '' : 'none';
+    });
+}
+</script>
+{% endblock %} 

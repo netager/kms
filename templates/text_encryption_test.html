@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}암호화/복호화 테스트{% endblock %}
+
+{% block styles %}
+<style>
+/* 아이콘 대체 스타일 */
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    margin-right: 0.25rem;
+}
+.icon-lock::before { content: "🔒"; }
+.icon-copy::before { content: "📋"; }
+.icon-check::before { content: "✓"; }
+.icon-key::before { content: "🔑"; }
+.icon-success::before { content: "✅"; }
+.icon-error::before { content: "❌"; }
+
+/* 카드 스타일 개선 */
+.card {
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+.card-header.header-primary { background-color: #0d6efd; color: white; }
+.card-header.header-info { background-color: #0dcaf0; color: white; }
+.card-header.header-success { background-color: #198754; color: white; }
+.card-header.header-danger { background-color: #dc3545; color: white; }
+
+/* 결과 텍스트 영역 스타일 */
+.result-text {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* 복사 버튼 스타일 */
+.copy-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+}
+.copy-btn:hover {
+    background-color: #f8f9fa;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">텍스트 암호화/복호화 테스트</h2>
+
+    <form method="POST">
+        {{ form.csrf_token }}
+        
+        <div class="card mb-4">
+            <div class="card-header header-primary">
+                <h5 class="card-title mb-0">설정</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.server_url.label(class="form-label") }}
+                            {{ form.server_url(class="form-control") }}
+                        </div>
+                        <div class="form-group mb-3">
+                            {{ form.key_id.label(class="form-label") }}
+                            {{ form.key_id(class="form-select") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.api_token.label(class="form-label") }}
+                            {{ form.api_token(class="form-select") }}
+                        </div>
+                        <div class="form-group mb-3">
+                            {{ form.program_name.label(class="form-label") }}
+                            {{ form.program_name(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header header-info">
+                <h5 class="card-title mb-0">텍스트 입력</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    {{ form.plaintext.label(class="form-label") }}
+                    {{ form.plaintext(class="form-control", rows="4", placeholder="암호화할 텍스트를 입력하세요") }}
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="icon icon-lock"></span> 암호화/복호화 테스트
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if result.message %}
+        <div class="alert alert-{{ 'success' if result.success else 'danger' }} alert-dismissible fade show mt-3" role="alert">
+            {% if result.success %}
+                <span class="icon icon-success"></span>
+            {% else %}
+                <span class="icon icon-error"></span>
+            {% endif %}
+            {{ result.message }}
+            {% if result.key_version %}
+                <br><small>키 버전: {{ result.key_version }}</small>
+            {% endif %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+
+    {% if result.encrypted_text or result.decrypted_text %}
+        <div class="row mt-3">
+            {% if result.encrypted_text %}
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>
+                                암호화 결과
+                                {% if result.encryption_success %}
+                                    <span class="text-success">✓</span>
+                                {% else %}
+                                    <span class="text-danger">✗</span>
+                                {% endif %}
+                            </span>
+                            <button class="copy-btn" data-text="{{ result.encrypted_text }}">
+                                <span class="icon icon-copy"></span> 복사
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="result-text">{{ result.encrypted_text }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            
+            {% if result.decrypted_text %}
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>
+                                복호화 결과
+                                {% if result.decryption_success %}
+                                    <span class="text-success">✓</span>
+                                {% else %}
+                                    <span class="text-danger">✗</span>
+                                {% endif %}
+                            </span>
+                            <button class="copy-btn" data-text="{{ result.decrypted_text }}">
+                                <span class="icon icon-copy"></span> 복사
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="result-text">{{ result.decrypted_text }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 복사 기능 구현
+    document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const text = this.dataset.text;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="icon icon-check"></span> 복사됨';
+            setTimeout(() => {
+                this.innerHTML = originalText;
+            }, 2000);
+        });
+    });
+});
+</script>
+{% endblock %} 
