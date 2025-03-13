@@ -1427,3 +1427,12 @@ TypeError: 'tuple' object is not callable
 [2025-03-13 08:51:54 +0900] [59773] [INFO] Booting worker with pid: 59773
 [2025-03-13 08:51:54 +0900] [59774] [INFO] Booting worker with pid: 59774
 [2025-03-13 08:51:54 +0900] [59775] [INFO] Booting worker with pid: 59775
+[2025-03-13 12:54:01 +0900] [59743] [INFO] Handling signal: winch
+[2025-03-13 12:54:06 +0900] [59743] [INFO] Handling signal: winch
+[2025-03-13 14:58:47 +0900] [59743] [INFO] Handling signal: winch
+[2025-03-13 14:59:10 +0900] [59743] [INFO] Handling signal: winch
+[2025-03-13 15:03:30 +0900] [59743] [INFO] Handling signal: int
+[2025-03-13 15:03:31 +0900] [59775] [INFO] Worker exiting (pid: 59775)
+[2025-03-13 15:03:31 +0900] [59774] [INFO] Worker exiting (pid: 59774)
+[2025-03-13 15:03:31 +0900] [59773] [INFO] Worker exiting (pid: 59773)
+[2025-03-13 15:03:31 +0900] [59743] [INFO] Shutting down: Master
