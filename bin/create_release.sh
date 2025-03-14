@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ..
 
 # 버전 정보 설정 (예: 1.0.0)
 VERSION="1.0.0"
@@ -12,7 +13,7 @@ mkdir -p ${TEMP_DIR}
 echo "필요한 파일들을 복사합니다..."
 
 # 애플리케이션 코어 파일
-cp app.py config.py init_db.py ${TEMP_DIR}/
+cp app.py config.py ${TEMP_DIR}/
 
 # 템플릿 파일
 cp -r templates ${TEMP_DIR}/
@@ -24,7 +25,6 @@ cp -r static ${TEMP_DIR}/
 cp -r migrations ${TEMP_DIR}/
 
 # 설정 파일
-cp .env ${TEMP_DIR}/
 cp requirements.txt ${TEMP_DIR}/
 
 # 실행 스크립트
@@ -35,10 +35,8 @@ cp bin/* ${TEMP_DIR}/bin/
 mkdir -p ${TEMP_DIR}/setup
 cp setup/install_packages.sh ${TEMP_DIR}/setup/
 
-packages 디렉토리가 존재하면 복사
-if [ -d "setup/packages" ]; then
-   cp -r setup/packages ${TEMP_DIR}/setup/
-fi
+#packages 디렉토리가 존재하면 복사
+cp -r setup/packages ${TEMP_DIR}/setup/
 
 # 로그 디렉토리 생성
 mkdir -p ${TEMP_DIR}/logs

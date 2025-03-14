@@ -16,10 +16,11 @@ echo "패키지 다운로드를 시작합니다..."
 # linux 환경
 # ----------
 pip download \
-     -r equirements.txt \
-     -platform manylinux2014_x86_64 \
-     -- only-binary=:all: \
-     --python-version 3.9 --dest=$$DOWNLOAD_DIR
+     -r ../requirements.txt \
+     --platform manylinux2014_x86_64 \
+     --only-binary=:all: \
+     --python-version 3.9 \
+     --dest=$DOWNLOAD_DIR
 
 echo "다운로드가 완료되었습니다."
 echo "다운로드된 파일은 '$DOWNLOAD_DIR' 디렉토리에 있습니다."

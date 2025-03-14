@@ -1436,3 +1436,43 @@ TypeError: 'tuple' object is not callable
 [2025-03-13 15:03:31 +0900] [59774] [INFO] Worker exiting (pid: 59774)
 [2025-03-13 15:03:31 +0900] [59773] [INFO] Worker exiting (pid: 59773)
 [2025-03-13 15:03:31 +0900] [59743] [INFO] Shutting down: Master
+[2025-03-14 10:35:31 +0900] [7689] [INFO] Starting gunicorn 21.2.0
+[2025-03-14 10:35:31 +0900] [7689] [INFO] Listening at: http://0.0.0.0:8085 (7689)
+[2025-03-14 10:35:31 +0900] [7689] [INFO] Using worker: gthread
+[2025-03-14 10:35:31 +0900] [7690] [INFO] Booting worker with pid: 7690
+[2025-03-14 10:35:31 +0900] [7691] [INFO] Booting worker with pid: 7691
+[2025-03-14 10:35:32 +0900] [7692] [INFO] Booting worker with pid: 7692
+[2025-03-14 10:35:36 +0900] [7689] [INFO] Handling signal: int
+[2025-03-14 10:35:36 +0900] [7692] [INFO] Worker exiting (pid: 7692)
+[2025-03-14 10:35:36 +0900] [7691] [INFO] Worker exiting (pid: 7691)
+[2025-03-14 10:35:36 +0900] [7690] [INFO] Worker exiting (pid: 7690)
+[2025-03-14 10:35:36 +0900] [7689] [INFO] Shutting down: Master
+[2025-03-14 10:35:59 +0900] [7927] [INFO] Starting gunicorn 21.2.0
+[2025-03-14 10:35:59 +0900] [7927] [INFO] Listening at: http://0.0.0.0:8085 (7927)
+[2025-03-14 10:35:59 +0900] [7927] [INFO] Using worker: gthread
+[2025-03-14 10:35:59 +0900] [7928] [INFO] Booting worker with pid: 7928
+[2025-03-14 10:35:59 +0900] [7929] [INFO] Booting worker with pid: 7929
+[2025-03-14 10:35:59 +0900] [7930] [INFO] Booting worker with pid: 7930
+[2025-03-14 10:38:00 +0900] [7927] [INFO] Handling signal: int
+[2025-03-14 10:38:00 +0900] [7929] [INFO] Worker exiting (pid: 7929)
+[2025-03-14 10:38:00 +0900] [7930] [INFO] Worker exiting (pid: 7930)
+[2025-03-14 10:38:00 +0900] [7928] [INFO] Worker exiting (pid: 7928)
+[2025-03-14 10:38:00 +0900] [7927] [INFO] Shutting down: Master
+[2025-03-14 10:53:17 +0900] [10384] [INFO] Starting gunicorn 21.2.0
+[2025-03-14 10:53:17 +0900] [10384] [INFO] Listening at: http://0.0.0.0:8085 (10384)
+[2025-03-14 10:53:17 +0900] [10384] [INFO] Using worker: gthread
+[2025-03-14 10:53:17 +0900] [10385] [INFO] Booting worker with pid: 10385
+[2025-03-14 10:53:17 +0900] [10386] [INFO] Booting worker with pid: 10386
+[2025-03-14 10:53:17 +0900] [10387] [INFO] Booting worker with pid: 10387
+[2025-03-14 10:55:53,019] DEBUG in app: Encryption payload: {'text': '전북1%', 'key_id': 1, 'program_name': 'test1'}
+[2025-03-14 17:52:47 +0900] [10384] [INFO] Handling signal: int
+[2025-03-14 17:52:47 +0900] [10387] [INFO] Worker exiting (pid: 10387)
+[2025-03-14 17:52:47 +0900] [10386] [INFO] Worker exiting (pid: 10386)
+[2025-03-14 17:52:47 +0900] [10385] [INFO] Worker exiting (pid: 10385)
+[2025-03-14 17:52:48 +0900] [10384] [INFO] Shutting down: Master
+[2025-03-14 17:53:26 +0900] [25447] [INFO] Starting gunicorn 21.2.0
+[2025-03-14 17:53:26 +0900] [25447] [INFO] Listening at: http://0.0.0.0:8085 (25447)
+[2025-03-14 17:53:26 +0900] [25447] [INFO] Using worker: gthread
+[2025-03-14 17:53:26 +0900] [25448] [INFO] Booting worker with pid: 25448
+[2025-03-14 17:53:26 +0900] [25449] [INFO] Booting worker with pid: 25449
+[2025-03-14 17:53:26 +0900] [25450] [INFO] Booting worker with pid: 25450
