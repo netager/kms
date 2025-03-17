@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}회원가입{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center min-vh-75">
+    <div class="col-md-5 col-lg-4">
+        <div class="card shadow-lg border-0 fade-in">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <i class='bx bx-user-plus text-primary' style="font-size: 3rem;"></i>
+                    <h3 class="fw-bold mb-2">새 계정 만들기</h3>
+                    <p class="text-muted">필요한 정보를 입력해주세요</p>
+                </div>
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-4">
+                        <div class="form-floating">
+                            {{ form.username(class="form-control", placeholder="로그인 ID") }}
+                            {{ form.username.label(class="form-label") }}
+                        </div>
+                        {% for error in form.username.errors %}
+                        <div class="invalid-feedback d-block">
+                            <i class='bx bx-error-circle'></i> {{ error }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-floating">
+                            {{ form.username_kor(class="form-control", placeholder="사용자명") }}
+                            {{ form.username_kor.label(class="form-label") }}
+                        </div>
+                        {% for error in form.username_kor.errors %}
+                        <div class="invalid-feedback d-block">
+                            <i class='bx bx-error-circle'></i> {{ error }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-floating">
+                            {{ form.email(class="form-control", placeholder="이메일") }}
+                            {{ form.email.label(class="form-label") }}
+                        </div>
+                        {% for error in form.email.errors %}
+                        <div class="invalid-feedback d-block">
+                            <i class='bx bx-error-circle'></i> {{ error }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-floating">
+                            {{ form.password(class="form-control", placeholder="비밀번호") }}
+                            {{ form.password.label(class="form-label") }}
+                        </div>
+                        {% for error in form.password.errors %}
+                        <div class="invalid-feedback d-block">
+                            <i class='bx bx-error-circle'></i> {{ error }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-floating">
+                            {{ form.password2(class="form-control", placeholder="비밀번호 확인") }}
+                            {{ form.password2.label(class="form-label") }}
+                        </div>
+                        {% for error in form.password2.errors %}
+                        <div class="invalid-feedback d-block">
+                            <i class='bx bx-error-circle'></i> {{ error }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {{ form.submit(class="btn btn-primary w-100 py-3 mb-3") }}
+                    
+                    <div class="text-center">
+                        <p class="text-muted">
+                            이미 계정이 있으신가요? 
+                            <a href="{{ url_for('login') }}" class="text-primary text-decoration-none">
+                                로그인 <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

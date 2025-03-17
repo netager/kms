@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block title %}YAML 복호화 테스트{% endblock %}
+
+{% block styles %}
+<style>
+.card {
+    border: none;
+    box-shadow: 0 0 0.875rem 0 rgba(33,37,41,.05);
+}
+.card-header {
+    background-color: transparent;
+    border-bottom: none;
+    padding: 1rem 1.25rem;
+}
+.card-header h5 {
+    font-size: 0.925rem;
+    color: #495057;
+    font-weight: 600;
+    margin: 0;
+}
+.card-body {
+    padding: 1.25rem;
+}
+.form-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+.form-control, .form-select {
+    font-size: 0.875rem;
+    border-radius: 0.2rem;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+.form-text {
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+.btn {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.2rem;
+}
+.btn-primary {
+    background-color: #3b7ddd;
+    border-color: #3b7ddd;
+}
+.btn-primary:hover {
+    background-color: #2f69c2;
+    border-color: #2f69c2;
+}
+.alert {
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 0.2rem;
+}
+pre {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    border: 1px solid #dee2e6;
+    font-size: 0.875rem;
+    margin: 0;
+}
+.copy-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: #6c757d;
+    background-color: transparent;
+    border: 1px solid #dee2e6;
+    border-radius: 0.2rem;
+    transition: all 0.15s ease-in-out;
+}
+.copy-btn:hover {
+    background-color: #f8f9fa;
+    color: #495057;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="row mb-2 mb-xl-3">
+        <div class="col-auto d-none d-sm-block">
+            <h3>YAML 복호화 테스트</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">테스트 설정</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data" id="decryptForm">
+                        {{ form.csrf_token }}
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                {{ form.server_url.label(class="form-label") }}
+                                {{ form.server_url(class="form-control form-control-sm") }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                {{ form.key_id.label(class="form-label") }}
+                                {{ form.key_id(class="form-select form-select-sm") }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                {{ form.api_token.label(class="form-label") }}
+                                {{ form.api_token(class="form-select form-select-sm") }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                {{ form.program_name.label(class="form-label") }}
+                                {{ form.program_name(class="form-control form-control-sm") }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                {{ form.yaml_file.label(class="form-label") }}
+                                {{ form.yaml_file(class="form-control form-control-sm", onchange="handleFileSelect(this)") }}
+                                <div class="form-text">복호화할 YAML 파일을 선택하세요.</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ form.submit(class="btn btn-primary btn-sm") }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show mt-3" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if result %}
+        {% if result.message %}
+            <div class="alert alert-{{ 'success' if result.success else 'danger' }} alert-dismissible fade show mt-3" role="alert">
+                {{ result.message }}
+                {% if result.key_version %}
+                    <br><small class="text-muted">키 버전: {{ result.key_version }}</small>
+                {% endif %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        
+        {% if result.yaml_result %}
+            <div class="card mt-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">복호화 결과</h5>
+                    <button class="copy-btn" onclick="copyResult('decrypted')">
+                        <i class="bi bi-clipboard"></i> 복사
+                    </button>
+                </div>
+                <div class="card-body">
+                    <pre id="decryptedResult">{{ result.yaml_result }}</pre>
+                </div>
+            </div>
+        {% endif %}
+        
+        {% if result.original_yaml %}
+            <div class="card mt-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">원본 YAML</h5>
+                    <button class="copy-btn" onclick="copyResult('original')">
+                        <i class="bi bi-clipboard"></i> 복사
+                    </button>
+                </div>
+                <div class="card-body">
+                    <pre id="originalYaml">{{ result.original_yaml }}</pre>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">파이썬 예제 코드</h5>
+                    <button class="copy-btn" onclick="copyCode()">
+                        <i class="bi bi-clipboard"></i> 코드 복사
+                    </button>
+                </div>
+                <div class="card-body">
+                    <pre id="pythonExample"><code>import yaml
+import requests
+
+def decrypt_yaml_password(yaml_file_path, server_url, api_token, key_id, program_name):
+    # YAML 파일 읽기
+    with open(yaml_file_path, 'r', encoding='utf-8') as file:
+        yaml_content = yaml.safe_load(file)
+    
+    # 데이터베이스 섹션과 비밀번호 필드 확인
+    if 'database' not in yaml_content:
+        raise ValueError('database 섹션이 없습니다.')
+    if 'password' not in yaml_content['database']:
+        raise ValueError('database 섹션에 password 필드가 없습니다.')
+    
+    # 암호화된 비밀번호 가져오기
+    encrypted_password = str(yaml_content['database']['password']).strip()
+    
+    # 암호화된 텍스트 형식 확인
+    if not encrypted_password or not encrypted_password.startswith('gAAAAAB'):
+        raise ValueError('유효하지 않은 암호화 텍스트입니다.')
+    
+    # 복호화 API 호출
+    response = requests.post(
+        f"{server_url}/api/v1/decrypt",
+        headers={
+            'X-API-Token': api_token,
+            'Content-Type': 'application/json'
+        },
+        json={
+            'encrypted_text': encrypted_password,
+            'key_id': key_id,
+            'program_name': program_name
+        }
+    )
+    
+    # 응답 확인
+    if response.status_code == 200:
+        result = response.json()
+        if 'decrypted_text' not in result:
+            raise ValueError('복호화 API 응답에 decrypted_text가 없습니다.')
+        return {
+            'encrypted_password': encrypted_password,
+            'decrypted_password': result['decrypted_text']
+        }
+    else:
+        error = response.json().get('error', '알 수 없는 오류')
+        raise Exception(f'복호화 중 오류가 발생했습니다: {error}')
+
+# 사용 예시
+if __name__ == '__main__':
+    yaml_file_path = 'config.yaml'  # YAML 파일 경로
+    server_url = 'http://localhost'  # 서버 URL
+    api_token = 'your_api_token'  # API 토큰
+    key_id = 1  # 키 ID
+    program_name = 'yaml_decrypt_test'  # 프로그램명
+    
+    try:
+        result = decrypt_yaml_password(
+            yaml_file_path, server_url, api_token, key_id, program_name
+        )
+        print('암호화된 비밀번호:', result['encrypted_password'])
+        print('복호화된 비밀번호:', result['decrypted_password'])
+    except Exception as e:
+        print('오류:', str(e))</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 복사 완료 토스트 메시지 -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="copyToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="bi bi-check-circle me-2"></i>클립보드에 복사되었습니다.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function handleFileSelect(input) {
+    const file = input.files[0];
+    if (file) {
+        input.setAttribute('data-selected-file', file.name);
+    }
+}
+
+function copyResult(type) {
+    const element = document.getElementById(type === 'decrypted' ? 'decryptedResult' : 'originalYaml');
+    navigator.clipboard.writeText(element.textContent).then(() => {
+        const toast = new bootstrap.Toast(document.getElementById('copyToast'));
+        toast.show();
+    });
+}
+
+function copyCode() {
+    const codeElement = document.getElementById('pythonExample');
+    navigator.clipboard.writeText(codeElement.textContent).then(() => {
+        const toast = new bootstrap.Toast(document.getElementById('copyToast'));
+        toast.show();
+    });
+}
+
+document.getElementById('decryptForm').addEventListener('submit', function() {
+    const fileInput = document.querySelector('input[type="file"]');
+    const selectedFile = fileInput.getAttribute('data-selected-file');
+    if (selectedFile) {
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(fileInput.files[0]);
+        fileInput.files = dataTransfer.files;
+    }
+});
+</script>
+{% endblock %} 

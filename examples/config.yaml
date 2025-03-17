@@ -1,0 +1,22 @@
+# 데이터베이스 설정 (이 섹션만 복호화됨)
+database:
+  username: admin
+  password: gAAAAABl9uxXQJGvKPZwCXH7vDzE_example_encrypted_value_1  # 실제 암호화된 값으로 교체 필요
+  host: db.example.com
+  port: 5432
+  name: myapp_db
+
+# API 설정 (이 섹션은 복호화되지 않음)
+api:
+  secret_key: gAAAAABl9uxXQJGvKPZwCXH7vDzE_example_encrypted_value_2  # 암호화된 값이지만 복호화되지 않음
+  endpoint: https://api.example.com
+  timeout: 30
+
+# 외부 서비스 설정 (이 섹션은 복호화되지 않음)
+external_services:
+  email:
+    smtp_server: smtp.example.com
+    username: mail_user
+    password: gAAAAABl9uxXQJGvKPZwCXH7vDzE_example_encrypted_value_3  # 암호화된 값이지만 복호화되지 않음
+    port: 587
+    use_tls: true 

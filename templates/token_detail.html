@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}API 토큰 상세 정보{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-1">
+    <!-- 헤더 섹션 -->
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">API 토큰 상세 정보</h2>
+                <div class="btn-group">
+                    <a href="{{ url_for('token_history', token_id=token.id) }}" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-clock-history me-1"></i>변경 내역
+                    </a>
+                    <a href="{{ url_for('manage_tokens') }}" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-arrow-left me-1"></i>목록으로
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 기본 정보 섹션 -->
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                        <i class="bi bi-info-circle me-2"></i>기본 정보
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="detail-label">토큰명</label>
+                                <div class="detail-value">{{ token.name }}</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="detail-label">생성자</label>
+                                <div class="detail-value">{{ token.creator.username }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="detail-label">버전</label>
+                                <div class="detail-value">v{{ token.version }}</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="detail-label">상태</label>
+                                <div class="detail-value">
+                                    {% if token.is_active %}
+                                    <span class="badge bg-success">활성</span>
+                                    {% else %}
+                                    <span class="badge bg-danger">비활성</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="detail-label">설명</label>
+                                <div class="detail-value">{{ token.description or '-' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 토큰 정보 섹션 -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                        <i class="bi bi-shield-lock me-2"></i>토큰 정보
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="detail-label">생성일시</label>
+                                <div class="detail-value">{{ token.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="detail-label">마지막 사용일시</label>
+                                <div class="detail-value">
+                                    {% if token.last_used_at %}
+                                        {{ token.last_used_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                                    {% else %}
+                                        <span class="text-muted">미사용</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="detail-label">토큰 값</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-sm font-monospace" id="tokenValue" value="{{ token.token }}" readonly>
+                                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="copyTokenValue()">
+                                        <i class="bi bi-clipboard"></i> 복사
+                                    </button>
+                                </div>
+                                <small class="text-muted mt-1 d-block">토큰 값은 보안을 위해 복사 후 즉시 사라집니다.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.detail-label {
+    display: block;
+    color: #6c757d;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.3rem;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 0.3rem;
+}
+
+.detail-value {
+    font-size: 1rem;
+    color: #212529;
+    font-weight: 500;
+    padding: 0.2rem 0;
+    min-height: 1.5rem;
+}
+
+.detail-value .badge {
+    font-size: 0.85rem;
+    padding: 0.35em 0.8em;
+    font-weight: 500;
+}
+
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-header {
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+    padding: 0.4rem 1rem;
+}
+
+.btn-sm {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+}
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+function copyTokenValue() {
+    const tokenInput = document.getElementById('tokenValue');
+    tokenInput.select();
+    document.execCommand('copy');
+    
+    // 복사 후 토큰 값 숨기기
+    setTimeout(() => {
+        tokenInput.value = '****************************************';
+    }, 500);
+    
+    // 복사 버튼 텍스트 변경
+    const copyButton = document.querySelector('[onclick="copyTokenValue()"]');
+    const originalHtml = copyButton.innerHTML;
+    copyButton.innerHTML = '<i class="bi bi-check"></i> 복사됨';
+    setTimeout(() => {
+        copyButton.innerHTML = originalHtml;
+    }, 1000);
+}
+</script>
+{% endblock %} 

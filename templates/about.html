@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block title %}시스템 소개{% endblock %}
+
+{% block content %}
+<style>
+.feature-card {
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.system-title {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.key-management {
+    border-top: 4px solid #3498db;
+}
+
+.api-token {
+    border-top: 4px solid #e74c3c;
+}
+
+.encryption {
+    border-top: 4px solid #2ecc71;
+}
+
+.user-management {
+    border-top: 4px solid #f1c40f;
+}
+
+.security-feature {
+    border-top: 4px solid #9b59b6;
+}
+
+.system-info {
+    border-top: 4px solid #1abc9c;
+}
+
+.system-requirements {
+    border-top: 4px solid #e67e22;
+}
+
+.list-group-item {
+    border: none;
+    padding: 1rem;
+}
+
+.list-group-item h5 {
+    color: #2c3e50;
+}
+
+.list-group-item i {
+    color: #3498db;
+}
+
+.text-accent {
+    color: #3498db;
+}
+
+.small-icon {
+    color: #7f8c8d;
+    width: 20px;
+    display: inline-block;
+}
+
+.feature-list {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.feature-list li {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.feature-list li:before {
+    content: "•";
+    color: #3498db;
+    font-weight: bold;
+    position: absolute;
+    left: -1rem;
+}
+</style>
+
+<div class="container py-4">
+    <h2 class="mb-4 system-title">KMS(Key Management System) 소개</h2>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card feature-card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="bx bx-info-circle feature-icon text-accent"></i>시스템 개요</h3>
+                    <p class="card-text">
+                        KMS는 중요 데이터를 안전하게 보호하기 위한 암호화 키 관리 시스템입니다.
+                        암호화 키의 생성부터 폐기까지 전체 수명주기를 관리하며, RESTful API를 통해 
+                        안전하고 효율적인 암호화/복호화 서비스를 제공합니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card feature-card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="bx bx-cube feature-icon text-accent"></i>주요 기능</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card key-management">
+                                <div class="card-body">
+                                    <h5><i class="bx bx-key text-primary"></i> 암호키 관리</h5>
+                                    <ul class="feature-list">
+                                        <li>안전한 암호키 생성 및 저장</li>
+                                        <li>주기적인 키 교체(로테이션) 지원</li>
+                                        <li>키 버전 관리 및 이력 추적</li>
+                                        <li>키 폐기 및 백업 관리</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card api-token">
+                                <div class="card-body">
+                                    <h5><i class="bx bx-code-alt text-danger"></i> API 토큰 관리</h5>
+                                    <ul class="feature-list">
+                                        <li>안전한 API 토큰 발급 및 관리</li>
+                                        <li>토큰 권한 제어 및 접근 관리</li>
+                                        <li>토큰 교체 및 폐기 기능</li>
+                                        <li>토큰 사용 이력 추적</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card encryption">
+                                <div class="card-body">
+                                    <h5><i class="bx bx-lock text-success"></i> 암호화/복호화 서비스</h5>
+                                    <ul class="feature-list">
+                                        <li>텍스트 데이터 암호화/복호화</li>
+                                        <li>YAML 설정 파일 암호화/복호화</li>
+                                        <li>RESTful API 인터페이스 제공</li>
+                                        <li>실시간 암호화/복호화 테스트</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card user-management">
+                                <div class="card-body">
+                                    <h5><i class="bx bx-user text-warning"></i> 사용자 및 접근 관리</h5>
+                                    <ul class="feature-list">
+                                        <li>관리자/일반 사용자 권한 구분</li>
+                                        <li>사용자 접근 이력 관리</li>
+                                        <li>암호키 사용 감사 로그</li>
+                                        <li>보안 정책 관리</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card feature-card mb-4 security-feature">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="bx bx-shield feature-icon text-purple"></i>보안 특징</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center p-3">
+                                <i class="bx bx-shield text-purple" style="font-size: 2rem;"></i>
+                                <h5 class="mt-2">강력한 암호화</h5>
+                                <p class="small">AES-256 암호화 알고리즘과 PBKDF2 키 유도 함수를 사용하여 최고 수준의 보안 제공</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center p-3">
+                                <i class="bx bx-history text-purple" style="font-size: 2rem;"></i>
+                                <h5 class="mt-2">감사 추적</h5>
+                                <p class="small">모든 키 작업과 API 호출에 대한 상세한 감사 로그 기록</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center p-3">
+                                <i class="bx bx-check-shield text-purple" style="font-size: 2rem;"></i>
+                                <h5 class="mt-2">접근 제어</h5>
+                                <p class="small">세분화된 권한 관리와 토큰 기반 인증으로 안전한 접근 통제</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card feature-card mb-4 system-info">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="bx bx-info-circle feature-icon text-info"></i>시스템 정보</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-code-curly small-icon"></i>
+                                <div>
+                                    <strong>버전</strong>
+                                    <div class="text-muted">1.0.0</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-code small-icon"></i>
+                                <div>
+                                    <strong>개발 언어</strong>
+                                    <div class="text-muted">Python 3.9</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-server small-icon"></i>
+                                <div>
+                                    <strong>프레임워크</strong>
+                                    <div class="text-muted">Flask 2.x</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-data small-icon"></i>
+                                <div>
+                                    <strong>데이터베이스</strong>
+                                    <div class="text-muted">SQLite</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-lock-alt small-icon"></i>
+                                <div>
+                                    <strong>암호화</strong>
+                                    <div class="text-muted">AES-256-GCM</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card feature-card system-requirements">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="bx bx-laptop feature-icon text-warning"></i>시스템 요구사항</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-desktop small-icon"></i>
+                                <div>
+                                    <strong>운영체제</strong>
+                                    <div class="text-muted">Linux, macOS, Windows</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-chip small-icon"></i>
+                                <div>
+                                    <strong>최소 사양</strong>
+                                    <div class="text-muted">2GB RAM, 1GB 저장공간</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-globe small-icon"></i>
+                                <div>
+                                    <strong>웹 브라우저</strong>
+                                    <div class="text-muted">Chrome 90+, Firefox 88+, Edge 90+ (기업 배포판 지원)</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

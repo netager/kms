@@ -1,0 +1,742 @@
+{% extends "base.html" %}
+
+{% block title %}API 토큰 관리{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-1">
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">API 토큰 관리</h2>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createTokenModal">
+                    <i class="bi bi-plus-lg"></i> API 토큰 생성
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 검색 섹션 -->
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                        <i class="bi bi-search me-2"></i>검색 조건
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="GET" action="{{ url_for('manage_tokens') }}" class="row g-3">
+                        <div class="col-md-5">
+                            <label class="form-label text-muted small">토큰명</label>
+                            <select class="form-select" name="search_name" id="search_name">
+                                <option value="">전체</option>
+                                {% for name in token_names %}
+                                <option value="{{ name }}" {% if request.args.get('search_name') == name %}selected{% endif %}>{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label text-muted small">생성자</label>
+                            <select class="form-select" name="search_creator" id="search_creator">
+                                <option value="">전체</option>
+                                {% for creator in creators %}
+                                <option value="{{ creator.id }}" {% if request.args.get('search_creator') == creator.id|string %}selected{% endif %}>{{ creator.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label text-muted small">상태</label>
+                            <select class="form-select" name="search_status" id="search_status">
+                                <option value="">전체</option>
+                                <option value="active" {% if request.args.get('search_status') == 'active' %}selected{% endif %}>활성</option>
+                                <option value="inactive" {% if request.args.get('search_status') == 'inactive' %}selected{% endif %}>비활성</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label text-muted small">&nbsp;</label>
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary btn-sm">검색</button>
+                                <a href="{{ url_for('manage_tokens') }}" class="btn btn-secondary btn-sm">초기화</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 검색 결과 -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                        <i class="bi bi-table me-2"></i>검색 결과
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>토큰명</th>
+                                    <th>버전</th>
+                                    <th>생성자</th>
+                                    <th>생성일</th>
+                                    <th>마지막 사용</th>
+                                    <th>상태</th>
+                                    <th>작업</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for token in tokens %}
+                                <tr>
+                                    <td>{{ token.id }}</td>
+                                    <td>{{ token.name }}</td>
+                                    <td>v{{ token.version }}</td>
+                                    <td>{{ token.creator.username }}</td>
+                                    <td>{{ token.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                    <td>
+                                        {% if token.last_used_at %}
+                                            {{ token.last_used_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                                        {% else %}
+                                            <span class="text-muted">미사용</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if token.is_active %}
+                                        <span class="badge bg-success">활성</span>
+                                        {% else %}
+                                        <span class="badge bg-danger">비활성</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ url_for('token_detail', token_id=token.id) }}" class="btn btn-info btn-sm">
+                                                상세정보
+                                            </a>
+                                            <a href="{{ url_for('token_history', token_id=token.id) }}" class="btn btn-secondary btn-sm">
+                                                변경 내역
+                                            </a>
+                                            {% if token.is_active %}
+                                            <button type="button" class="btn btn-warning btn-sm" onclick="confirmRotateToken({{ token.id }})">
+                                                토큰 변경
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeactivateToken({{ token.id }}, '{{ token.name }}')">
+                                                폐기
+                                            </button>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 토큰 생성 모달 -->
+<div class="modal fade" id="createTokenModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">API 토큰 생성</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createTokenForm" method="POST" action="{{ url_for('manage_tokens') }}">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                        {% for error in form.name.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.description.label(class="form-label") }}
+                        {{ form.description(class="form-control", rows="3") }}
+                        {% for error in form.description.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {{ form.submit(class="btn btn-primary btn-sm") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 폐기 확인 모달 -->
+<div class="modal fade" id="deactivateConfirmModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">API 토큰 폐기 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>경고:</strong> API 토큰을 폐기하면 더 이상 해당 토큰으로 API를 호출할 수 없습니다.
+                </div>
+                <p>다음 API 토큰을 폐기하시겠습니까?</p>
+                <p>토큰명: <strong id="deactivateTokenName"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-danger btn-sm" id="confirmDeactivateBtn">
+                    <i class="bi bi-trash me-1"></i>폐기 실행
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 토큰 변경 확인 모달 -->
+<div class="modal fade" id="rotateTokenModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">토큰 변경 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-warning">
+                    <i class='bx bx-error'></i> 경고: 토큰을 변경하면 이전 토큰은 더 이상 사용할 수 없게 됩니다.
+                </p>
+                <p>계속 진행하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-warning btn-sm" id="confirmRotateBtn">변경</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 새로운 토큰 표시 모달 -->
+<div class="modal fade" id="newTokenModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">새로운 토큰</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class='bx bx-error'></i> 이 토큰 값은 한 번만 표시됩니다. 안전한 곳에 복사해두세요.
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="newTokenValue" readonly>
+                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="copyNewToken()">
+                        <i class='bx bx-copy'></i> 복사
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 토큰 상세정보 모달 -->
+<div class="modal fade" id="tokenDetailModal" tabindex="-1" aria-labelledby="tokenDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="tokenDetailModalLabel">
+                    <i class="bi bi-key me-2"></i>API 토큰 상세 정보
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 기본 정보 섹션 -->
+                <div class="card shadow-sm mb-3">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                            <i class="bi bi-info-circle me-2"></i>기본 정보
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="detail-label">토큰명</label>
+                                    <div class="detail-value" id="tokenDetailName">-</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="detail-label">생성자</label>
+                                    <div class="detail-value" id="tokenDetailCreator">-</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="detail-label">버전</label>
+                                    <div class="detail-value" id="tokenDetailVersion">-</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="detail-label">상태</label>
+                                    <div class="detail-value">
+                                        <span class="badge" id="tokenDetailStatus">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="detail-label">설명</label>
+                                    <div class="detail-value" id="tokenDetailDescription">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 토큰 정보 섹션 -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                            <i class="bi bi-shield-lock me-2"></i>토큰 정보
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="detail-label">생성일시</label>
+                                    <div class="detail-value" id="tokenDetailCreatedAt">-</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="detail-label">마지막 사용일시</label>
+                                    <div class="detail-value" id="tokenDetailLastUsedAt">-</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="detail-label">토큰 값</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-sm font-monospace" id="tokenDetailValue" readonly>
+                                        <button class="btn btn-outline-secondary btn-sm" type="button" onclick="copyTokenValue()">
+                                            <i class="bi bi-clipboard"></i> 복사
+                                        </button>
+                                    </div>
+                                    <small class="text-muted mt-1 d-block">토큰 값은 보안을 위해 복사 후 즉시 사라집니다.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 토큰 변경 결과 모달 -->
+<div class="modal fade" id="rotateResultModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">토큰 변경 결과</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <span class="text-success" style="font-size: 2rem;">✓</span>
+                </div>
+                <p class="text-center">토큰이 성공적으로 변경되었습니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* 기존 스타일 유지하고 수정 */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-header {
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+    padding: 0.4rem 1rem;
+}
+
+.table {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+}
+
+.table th {
+    font-weight: 500;
+    color: #495057;
+}
+
+.btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.btn-group .btn i {
+    font-size: 1rem;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.4em 0.8em;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,0,0,.02);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover,
+.btn-outline-warning:hover,
+.btn-outline-danger:hover {
+    color: #fff;
+}
+
+.btn-sm {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    height: calc(1.5em + 0.5rem + 2px);
+}
+
+.btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+}
+
+.form-select {
+    font-size: 0.875rem;
+    padding: 0.25rem 2rem 0.25rem 0.5rem;
+    height: calc(1.5em + 0.5rem + 2px);
+}
+
+.table th {
+    font-weight: 500;
+    color: #495057;
+    padding: 0.5rem;
+}
+
+.table td {
+    padding: 0.5rem;
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.25em 0.5em;
+}
+
+.btn i {
+    font-size: 0.875rem;
+}
+
+.modal-footer .btn {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.input-group .btn {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    height: calc(1.5em + 0.5rem + 2px);
+}
+
+.detail-label {
+    display: block;
+    color: #6c757d;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.3rem;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 0.3rem;
+}
+
+.detail-value {
+    font-size: 1rem;
+    color: #212529;
+    font-weight: 500;
+    padding: 0.2rem 0;
+    min-height: 1.5rem;
+}
+
+.detail-value .badge {
+    font-size: 0.85rem;
+    padding: 0.35em 0.8em;
+    font-weight: 500;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+let currentDeactivateForm = null;
+const deactivateModal = new bootstrap.Modal(document.getElementById('deactivateConfirmModal'));
+
+{% if request.args.get('new_token') %}
+const newTokenModal = new bootstrap.Modal(document.getElementById('newTokenModal'));
+newTokenModal.show();
+
+function copyNewToken() {
+    const tokenInput = document.getElementById('newTokenValue');
+    tokenInput.select();
+    document.execCommand('copy');
+    alert('토큰이 클립보드에 복사되었습니다.');
+}
+{% endif %}
+
+function confirmDeactivateToken(tokenId, name) {
+    document.getElementById('deactivateTokenName').textContent = name;
+    deactivateModal.show();
+    
+    document.getElementById('confirmDeactivateBtn').onclick = function() {
+        deactivateToken(tokenId);
+    };
+}
+
+function deactivateToken(tokenId) {
+    fetch(`/token/${tokenId}/deactivate`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token() }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            deactivateModal.hide();
+            location.reload();
+        } else {
+            alert('토큰 폐기 실패: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('토큰 폐기 중 오류가 발생했습니다.');
+    });
+}
+
+// 토큰 복사 기능
+document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const token = this.dataset.token;
+        navigator.clipboard.writeText(token).then(() => {
+            // 복사 성공 표시
+            const originalHtml = this.innerHTML;
+            this.innerHTML = '<i class="bx bx-check"></i>';
+            setTimeout(() => {
+                this.innerHTML = originalHtml;
+            }, 1000);
+        });
+    });
+});
+
+const tokenDetailModal = new bootstrap.Modal(document.getElementById('tokenDetailModal'));
+
+function showTokenDetail(tokenId) {
+    fetch(`/api/tokens/${tokenId}/detail`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const token = data.token;
+                document.getElementById('tokenDetailName').textContent = token.name;
+                document.getElementById('tokenDetailDescription').textContent = token.description || '-';
+                document.getElementById('tokenDetailCreator').textContent = token.creator;
+                document.getElementById('tokenDetailVersion').textContent = `v${token.version}`;
+                document.getElementById('tokenDetailCreatedAt').textContent = token.created_at;
+                document.getElementById('tokenDetailLastUsedAt').textContent = token.last_used_at || '-';
+                document.getElementById('tokenDetailValue').value = token.token;
+                
+                const statusBadge = document.getElementById('tokenDetailStatus');
+                if (token.is_active) {
+                    statusBadge.className = 'badge bg-success';
+                    statusBadge.textContent = '활성';
+                } else {
+                    statusBadge.className = 'badge bg-danger';
+                    statusBadge.textContent = '비활성';
+                }
+                
+                const modal = new bootstrap.Modal(document.getElementById('tokenDetailModal'));
+                modal.show();
+            } else {
+                alert('토큰 정보를 불러오는데 실패했습니다: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('토큰 정보를 불러오는데 실패했습니다.');
+        });
+}
+
+function copyTokenValue() {
+    const tokenInput = document.getElementById('tokenDetailValue');
+    tokenInput.select();
+    document.execCommand('copy');
+    
+    // 복사 후 토큰 값 숨기기
+    setTimeout(() => {
+        tokenInput.value = '****************************************';
+    }, 500);
+    
+    // 복사 버튼 텍스트 변경
+    const copyButton = document.querySelector('[onclick="copyTokenValue()"]');
+    const originalHtml = copyButton.innerHTML;
+    copyButton.innerHTML = '<i class="bi bi-check"></i> 복사됨';
+    setTimeout(() => {
+        copyButton.innerHTML = originalHtml;
+    }, 1000);
+}
+
+const rotateTokenModal = new bootstrap.Modal(document.getElementById('rotateTokenModal'));
+const rotateResultModal = new bootstrap.Modal(document.getElementById('rotateResultModal'));
+let currentTokenId = null;
+
+function confirmRotateToken(tokenId) {
+    currentTokenId = tokenId;
+    var rotateModal = new bootstrap.Modal(document.getElementById('rotateTokenModal'));
+    rotateModal.show();
+    
+    document.getElementById('confirmRotateBtn').onclick = function() {
+        rotateToken(tokenId);
+    };
+}
+
+function rotateToken(tokenId) {
+    fetch(`/token/${tokenId}/rotate`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token() }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // 토큰 변경 모달 닫기
+            rotateModal.hide();
+            
+            // 새로운 토큰 표시
+            document.getElementById('newTokenValue').value = data.token_info.new_token;
+            var newTokenModal = new bootstrap.Modal(document.getElementById('newTokenModal'));
+            newTokenModal.show();
+            
+            // 1초 후에 페이지 새로고침
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        } else {
+            alert('토큰 변경 중 오류가 발생했습니다: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('토큰 변경 중 오류가 발생했습니다.');
+    });
+}
+
+function getCsrfToken() {
+    return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+}
+
+function showTokenCreationResult(token) {
+    const resultModal = document.getElementById('tokenCreationResultModal');
+    const tokenValueElement = document.getElementById('createdTokenValue');
+    const tokenNameElement = document.getElementById('createdTokenName');
+    
+    if (token && token.value) {
+        tokenValueElement.textContent = token.value;
+        tokenNameElement.textContent = token.name;
+        resultModal.style.display = 'block';
+    }
+}
+
+// 토큰 생성 폼 제출 처리
+document.addEventListener('DOMContentLoaded', function() {
+    // 토큰 생성 폼 제출 처리
+    const createTokenForm = document.getElementById('createTokenForm');
+    createTokenForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            description: document.getElementById('description').value
+        };
+        
+        fetch("{{ url_for('manage_tokens') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': "{{ csrf_token() }}"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // 토큰 생성 모달 닫기
+                const createModal = bootstrap.Modal.getInstance(document.getElementById('createTokenModal'));
+                createModal.hide();
+                
+                // 새로운 토큰 표시 모달에 값 설정
+                document.getElementById('newTokenValue').value = data.token.value;
+                
+                // 새로운 토큰 표시 모달 표시
+                const newTokenModal = new bootstrap.Modal(document.getElementById('newTokenModal'));
+                newTokenModal.show();
+                
+                // 모달이 닫힐 때 페이지 새로고침
+                document.getElementById('newTokenModal').addEventListener('hidden.bs.modal', function() {
+                    location.reload();
+                });
+            } else {
+                alert('토큰 생성 실패: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('토큰 생성 중 오류가 발생했습니다.');
+        });
+    });
+});
+
+// 토큰 값 복사 함수
+function copyNewToken() {
+    const tokenInput = document.getElementById('newTokenValue');
+    tokenInput.select();
+    document.execCommand('copy');
+    alert('토큰이 클립보드에 복사되었습니다.');
+}
+</script>
+{% endblock %} 

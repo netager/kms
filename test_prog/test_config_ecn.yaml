@@ -1,0 +1,13 @@
+# 데이터베이스 설정
+database:
+  username: admin
+  password: gAAAAABn12-7suG7POXMoQRgAu6d9uBq7s_CAWr4pSYTFQ_xYwLjprh6M3BpCpdAm9HYjCALwLX1cg4InivmoX0k3SUvTLbxCQ==
+  host: db.example.com
+  port: 5432
+  name: myapp_db
+
+# API 설정
+api:
+  secret_key: gAAAAABl9uxXQJGvKPZwCXH7vDzE_example_encrypted_value_2  # 실제 암호화된 값으로 교체 필요
+  endpoint: https://api.example.com
+  timeout: 30

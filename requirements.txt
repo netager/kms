@@ -1,0 +1,36 @@
+# 웹 프레임워크 및 확장
+Flask==3.0.2
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.3
+Flask-Migrate==4.0.5
+Flask-WTF==1.2.1
+Werkzeug==3.0.1
+gunicorn==21.2.0
+
+# 데이터베이스
+SQLAlchemy==2.0.28
+alembic==1.13.1
+
+# 암호화
+cryptography==42.0.5
+
+# 유틸리티
+PyYAML==6.0.1
+pytz==2024.1
+requests==2.31.0
+MarkupSafe==2.1.5
+python-dotenv==1.0.1
+urllib3==2.2.1
+certifi==2024.2.2
+charset-normalizer==3.3.2
+idna==3.6
+
+# 폼 처리
+WTForms==3.1.2
+email-validator==2.1.1
+
+# 기타 의존성
+click==8.1.7
+itsdangerous==2.1.2
+Jinja2==3.1.3
+blinker==1.7.0

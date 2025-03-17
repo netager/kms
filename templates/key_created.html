@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}암호키 생성 완료{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">암호키 생성 완료</h2>
+                <div>
+                    <a href="{{ url_for('keys') }}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> 목록으로
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-check-circle me-2"></i>새로운 암호키가 생성되었습니다
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>중요:</strong> 이 페이지를 벗어나면 더 이상 암호키를 확인할 수 없습니다. 필요한 경우 지금 복사해두세요.
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-2">키 정보</h6>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th style="width: 150px;">키 ID</th>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span id="keyId">{{ key.id }}</span>
+                                        <button class="btn btn-sm btn-outline-secondary ms-2" onclick="copyToClipboard('keyId')">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>키 이름</th>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span id="keyName">{{ key.name }}</span>
+                                        <button class="btn btn-sm btn-outline-secondary ms-2" onclick="copyToClipboard('keyName')">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>생성 일시</th>
+                                <td>{{ key.created_at }}</td>
+                            </tr>
+                            <tr>
+                                <th>암호키</th>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control font-monospace" id="keyMaterial" value="{{ key.material }}" readonly>
+                                            <button class="btn btn-outline-primary" onclick="copyToClipboard('keyMaterial')">
+                                                <i class="fas fa-copy me-1"></i>복사
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('key_detail', key_id=key.id) }}" class="btn btn-primary">
+                            <i class="fas fa-info-circle me-1"></i>키 상세정보 보기
+                        </a>
+                        <a href="{{ url_for('keys') }}" class="btn btn-secondary">
+                            <i class="fas fa-list me-1"></i>키 목록으로
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function copyToClipboard(elementId) {
+    const element = document.getElementById(elementId);
+    const text = element.tagName === 'INPUT' ? element.value : element.textContent;
+    
+    navigator.clipboard.writeText(text).then(function() {
+        // 복사 성공 알림 표시
+        const toast = document.createElement('div');
+        toast.className = 'position-fixed bottom-0 end-0 p-3';
+        toast.style.zIndex = '5';
+        toast.innerHTML = `
+            <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="fas fa-check me-2"></i>클립보드에 복사되었습니다
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(toast);
+        
+        const toastElement = toast.querySelector('.toast');
+        const bsToast = new bootstrap.Toast(toastElement, { delay: 2000 });
+        bsToast.show();
+        
+        // 토스트 메시지가 사라진 후 요소 제거
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 2500);
+    }).catch(function(err) {
+        console.error('클립보드 복사 실패:', err);
+        alert('클립보드 복사에 실패했습니다.');
+    });
+}
+
+// 페이지 이탈 시 경고
+window.onbeforeunload = function() {
+    return "이 페이지를 벗어나면 더 이상 암호키를 확인할 수 없습니다. 계속하시겠습니까?";
+};
+
+// 의도적인 페이지 이동(버튼 클릭)시에는 경고 제거
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+        window.onbeforeunload = null;
+    });
+});
+</script>
+{% endblock %} 

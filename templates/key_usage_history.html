@@ -1,0 +1,158 @@
+                        <div class="col-md-2">
+                            <label for="start_date" class="form-label text-muted small">시작일자</label>
+                            <div class="input-group input-group-sm date-picker-container" style="max-width: 150px;">
+                                <input type="text" class="form-control form-control-sm datepicker" id="start_date" name="start_date" 
+                                    value="{{ start_date }}" placeholder="날짜 선택" readonly
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="시작 날짜를 선택하세요">
+                                <span class="input-group-text cursor-pointer date-picker-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="달력 열기">
+                                    <i class="bi bi-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="end_date" class="form-label text-muted small">종료일자</label>
+                            <div class="input-group input-group-sm date-picker-container" style="max-width: 150px;">
+                                <input type="text" class="form-control form-control-sm datepicker" id="end_date" name="end_date" 
+                                    value="{{ end_date }}" placeholder="날짜 선택" readonly
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="종료 날짜를 선택하세요">
+                                <span class="input-group-text cursor-pointer date-picker-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="달력 열기">
+                                    <i class="bi bi-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function() {
+                                // 툴팁 초기화
+                                $('[data-bs-toggle="tooltip"]').tooltip();
+
+                                // 달력 설정
+                                $('.datepicker').datepicker({
+                                    format: 'yyyy-mm-dd',
+                                    autoclose: true,
+                                    language: 'ko',
+                                    todayHighlight: true,
+                                    clearBtn: true,
+                                    orientation: 'bottom auto',
+                                    templates: {
+                                        leftArrow: '<i class="bi bi-chevron-left"></i>',
+                                        rightArrow: '<i class="bi bi-chevron-right"></i>'
+                                    },
+                                    showWeekDays: true,
+                                    todayBtn: 'linked'
+                                }).on('show', function() {
+                                    // 달력이 표시될 때 오늘 날짜 버튼 추가
+                                    var $datepicker = $(this).data('datepicker');
+                                    if ($datepicker && !$('.quick-btns', $datepicker.picker).length) {
+                                        $('.datepicker-days', $datepicker.picker).append(
+                                            '<div class="quick-btns d-flex gap-1 p-1 border-top">' +
+                                            '<button type="button" class="btn-today btn btn-sm btn-outline-primary flex-fill">오늘</button>' +
+                                            '<button type="button" class="btn-clear btn btn-sm btn-outline-secondary flex-fill">초기화</button>' +
+                                            '</div>'
+                                        );
+
+                                        // 오늘 날짜 선택 버튼 이벤트
+                                        $('.btn-today', $datepicker.picker).on('click', function() {
+                                            var today = new Date();
+                                            $(this).closest('.datepicker').datepicker('setDate', today);
+                                            $(this).closest('.datepicker').datepicker('hide');
+                                        });
+
+                                        // 날짜 초기화 버튼 이벤트
+                                        $('.btn-clear', $datepicker.picker).on('click', function() {
+                                            $(this).closest('.datepicker').datepicker('clearDates');
+                                            $(this).closest('.datepicker').datepicker('hide');
+                                        });
+                                    }
+                                });
+
+                                // 시작일자와 종료일자의 상호 제한 설정
+                                $('#start_date').on('change', function() {
+                                    var startDate = $(this).val();
+                                    $('#end_date').datepicker('setStartDate', startDate);
+                                    
+                                    var endDate = $('#end_date').val();
+                                    if (endDate && startDate > endDate) {
+                                        $('#end_date').datepicker('setDate', startDate);
+                                    }
+                                });
+
+                                $('#end_date').on('change', function() {
+                                    var endDate = $(this).val();
+                                    $('#start_date').datepicker('setEndDate', endDate);
+                                    
+                                    var startDate = $('#start_date').val();
+                                    if (startDate && endDate < startDate) {
+                                        $('#start_date').datepicker('setDate', endDate);
+                                    }
+                                });
+
+                                // 달력 아이콘 클릭 시 datepicker 표시
+                                $('.date-picker-icon').on('click', function() {
+                                    $(this).closest('.date-picker-container').find('.datepicker').datepicker('show');
+                                });
+
+                                // 날짜 입력 필드 클릭 시에도 달력 표시
+                                $('.datepicker').on('click', function() {
+                                    $(this).datepicker('show');
+                                });
+                            });
+                        </script>
+                        <style>
+                            .date-picker-container {
+                                position: relative;
+                            }
+                            .date-picker-container .form-control {
+                                background-color: #fff;
+                                border-right: 0;
+                            }
+                            .date-picker-container .input-group-text {
+                                background-color: #fff;
+                                border-left: 0;
+                                transition: background-color 0.2s;
+                            }
+                            .date-picker-icon:hover {
+                                background-color: #f8f9fa !important;
+                            }
+                            .cursor-pointer {
+                                cursor: pointer;
+                            }
+                            .input-group .form-control::placeholder {
+                                color: #adb5bd;
+                                font-size: 0.875rem;
+                            }
+                            .datepicker {
+                                padding: 0.5rem;
+                                border-radius: 0.25rem;
+                                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+                            }
+                            .datepicker table tr td.today {
+                                background-color: #e3f2fd;
+                                border-radius: 0.25rem;
+                            }
+                            .datepicker table tr td.active {
+                                background-color: var(--bs-primary) !important;
+                                border-radius: 0.25rem;
+                            }
+                            .datepicker .quick-btns {
+                                margin-top: 0.5rem;
+                            }
+                            .datepicker .quick-btns .btn {
+                                font-size: 0.75rem;
+                                padding: 0.25rem 0.5rem;
+                            }
+                            .datepicker table tr td, .datepicker table tr th {
+                                width: 2rem;
+                                height: 2rem;
+                                text-align: center;
+                                border-radius: 0.25rem;
+                            }
+                            .datepicker table tr td.day:hover {
+                                background-color: #e9ecef;
+                            }
+                            .datepicker-dropdown {
+                                margin-top: 0.5rem;
+                            }
+                            .datepicker-days {
+                                padding: 0.25rem;
+                            }
+                        </style> 

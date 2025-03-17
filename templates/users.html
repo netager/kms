@@ -1,0 +1,548 @@
+{% extends "base.html" %}
+
+{% block title %}사용자 관리{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-1">
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">사용자 관리</h2>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createUserModal">
+                    <i class="bi bi-plus-lg"></i> 사용자 추가
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 검색 섹션 -->
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                        <i class="bi bi-search me-2"></i>검색 조건
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="GET" action="{{ url_for('users') }}" class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label text-muted small">로그인 ID</label>
+                            <input type="text" class="form-control form-control-sm" name="search_username" value="{{ request.args.get('search_username', '') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label text-muted small">권한</label>
+                            <select class="form-select form-select-sm" name="search_role">
+                                <option value="">전체</option>
+                                <option value="admin" {% if request.args.get('search_role') == 'admin' %}selected{% endif %}>관리자</option>
+                                <option value="user" {% if request.args.get('search_role') == 'user' %}selected{% endif %}>일반 사용자</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label text-muted small">상태</label>
+                            <select class="form-select form-select-sm" name="search_status">
+                                <option value="">전체</option>
+                                <option value="active" {% if request.args.get('search_status') == 'active' %}selected{% endif %}>활성</option>
+                                <option value="inactive" {% if request.args.get('search_status') == 'inactive' %}selected{% endif %}>비활성</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label text-muted small">&nbsp;</label>
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary btn-sm">검색</button>
+                                <a href="{{ url_for('users') }}" class="btn btn-secondary btn-sm">초기화</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 검색 결과 -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0" style="font-size: 0.9rem;">
+                        <i class="bi bi-table me-2"></i>검색 결과
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>로그인 ID</th>
+                                    <th>사용자명</th>
+                                    <th>이메일</th>
+                                    <th>권한</th>
+                                    <th>마지막 로그인</th>
+                                    <th>상태</th>
+                                    <th>작업</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.username_kor or '-' }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>
+                                        {% if user.is_admin %}
+                                        <span class="badge bg-primary">관리자</span>
+                                        {% else %}
+                                        <span class="badge bg-info">일반 사용자</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if user.last_login %}
+                                            {{ user.last_login.strftime('%Y-%m-%d %H:%M:%S') }}
+                                        {% else %}
+                                            <span class="text-muted">로그인 기록 없음</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if user.is_active %}
+                                        <span class="badge bg-success">활성</span>
+                                        {% else %}
+                                        <span class="badge bg-danger">비활성</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-info btn-sm" onclick="showUserDetail({{ user.id }})">
+                                                상세정보
+                                            </button>
+                                            {% if user.is_active %}
+                                            <button type="button" class="btn btn-warning btn-sm" onclick="showResetPasswordModal({{ user.id }}, '{{ user.username }}')">
+                                                비밀번호 초기화
+                                            </button>
+                                            <button type="button" class="btn btn-secondary btn-sm" onclick="showAccessHistory({{ user.id }}, '{{ user.username }}')">
+                                                접속 내역
+                                            </button>
+                                            {% if not user.is_admin %}
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeactivate({{ user.id }}, '{{ user.username }}')">
+                                                비활성화
+                                            </button>
+                                            {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 사용자 추가 모달 -->
+<div class="modal fade" id="createUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">사용자 추가</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createUserForm" method="POST" action="{{ url_for('users') }}">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.username.label(class="form-label") }}
+                        {{ form.username(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.username_kor.label(class="form-label") }}
+                        {{ form.username_kor(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.is_admin.label(class="form-label") }}
+                        {{ form.is_admin(class="form-select") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 비밀번호 초기화 모달 -->
+<div class="modal fade" id="resetPasswordModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">비밀번호 초기화</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>다음 사용자의 비밀번호를 초기화하시겠습니까?</p>
+                <p>사용자명: <strong id="resetPasswordUsername"></strong></p>
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>주의:</strong> 비밀번호 초기화 후 사용자에게 새로운 비밀번호를 안전하게 전달해야 합니다.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-warning" id="confirmResetPasswordBtn">초기화</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 비활성화 확인 모달 -->
+<div class="modal fade" id="deactivateConfirmModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">사용자 비활성화 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>경고:</strong> 사용자를 비활성화하면 더 이상 로그인할 수 없게 됩니다.
+                </div>
+                <p>다음 사용자를 비활성화하시겠습니까?</p>
+                <p>사용자명: <strong id="deactivateUsername"></strong></p>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" id="deactivateConfirm">
+                    <label class="form-check-label text-danger" for="deactivateConfirm">
+                        위 내용을 이해했으며, 이 사용자를 비활성화하는 것에 동의합니다.
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-danger" id="confirmDeactivateBtn">
+                    <i class="bi bi-person-x me-1"></i>비활성화
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 사용자 상세정보 모달 -->
+<div class="modal fade" id="userDetailModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">사용자 상세정보</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label text-muted small">로그인 ID</label>
+                    <p id="modalUsername" class="h6">-</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">사용자명</label>
+                    <p id="modalUsernameKor" class="h6">-</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">이메일</label>
+                    <p id="modalEmail" class="h6">-</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">권한</label>
+                    <p id="modalRole" class="h6">-</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">상태</label>
+                    <p id="modalStatus" class="h6">-</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">생성일시</label>
+                    <p id="modalCreatedAt" class="h6">-</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">마지막 로그인</label>
+                    <p id="modalLastLogin" class="h6">-</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 접속 내역 모달 -->
+<div class="modal fade" id="accessHistoryModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">사용자 접속 내역</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <p>사용자: <strong id="accessHistoryUsername"></strong></p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>접속 일시</th>
+                                <th>IP 주소</th>
+                                <th>접속 상태</th>
+                            </tr>
+                        </thead>
+                        <tbody id="accessHistoryTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* 스타일 통일 */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-header {
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+    padding: 0.4rem 1rem;
+}
+
+.table {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+}
+
+.table th {
+    font-weight: 500;
+    color: #495057;
+    padding: 0.5rem;
+}
+
+.table td {
+    padding: 0.5rem;
+    vertical-align: middle;
+}
+
+.btn-sm {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    height: calc(1.5em + 0.5rem + 2px);
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.25em 0.5em;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,0,0,.02);
+}
+
+.form-select {
+    font-size: 0.875rem;
+    padding: 0.25rem 2rem 0.25rem 0.5rem;
+    height: calc(1.5em + 0.5rem + 2px);
+}
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// 사용자 상세정보 표시
+function showUserDetail(userId) {
+    fetch(`/api/users/${userId}/detail`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const user = data.user;
+                document.getElementById('modalUsername').textContent = user.username;
+                document.getElementById('modalUsernameKor').textContent = user.username_kor || '-';
+                document.getElementById('modalEmail').textContent = user.email;
+                document.getElementById('modalRole').textContent = user.is_admin ? '관리자' : '일반 사용자';
+                
+                const statusElement = document.getElementById('modalStatus');
+                if (user.is_active) {
+                    statusElement.innerHTML = '<span class="badge bg-success">활성</span>';
+                } else {
+                    statusElement.innerHTML = '<span class="badge bg-danger">비활성</span>';
+                }
+                
+                document.getElementById('modalCreatedAt').textContent = user.created_at || '생성일 없음';
+                document.getElementById('modalLastLogin').textContent = user.last_login || '로그인 기록 없음';
+                
+                const modal = new bootstrap.Modal(document.getElementById('userDetailModal'));
+                modal.show();
+            } else {
+                alert('사용자 정보를 불러오는데 실패했습니다.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('사용자 정보를 불러오는데 실패했습니다.');
+        });
+}
+
+// 비밀번호 초기화
+function showResetPasswordModal(userId, username) {
+    document.getElementById('resetPasswordUsername').textContent = username;
+    const modal = new bootstrap.Modal(document.getElementById('resetPasswordModal'));
+    modal.show();
+    
+    document.getElementById('confirmResetPasswordBtn').onclick = function() {
+        fetch(`/api/users/${userId}/reset-password`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('비밀번호가 초기화되었습니다. 새로운 비밀번호: ' + data.new_password);
+                modal.hide();
+            } else {
+                alert('비밀번호 초기화 중 오류가 발생했습니다.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('비밀번호 초기화 중 오류가 발생했습니다.');
+        });
+    };
+}
+
+// 사용자 비활성화
+function confirmDeactivate(userId, username) {
+    document.getElementById('deactivateUsername').textContent = username;
+    document.getElementById('deactivateConfirm').checked = false;
+    const modal = new bootstrap.Modal(document.getElementById('deactivateConfirmModal'));
+    modal.show();
+    
+    document.getElementById('confirmDeactivateBtn').onclick = function() {
+        if (!document.getElementById('deactivateConfirm').checked) {
+            alert('비활성화 동의 확인을 체크해주세요.');
+            return;
+        }
+        
+        fetch(`/api/users/${userId}/deactivate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                modal.hide();
+                location.reload();
+            } else {
+                alert('사용자 비활성화 중 오류가 발생했습니다.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('사용자 비활성화 중 오류가 발생했습니다.');
+        });
+    };
+}
+
+// 사용자 생성 폼 제출
+document.getElementById('createUserForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const createUserModal = new bootstrap.Modal(document.getElementById('createUserModal'));
+    
+    try {
+        const response = await fetch('/users', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token() }}'
+            },
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            createUserModal.hide();
+            location.reload();
+        } else {
+            alert(result.message || '사용자 생성 중 오류가 발생했습니다.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('사용자 생성 중 오류가 발생했습니다.');
+    }
+});
+
+// 접속 내역 표시
+function showAccessHistory(userId, username) {
+    document.getElementById('accessHistoryUsername').textContent = username;
+    
+    fetch(`/api/users/${userId}/access-history`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const tableBody = document.getElementById('accessHistoryTableBody');
+                tableBody.innerHTML = '';
+                
+                data.history.forEach(entry => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${entry.access_time}</td>
+                        <td>${entry.ip_address}</td>
+                        <td>
+                            ${entry.is_success ? 
+                                '<span class="badge bg-success">성공</span>' : 
+                                '<span class="badge bg-danger">실패</span>'}
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                
+                const modal = new bootstrap.Modal(document.getElementById('accessHistoryModal'));
+                modal.show();
+            } else {
+                alert('접속 내역을 불러오는데 실패했습니다.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('접속 내역을 불러오는데 실패했습니다.');
+        });
+}
+</script>
+{% endblock %} 
