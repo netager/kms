@@ -132,6 +132,7 @@ with app.app_context():
     # 새 관리자 생성
     admin = User(
         username='kmsadm', 
+        username_kor='관리자', 
         email='kmsadm@jbbank.co.kr',
         is_admin=True,
         is_active=True,

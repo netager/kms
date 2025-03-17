@@ -1,0 +1,401 @@
+[2025-03-17 10:29:00 +0900] [12105] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8001']
+  backlog: 2048
+  workers: 4
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 120
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/netager/git_program/kms
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x105356280>
+  on_reload: <function OnReload.on_reload at 0x1053563a0>
+  when_ready: <function WhenReady.when_ready at 0x1053564c0>
+  pre_fork: <function Prefork.pre_fork at 0x1053565e0>
+  post_fork: <function Postfork.post_fork at 0x105356700>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x105356820>
+  worker_int: <function WorkerInt.worker_int at 0x105356940>
+  worker_abort: <function WorkerAbort.worker_abort at 0x105356a60>
+  pre_exec: <function PreExec.pre_exec at 0x105356b80>
+  pre_request: <function PreRequest.pre_request at 0x105356ca0>
+  post_request: <function PostRequest.post_request at 0x105356d30>
+  child_exit: <function ChildExit.child_exit at 0x105356e50>
+  worker_exit: <function WorkerExit.worker_exit at 0x105356f70>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x1053710d0>
+  on_exit: <function OnExit.on_exit at 0x1053711f0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x105371310>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-03-17 10:29:00 +0900] [12105] [INFO] Starting gunicorn 23.0.0
+[2025-03-17 10:29:00 +0900] [12105] [DEBUG] Arbiter booted
+[2025-03-17 10:29:00 +0900] [12105] [INFO] Listening at: http://0.0.0.0:8001 (12105)
+[2025-03-17 10:29:00 +0900] [12105] [INFO] Using worker: sync
+[2025-03-17 10:29:00 +0900] [12107] [INFO] Booting worker with pid: 12107
+[2025-03-17 10:29:00 +0900] [12108] [INFO] Booting worker with pid: 12108
+[2025-03-17 10:29:00 +0900] [12109] [INFO] Booting worker with pid: 12109
+[2025-03-17 10:29:00 +0900] [12110] [INFO] Booting worker with pid: 12110
+[2025-03-17 10:29:00 +0900] [12105] [DEBUG] 4 workers
+[2025-03-17 10:29:09 +0900] [12110] [DEBUG] GET /index
+[2025-03-17 10:29:09 +0900] [12110] [ERROR] Error handling request /index
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: user.username_kor
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/netager/git_program/kms/app.py", line 362, in index
+    return render_template('index.html', title='홈')
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/templating.py", line 127, in _render
+    app.update_template_context(context)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 530, in update_template_context
+    context.update(self.ensure_sync(func)())
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask_login/utils.py", line 405, in _user_context_processor
+    return dict(current_user=_get_user())
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/netager/git_program/kms/app.py", line 342, in load_user
+    return User.query.get(int(id))
+  File "<string>", line 2, in get
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1121, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1130, in _get_impl
+    return self.session._get_impl(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 3874, in _get_impl
+    return db_load_fn(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.username_kor
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.username_kor AS user_username_kor, user.email AS user_email, user.password_hash AS user_password_hash, user.is_admin AS user_is_admin, user.is_active AS user_is_active, user.last_login AS user_last_login, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-03-17 10:29:22 +0900] [12109] [DEBUG] GET /
+[2025-03-17 10:29:22 +0900] [12110] [DEBUG] GET /index
+[2025-03-17 10:29:22 +0900] [12110] [ERROR] Error handling request /index
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: user.username_kor
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/netager/git_program/kms/app.py", line 362, in index
+    return render_template('index.html', title='홈')
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/templating.py", line 127, in _render
+    app.update_template_context(context)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask/app.py", line 530, in update_template_context
+    context.update(self.ensure_sync(func)())
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask_login/utils.py", line 405, in _user_context_processor
+    return dict(current_user=_get_user())
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/netager/git_program/kms/app.py", line 342, in load_user
+    return User.query.get(int(id))
+  File "<string>", line 2, in get
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1121, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1130, in _get_impl
+    return self.session._get_impl(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 3874, in _get_impl
+    return db_load_fn(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/opt/anaconda3/envs/kkms/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.username_kor
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.username_kor AS user_username_kor, user.email AS user_email, user.password_hash AS user_password_hash, user.is_admin AS user_is_admin, user.is_active AS user_is_active, user.last_login AS user_last_login, user.created_at AS user_created_at 
+FROM user 
+WHERE user.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-03-17 10:29:43 +0900] [12105] [INFO] Handling signal: int
+[2025-03-17 10:29:43 +0900] [12110] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:29:43 +0900] [12107] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:29:43 +0900] [12108] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:29:43 +0900] [12109] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:29:43 +0900] [12107] [INFO] Worker exiting (pid: 12107)
+[2025-03-17 10:29:43 +0900] [12110] [INFO] Worker exiting (pid: 12110)
+[2025-03-17 10:29:43 +0900] [12108] [INFO] Worker exiting (pid: 12108)
+[2025-03-17 10:29:43 +0900] [12109] [INFO] Worker exiting (pid: 12109)
+[2025-03-17 10:29:43 +0900] [12105] [INFO] Shutting down: Master
+[2025-03-17 10:30:20 +0900] [12845] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8001']
+  backlog: 2048
+  workers: 4
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 120
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/netager/git_program/kms
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x1037ea280>
+  on_reload: <function OnReload.on_reload at 0x1037ea3a0>
+  when_ready: <function WhenReady.when_ready at 0x1037ea4c0>
+  pre_fork: <function Prefork.pre_fork at 0x1037ea5e0>
+  post_fork: <function Postfork.post_fork at 0x1037ea700>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x1037ea820>
+  worker_int: <function WorkerInt.worker_int at 0x1037ea940>
+  worker_abort: <function WorkerAbort.worker_abort at 0x1037eaa60>
+  pre_exec: <function PreExec.pre_exec at 0x1037eab80>
+  pre_request: <function PreRequest.pre_request at 0x1037eaca0>
+  post_request: <function PostRequest.post_request at 0x1037ead30>
+  child_exit: <function ChildExit.child_exit at 0x1037eae50>
+  worker_exit: <function WorkerExit.worker_exit at 0x1037eaf70>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x1038050d0>
+  on_exit: <function OnExit.on_exit at 0x1038051f0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x103805310>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-03-17 10:30:20 +0900] [12845] [INFO] Starting gunicorn 23.0.0
+[2025-03-17 10:30:20 +0900] [12845] [DEBUG] Arbiter booted
+[2025-03-17 10:30:20 +0900] [12845] [INFO] Listening at: http://0.0.0.0:8001 (12845)
+[2025-03-17 10:30:20 +0900] [12845] [INFO] Using worker: sync
+[2025-03-17 10:30:20 +0900] [12847] [INFO] Booting worker with pid: 12847
+[2025-03-17 10:30:20 +0900] [12853] [INFO] Booting worker with pid: 12853
+[2025-03-17 10:30:20 +0900] [12854] [INFO] Booting worker with pid: 12854
+[2025-03-17 10:30:20 +0900] [12855] [INFO] Booting worker with pid: 12855
+[2025-03-17 10:30:20 +0900] [12845] [DEBUG] 4 workers
+[2025-03-17 10:30:37 +0900] [12854] [DEBUG] GET /index
+[2025-03-17 10:30:37 +0900] [12855] [DEBUG] GET /static/css/bootstrap.min.css
+[2025-03-17 10:30:37 +0900] [12847] [DEBUG] GET /static/css/boxicons.min.css
+[2025-03-17 10:30:37 +0900] [12853] [DEBUG] GET /static/js/bootstrap.bundle.min.js
+[2025-03-17 10:30:37 +0900] [12854] [DEBUG] GET /static/css/style.css
+[2025-03-17 10:30:37 +0900] [12853] [DEBUG] GET /static/fonts/boxicons.woff2
+[2025-03-17 10:30:37 +0900] [12847] [DEBUG] GET /static/js/bootstrap.bundle.min.js.map
+[2025-03-17 10:30:37 +0900] [12853] [DEBUG] GET /static/css/bootstrap.min.css.map
+[2025-03-17 10:30:43 +0900] [12845] [INFO] Handling signal: int
+[2025-03-17 10:30:43 +0900] [12854] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:30:43 +0900] [12853] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:30:43 +0900] [12855] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:30:43 +0900] [12847] [DEBUG] worker: SIGWINCH ignored.
+[2025-03-17 10:30:43 +0900] [12854] [INFO] Worker exiting (pid: 12854)
+[2025-03-17 10:30:43 +0900] [12855] [INFO] Worker exiting (pid: 12855)
+[2025-03-17 10:30:43 +0900] [12853] [INFO] Worker exiting (pid: 12853)
+[2025-03-17 10:30:43 +0900] [12847] [INFO] Worker exiting (pid: 12847)
+[2025-03-17 10:30:43 +0900] [12845] [INFO] Shutting down: Master

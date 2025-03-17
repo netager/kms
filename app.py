@@ -155,6 +155,7 @@ class LogSearchForm(FlaskForm):
         ('decrypt', '복호화'),
         ('get_key', '키조회')
     ], default='')
+    program_name = StringField('프로그램명')
     status = SelectField('상태', choices=[
         ('', '전체'),
         ('success', '성공'),
@@ -1617,6 +1618,7 @@ def logs():
     key_id = request.args.get('key_id', '')
     action = request.args.get('action', '')
     status = request.args.get('status', '')
+    program_name = request.args.get('program_name', '')
     page = request.args.get('page', 1, type=int)
     per_page = 10  # 페이지당 표시할 항목 수
 
@@ -1641,6 +1643,8 @@ def logs():
             query = query.filter(KeyAccessLog.access_time >= f"{start_date} 00:00:00")
         if end_date:
             query = query.filter(KeyAccessLog.access_time <= f"{end_date} 23:59:59")
+        if program_name:
+            query = query.filter(KeyAccessLog.program_name.ilike(f'%{program_name}%'))
 
         # 결과 정렬 (최신순)
         query = query.order_by(KeyAccessLog.access_time.desc())
@@ -1655,7 +1659,8 @@ def logs():
             'end_date': end_date,
             'key_id': key_id,
             'action': action,
-            'status': status
+            'status': status,
+            'program_name': program_name
         }
         
         return render_template('logs.html',

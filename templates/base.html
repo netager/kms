@@ -9,6 +9,8 @@
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Boxicons CSS -->
     <link href="{{ url_for('static', filename='css/boxicons.min.css') }}" rel="stylesheet">
+    <!-- Bootstrap Datepicker CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <style>
@@ -30,20 +32,26 @@
         .navbar {
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            padding: 1rem 0;
+            padding: 0.5rem 0;
         }
 
         .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
+            font-weight: 600;
+            font-size: 1.2rem;
             color: white !important;
+            margin-right: 0.5rem;
+        }
+
+        .nav-item {
+            margin-right: 0.2rem;
         }
 
         .nav-link {
             font-weight: 500;
+            font-size: 0.875rem;
             color: rgba(255,255,255,0.9) !important;
             transition: all 0.2s ease;
-            padding: 0.5rem 1rem !important;
+            padding: 0.4rem 0.6rem !important;
             border-radius: 0.375rem;
         }
 
@@ -56,11 +64,13 @@
             border: none;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
             border-radius: 0.5rem;
+            font-size: 0.875rem;
         }
 
         .dropdown-item {
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 0.8rem;
             font-weight: 500;
+            font-size: 0.875rem;
             transition: all 0.2s ease;
         }
 
@@ -97,7 +107,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-md">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('index') }}">
                 <i class='bx bx-shield-quarter'></i> KMS
@@ -196,6 +206,11 @@
 
     <!-- Bootstrap JS -->
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-datepicker.ko.min.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html> 
